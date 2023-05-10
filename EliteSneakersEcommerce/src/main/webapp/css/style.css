@@ -1,0 +1,152 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Typography */
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  h1, h2 {
+    font-weight: normal;
+  }
+  
+  h1 {
+    font-size: 36px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="email"], input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Layout */
+  header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #ccc;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Stile per la sezione dei prodotti in primo piano */
+.featured-products {
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Stile per la griglia di prodotti */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Stile per ogni prodotto nella griglia */
+.product {
+    margin: 20px;
+    width: 45%; /* Larghezza di ogni prodotto nella griglia */
+}
+
+/* Stile per l'immagine del prodotto nella griglia */
+.product img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Stile per il titolo del prodotto nella griglia */
+.product h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+/* Stile per il prezzo del prodotto nella griglia */
+.product p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+/* Stile per il pulsante "Aggiungi al carrello" nella griglia */
+.product button {
+    background-color: #f60;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.product button:hover {
+    background-color: #e25800;
+}
+  
+  
