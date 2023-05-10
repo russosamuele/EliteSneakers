@@ -1,9 +1,11 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -41,7 +43,7 @@ public class UserDAO{
 		
 
 		String insertSQL = "INSERT INTO " + UserDAO.TABLE_NAME
-				+ " (email, nome, cognome, passwd, age, indirizzo, indirizzo_spedizione, isAdmin) VALUES (?, ?, ?, ?,?,?,?,?)";
+				+ " (email, nome, cognome, passwd, data_nascita, indirizzo, indirizzo_spedizione, isAdmin) VALUES (?, ?, ?, ?,?,?,?,?)";
 
 		try {
 			connection = ds.getConnection();
@@ -51,7 +53,7 @@ public class UserDAO{
 			preparedStatement.setString(2, user.getNome());
 			preparedStatement.setString(3, user.getCognome());
 			preparedStatement.setString(4, user.getPasswd());
-			preparedStatement.setInt(5, user.getAge());
+			preparedStatement.setDate(5, new java.sql.Date(user.getDataNascita().getTime()));
 			preparedStatement.setString(6, user.getIndirizzo());
 			preparedStatement.setString(7, user.getIndirizzo_spedizione());
 			preparedStatement.setBoolean(8, user.isAdmin());
@@ -98,7 +100,7 @@ public class UserDAO{
 	}
 
 	
-	public synchronized UserBean doRetrieveByKey(String email) throws SQLException {
+	public synchronized UserBean doRetrieveByKey(String email) throws SQLException, ParseException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		UserBean bean = new UserBean();
@@ -113,7 +115,7 @@ public class UserDAO{
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setPasswd(rs.getString("passwd"));
-				bean.setAge(rs.getInt("age"));
+				bean.setDataNascita(rs.getDate("data_nascita"));
 				bean.setIndirizzo(rs.getString("indirizzo"));
 				bean.setIndirizzo_spedizione(rs.getString("indirizzo_spedizione"));
 				bean.setAdmin(rs.getBoolean("isAdmin"));
@@ -132,7 +134,7 @@ public class UserDAO{
 	}
 
 	
-	public synchronized Collection<UserBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Collection<UserBean> doRetrieveAll(String order) throws SQLException, ParseException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -157,7 +159,7 @@ public class UserDAO{
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setPasswd(rs.getString("passwd"));
-				bean.setAge(rs.getInt("age"));
+				bean.setDataNascita(rs.getDate("data_nascita"));
 				bean.setIndirizzo(rs.getString("indirizzo"));
 				bean.setIndirizzo_spedizione(rs.getString("indirizzo_spedizione"));
 				bean.setAdmin(rs.getBoolean("isAdmin"));

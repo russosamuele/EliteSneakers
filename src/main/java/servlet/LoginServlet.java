@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			user = tool.doRetrieveByKey(email);
-		} catch (SQLException e) {
+		} catch (SQLException | ParseException e) {
 				e.printStackTrace();
 			}
 		
@@ -78,7 +79,15 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("user", user); //mi serve per recuperare le info dell'utente per account
 		
 		
-		session.setAttribute("isAdmin", user.isAdmin());
+		String res;
+		if(user.isAdmin())
+			res = "true";
+		else
+			res = "false";
+		
+			
+		
+		session.setAttribute("isAdmin", res);
 	
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/index.jsp");
 		dispatcher.forward(request, response);

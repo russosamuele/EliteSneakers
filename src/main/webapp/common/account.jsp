@@ -18,8 +18,9 @@
 	<main>
 		<h1>Il mio account</h1>
 		<h2>Modifica informazioni personali</h2>
-			
+		<%=session.getAttribute("isAdmin")%>	
 		<%
+			
 			UserBean user = (UserBean)session.getAttribute("user");
 			if(user != null){
 				
@@ -82,8 +83,8 @@
 		</table>
 		
 		<% }else{ 
-		
-			response.sendRedirect("/login.jsp");
+			String path = request.getContextPath();
+			response.sendRedirect(path + "/common/login.jsp");
 				return ;
 		}
 			%>

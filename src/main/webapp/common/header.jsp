@@ -25,14 +25,14 @@
 					else
 						isLogged=false;
 					
-					String value2= (String)session.getAttribute("isAdmin");
-					if(value2 != null && value2.equals("true"))
+					if(session.getAttribute("isAdmin") !=null && session.getAttribute("isAdmin").equals("true"))
 						isAdmin=true ;
 					else
 						isAdmin=false;
+					
 				%>
 				
-				
+							
 				
 				<%String path = request.getContextPath(); %>
 				
@@ -48,8 +48,8 @@
 					<li><a href= "<%=path%>/common/index.jsp">Home</a></li>
 					<li><a href="<%=path%>/common/catalog.jsp">Catalog</a></li>
 					<li><a href="<%=path%>/common/cart.jsp">Cart</a></li>
-					<li><a href="<%=path%>/common/account.jsp">Account</a></li>
 					<li><a href="<%=path%>/admin/gestione.jsp">Gestione</a></li>
+					<li><a href="<%=path%>/common/account.jsp">Account</a></li>
 				<% }else if(!isLogged){ %>
 					<li><a href="<%=path%>/common/index.jsp">Home</a></li>
 					<li><a href="<%=path%>/common/catalog.jsp">Catalog</a></li>
