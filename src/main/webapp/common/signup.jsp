@@ -46,8 +46,8 @@
 			<label for="conferma_password">Conferma Password:</label>
 			<input type="password" id="conferma_password" name="conferma_password" required><br><br>
 			
-			<label for="age">Eta:</label>
-			<input type="text" id="age" name="age" required><br><br>
+			<label for="age">Data di nascità:</label>
+			<input type="date" id="age" name="age" required><br><br>
 		
 			<label for="indirizzo">Indirizzo</label>
 			<textarea id="indirizzo" name="indirizzo" required></textarea><br><br>	
