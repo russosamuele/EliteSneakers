@@ -82,6 +82,10 @@
 			</tbody>
 		</table>
 		
+		
+		
+		<a href="<%=request.getContextPath()%>/LogoutServlet"> Logout </a>
+		
 		<% }else{ 
 			String path = request.getContextPath();
 			response.sendRedirect(path + "/common/login.jsp");
