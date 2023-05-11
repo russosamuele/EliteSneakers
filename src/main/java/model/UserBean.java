@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.util.Date;
 
 public class UserBean implements Serializable {
 
@@ -10,20 +12,21 @@ public class UserBean implements Serializable {
 		String nome;
 		String cognome;
 		String passwd;
-		int age;
 		String indirizzo;
 		String indirizzo_spedizione;
 		boolean isAdmin;
+		Date dataNascita;
 
-		public UserBean() {
+		public UserBean() throws ParseException {
 			email = "";
 			nome = "";
 			cognome = "";
 			passwd = "";
-			age = 0;
 			indirizzo = "";
 			indirizzo_spedizione = "";
 			isAdmin = false;
+			
+			
 			
 		}
 
@@ -59,12 +62,12 @@ public class UserBean implements Serializable {
 			this.passwd = passwd;
 		}
 
-		public int getAge() {
-			return age;
+		public Date getDataNascita() {
+			return dataNascita;
 		}
 
-		public void setAge(int age) {
-			this.age = age;
+		public void setDataNascita(Date date) {
+			this.dataNascita = date;
 		}
 
 		public String getIndirizzo() {
@@ -94,7 +97,7 @@ public class UserBean implements Serializable {
 		@Override
 		public String toString() {
 			return "UserBean [email=" + email + ", nome=" + nome + ", cognome=" + cognome + ", passwd=" + passwd
-					+ ", age=" + age + ", indirizzo=" + indirizzo + ", indirizzo_spedizione=" + indirizzo_spedizione
+					+ ", Data nascita=" + dataNascita + ", indirizzo=" + indirizzo + ", indirizzo_spedizione=" + indirizzo_spedizione
 					+ ", isAdmin=" + isAdmin + "]";
 		}
 		

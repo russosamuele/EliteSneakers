@@ -2,6 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,7 +39,15 @@ public class SignupServlet extends HttpServlet {
 		String confPass = request.getParameter("conferma_password");
 		String indirizzo = request.getParameter("indirizzo");
 		String indirizzo_spedizione = request.getParameter("indirizzo_spedizione");
-		int age = Integer.parseInt(request.getParameter("age"));
+		String dNascita = (String) request.getParameter("dataNascita");
+		Date dataNascita = null;
+		
+		try {
+			dataNascita = new SimpleDateFormat("yyyy-mm-dd").parse(dNascita);
+		} catch (ParseException e2) {
+			e2.printStackTrace();
+		}
+	
 		
 		if(!passwd.equals(confPass)) {
 			String error = "Password e conferma password non corrispondono";
@@ -47,20 +58,24 @@ public class SignupServlet extends HttpServlet {
 		}
 		
 		
-		UserBean user = new UserBean();
+		UserBean user = null;
+		try {
+			user = new UserBean();
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		
 		user.setEmail(email);
 		user.setNome(nome);
 		user.setCognome(cognome);
 		user.setPasswd(HelperClass.toHash(passwd));
 		user.setIndirizzo(indirizzo);
 		user.setIndirizzo_spedizione(indirizzo_spedizione);
-		user.setAge(age);
+		user.setDataNascita(dataNascita);
 		
 		UserDAO userdao = new UserDAO();
 		try {
 			userdao.doSave(user);
-			HttpSession session = request.getSession(); //imposto un booleano is Logged
-			session.setAttribute("isLogged", "true");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
