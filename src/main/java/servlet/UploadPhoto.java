@@ -33,8 +33,6 @@ public class UploadPhoto extends HttpServlet {
 
 		int code = Integer.parseInt(request.getParameter("code"));
 		
-		System.out.println(code);
-		
 		Part filePart = request.getPart("photo");
                 
         try {
