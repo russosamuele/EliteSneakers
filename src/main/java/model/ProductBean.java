@@ -9,14 +9,20 @@ public class ProductBean implements Serializable {
 	int code;
 	String brand;
 	String modello;
-	int price;
+	String descrizione;
+	double price;
 	int quantity;
+	byte[] photo;
+
+	
 
 	public ProductBean() {
 		code = -1;
 		brand = "";
 		modello = "";
+		descrizione = "";
 		quantity = 0;
+		price = 0.0;
 	}
 
 	public int getCode() {
@@ -25,6 +31,14 @@ public class ProductBean implements Serializable {
 
 	public void setCode(int code) {
 		this.code = code;
+	}
+	
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
 	}
 
 	public String getBrand() {
@@ -38,16 +52,24 @@ public class ProductBean implements Serializable {
 	public String getModello() {
 		return modello;
 	}
-
+	
 	public void setModello(String modello) {
 		this.modello = modello;
 	}
-
-	public int getPrice() {
-		return price;
+	
+	public String getDescrizione() {
+		return descrizione;
+	}
+	
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
-	public void setPrice(int price) {
+	public double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -61,7 +83,10 @@ public class ProductBean implements Serializable {
 
 	@Override
 	public String toString() {
-		return brand + modello + " (" + code + "), " + price + " " + quantity + ". ";
+		return "ProductBean [code=" + code + ", brand=" + brand + ", modello=" + modello + ", descrizione="
+				+ descrizione + ", price=" + price + ", quantity=" + quantity + "]";
 	}
+
+	
 
 }
