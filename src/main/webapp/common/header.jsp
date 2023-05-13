@@ -48,7 +48,7 @@
 					<li><a href= "<%=path%>/common/index.jsp">Home</a></li>
 					<li><a href="<%=path%>/common/catalog.jsp">Catalog</a></li>
 					<li><a href="<%=path%>/common/cart.jsp">Cart</a></li>
-					<li><a href="<%=path%>/admin/gestione.jsp">Gestione</a></li>
+					<li><a href="<%=path%>/admin/management.jsp">Gestione</a></li>
 					<li><a href="<%=path%>/common/account.jsp">Account</a></li>
 				<% }else if(!isLogged){ %>
 					<li><a href="<%=path%>/common/index.jsp">Home</a></li>
