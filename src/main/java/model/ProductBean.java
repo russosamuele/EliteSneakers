@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class ProductBean implements Serializable {
 
@@ -13,6 +14,7 @@ public class ProductBean implements Serializable {
 	double price;
 	int quantity;
 	byte[] photo;
+	int taglia;
 
 	
 
@@ -23,6 +25,15 @@ public class ProductBean implements Serializable {
 		descrizione = "";
 		quantity = 0;
 		price = 0.0;
+		taglia = 0;
+	}
+
+	public int getTaglia() {
+		return taglia;
+	}
+
+	public void setTaglia(int taglia) {
+		this.taglia = taglia;
 	}
 
 	public int getCode() {
@@ -84,7 +95,8 @@ public class ProductBean implements Serializable {
 	@Override
 	public String toString() {
 		return "ProductBean [code=" + code + ", brand=" + brand + ", modello=" + modello + ", descrizione="
-				+ descrizione + ", price=" + price + ", quantity=" + quantity + "]";
+				+ descrizione + ", price=" + price + ", quantity=" + quantity + ", photo=" + Arrays.toString(photo)
+				+ ", taglia=" + taglia + "]";
 	}
 
 	

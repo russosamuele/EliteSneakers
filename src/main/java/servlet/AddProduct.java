@@ -36,6 +36,7 @@ public class AddProduct extends HttpServlet {
 		String descrizione = HelperClass.filter(request.getParameter("descrizione"));
 		int quantita = Integer.parseInt(request.getParameter("quantita"));
 		double prezzo = Double.parseDouble(request.getParameter("prezzo"));
+		int taglia = Integer.parseInt(request.getParameter("taglia"));
 		
 		ProductBean bean = new ProductBean();
 		bean.setCode(code);
@@ -44,6 +45,7 @@ public class AddProduct extends HttpServlet {
 		bean.setDescrizione(descrizione);
 		bean.setQuantity(quantita);
 		bean.setPrice(prezzo);
+		bean.setTaglia(taglia);
 		
 		
 		ProductDAO dao = new ProductDAO();

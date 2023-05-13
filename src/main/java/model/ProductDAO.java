@@ -39,7 +39,7 @@ public class ProductDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductDAO.TABLE_NAME
-				+ " (codice_prod, brand, modello, quantita, photo, descrizione, prezzo) VALUES (?, ?, ?, ?, null,?,?)";
+				+ " (codice_prod, brand, modello, quantita, photo, descrizione, prezzo, taglia) VALUES (?, ?, ?, ?, null,?,?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -50,6 +50,8 @@ public class ProductDAO{
 			preparedStatement.setInt(4, product.getQuantity());
 			preparedStatement.setString(5, product.getDescrizione());
 			preparedStatement.setDouble(6, product.getPrice());
+			preparedStatement.setDouble(7, product.getTaglia());
+			
 
 			preparedStatement.executeUpdate();
 
@@ -111,6 +113,7 @@ public class ProductDAO{
 				bean.setPhoto(rs.getBytes("photo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPrice(rs.getInt("prezzo"));
+				bean.setTaglia(rs.getInt("taglia"));
 			}
 			
 			
@@ -155,6 +158,7 @@ public class ProductDAO{
 				bean.setPhoto(rs.getBytes("photo"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPrice(rs.getInt("prezzo"));
+				bean.setTaglia(rs.getInt("taglia"));
 				products.add(bean);
 			}
 

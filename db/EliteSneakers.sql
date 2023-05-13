@@ -27,6 +27,7 @@ Create table Prodotto(
     photo mediumblob DEFAULT NULL,
     descrizione varchar(300) not null,
     prezzo double not null,
+    taglia int not null,
 
 	primary key(codice_prod)
 ) auto_increment = 1;
