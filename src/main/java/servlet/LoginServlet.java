@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		UserDAO tool = new UserDAO();
 		UserBean user = null;
 		
-		String email = request.getParameter("email");
+		String email = HelperClass.filter(request.getParameter("email"));
 		String passwd = request.getParameter("password");
 		
 		try {

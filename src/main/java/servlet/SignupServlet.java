@@ -32,13 +32,14 @@ public class SignupServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String nome = request.getParameter("nome");
-		String cognome = request.getParameter("cognome");
-		String passwd = request.getParameter("password");
-		String confPass = request.getParameter("conferma_password");
-		String indirizzo = request.getParameter("indirizzo");
-		String indirizzo_spedizione = request.getParameter("indirizzo_spedizione");
+		
+		String email = HelperClass.filter(request.getParameter("email"));
+		String nome = HelperClass.filter(request.getParameter("nome"));
+		String cognome = HelperClass.filter(request.getParameter("cognome"));
+		String passwd = HelperClass.filter(request.getParameter("password"));
+		String confPass = HelperClass.filter(request.getParameter("conferma_password"));
+		String indirizzo = HelperClass.filter(request.getParameter("indirizzo"));
+		String indirizzo_spedizione = HelperClass.filter(request.getParameter("indirizzo_spedizione"));
 		String dNascita = (String) request.getParameter("dataNascita");
 		Date dataNascita = null;
 		

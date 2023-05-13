@@ -39,7 +39,7 @@ public class ProductDAO{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductDAO.TABLE_NAME
-				+ " (codice, brand, modello, quantita, photo, prezzo) VALUES (?, ?, ?, ?,?,?)";
+				+ " (codice_prod, brand, modello, quantita, photo, descrizione, prezzo, taglia) VALUES (?, ?, ?, ?, null,?,?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -48,12 +48,13 @@ public class ProductDAO{
 			preparedStatement.setString(2, product.getBrand());
 			preparedStatement.setString(3, product.getModello());
 			preparedStatement.setInt(4, product.getQuantity());
-			//preparedStatement.(5, phtoto);
-			preparedStatement.setInt(6, product.getPrice());
+			preparedStatement.setString(5, product.getDescrizione());
+			preparedStatement.setDouble(6, product.getPrice());
+			preparedStatement.setDouble(7, product.getTaglia());
+			
 
 			preparedStatement.executeUpdate();
 
-			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -109,9 +110,13 @@ public class ProductDAO{
 				bean.setBrand(rs.getString("brand"));
 				bean.setModello(rs.getString("modello"));
 				bean.setQuantity(rs.getInt("quantita"));
-				//bean.(photo);
+				bean.setPhoto(rs.getBytes("photo"));
+				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPrice(rs.getInt("prezzo"));
+				bean.setTaglia(rs.getInt("taglia"));
 			}
+			
+			
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -150,8 +155,10 @@ public class ProductDAO{
 				bean.setBrand(rs.getString("brand"));
 				bean.setModello(rs.getString("modello"));
 				bean.setQuantity(rs.getInt("quantita"));
-				//bean.(photo);
+				bean.setPhoto(rs.getBytes("photo"));
+				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPrice(rs.getInt("prezzo"));
+				bean.setTaglia(rs.getInt("taglia"));
 				products.add(bean);
 			}
 
