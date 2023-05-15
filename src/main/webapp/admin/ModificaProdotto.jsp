@@ -1,25 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="model.ProductDAO, model.ProductBean, java.util.*"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-	<title>Elite Sneakers - Aggiungi Prodotto</title>
+	<title>Elite Sneakers - Modifica Prodotto</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
 	
 	<%@ include file="../common/header.jsp"%>
 	
+	<%
+			ProductDAO dao = new ProductDAO();
+			Collection<ProductBean> sneakers = dao.doRetrieveAll("brand");
+	
+			String message = (String)request.getAttribute("message");
+			if(message == null)
+				message="";
+	
+	%>
+		<p  style="color:green "> <%=message %> </p>
+	
+	
 	
 	<main>
-		<h2>Aggiungi Prodotto</h2>
+		<h2>Modifica Prodotto</h2>
 		
-		<form action="/EliteSneakersEcommerce/AddProduct" method="post" enctype="multipart/form-data">
-			<label for="code">Code:</label>
-			<input type="number" id="code" name="code" required>
+		<form action="<%=request.getContextPath()%>/ModificaProdottoServlet" method="post" enctype="multipart/form-data">
+		
+			<label for="code">Codice prodotto:</label>
+			<select id="code" name="code" required>
+				
+				<%for(ProductBean p : sneakers){ %>
+					<option value="<%=p.getCode()%>"> code:<%=p.getCode()%> - brand: <%=p.getBrand()%> - modello: <%=p.getModello()%> - taglia: <%=p.getTaglia()%></option>
+				<%} %>
+			</select>
 			<br>
 			<label for="brand">Brand:</label>
 			<input type="text" id="brand" name="brand" required>
@@ -42,12 +61,14 @@
 			<label for="immagine">Immagine:</label>
 			<input type="file" id="photo" name="photo" value="" required>
 			<br>
-			<input type="submit" value="Aggiungi">
+			<input type="submit" value="Aggiorna">
 		</form>
 		
 	</main>
 	
 	<%@ include file="../common/footer.jsp"%>
 	
+	
 </body>
 </html>
+ 

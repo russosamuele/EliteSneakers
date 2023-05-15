@@ -33,8 +33,8 @@
 		<h3>Gestione prodotti</h3>
 		<ul>
 			<li><a href="AggiungiProdotto.jsp">Aggiungi un nuovo prodotto</a></li>
-			<li><a href="modifica_prodotto.jsp">Modifica un prodotto esistente</a></li>
-			<li><a href="rimuovi_prodotto.jsp">Rimuovi un prodotto esistente</a></li>
+			<li><a href="ModificaProdotto.jsp">Modifica un prodotto esistente</a></li>
+			<li><a href="RimuoviProdotto.jsp">Rimuovi un prodotto esistente</a></li>
 		</ul>
 		
 		<h3>Gestione ordini</h3>
@@ -45,9 +45,9 @@
 		
 		<h3>Gestione utenti</h3>
 		<ul>
-			<li><a href="visualizza_utenti.jsp">Visualizza tutti gli utenti</a></li>
+			<li><a href="VisualizzaUtenti.jsp">Visualizza tutti gli utenti</a></li>
 			<li><a href="modifica_utente.jsp">Modifica un utente esistente</a></li>
-			<li><a href="rimuovi_utente.jsp">Rimuovi un utente esistente</a></li>
+			<li><a href="RimuoviUtente.jsp">Rimuovi un utente esistente</a></li>
 		</ul>
 	</main>
 	
