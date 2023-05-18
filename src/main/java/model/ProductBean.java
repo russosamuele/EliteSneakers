@@ -12,9 +12,7 @@ public class ProductBean implements Serializable {
 	String modello;
 	String descrizione;
 	double price;
-	int quantity;
 	byte[] photo;
-	int taglia;
 
 	
 
@@ -23,18 +21,9 @@ public class ProductBean implements Serializable {
 		brand = "";
 		modello = "";
 		descrizione = "";
-		quantity = 0;
 		price = 0.0;
-		taglia = 0;
 	}
 
-	public int getTaglia() {
-		return taglia;
-	}
-
-	public void setTaglia(int taglia) {
-		this.taglia = taglia;
-	}
 
 	public int getCode() {
 		return code;
@@ -84,20 +73,9 @@ public class ProductBean implements Serializable {
 		this.price = price;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 
-	@Override
-	public String toString() {
-		return "ProductBean [code=" + code + ", brand=" + brand + ", modello=" + modello + ", descrizione="
-				+ descrizione + ", price=" + price + ", quantity=" + quantity + ", photo=" + Arrays.toString(photo)
-				+ ", taglia=" + taglia + "]";
-	}
+	
 
 	
 

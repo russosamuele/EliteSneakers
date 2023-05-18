@@ -30,15 +30,11 @@
 			<label for="descrizione">Descrizione:</label>
 			<textarea id="descrizione" name="descrizione" required></textarea>
 			<br>
-			<label for="quantita">Quantita:</label>
-			<input type="text" id="quantita" name="quantita" required>
-			<br>
+			
 			<label for="prezzo">Prezzo:</label>
 			<input type="number" id="prezzo" name="prezzo" min="0" step="0.01" required>
 			<br>
-			<label for="taglia">Taglia:</label>
-			<input type="number" id="taglia" name="taglia" min="25" required>
-			<br>
+			
 			<label for="immagine">Immagine:</label>
 			<input type="file" id="photo" name="photo" value="" required>
 			<br>
