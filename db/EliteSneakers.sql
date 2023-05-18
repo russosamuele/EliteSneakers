@@ -23,11 +23,9 @@ Create table Prodotto(
 	codice_prod int not null AUTO_INCREMENT,
 	brand varchar(50) not null,
     modello varchar(50) not null,
-    quantita int not null default 1,
     photo mediumblob DEFAULT NULL,
     descrizione varchar(300) not null,
     prezzo double not null,
-    taglia int not null,
 
 	primary key(codice_prod)
 ) auto_increment = 1;
@@ -51,6 +49,16 @@ Create table DettaglioOrdine(
     primary key(numero_ord, codice_prod),
     foreign key(numero_ord) references Ordine(numero_ord),
     foreign key(codice_prod) references Prodotto(codice_prod)
+
+);
+
+Create table DisponibilitaTaglia(
+	codice_prod int not null,
+	taglia int not null,
+	quantita int not null,
+	
+	primary key(codice_prod, taglia),
+	foreign key (codice_prod) references Prodotto(codice_prod)
 
 );
 
