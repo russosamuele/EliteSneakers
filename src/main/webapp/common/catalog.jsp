@@ -1,3 +1,4 @@
+<%@page import="model.FinalProduct"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="model.ProductBean, model.ProductDAO, java.util.*"
 	pageEncoding="UTF-8"%>
@@ -29,10 +30,17 @@
 
 
 	<%
-	ProductDAO dao = new ProductDAO();
-	Collection<ProductBean> sneakers = dao.doRetrieveAll("brand");
-	ArrayList<ProductBean> listSneakers = new ArrayList<>(sneakers);
-
+	int id = 1;
+	request.setAttribute("id", id);
+	ArrayList<FinalProduct> listSneakers = (ArrayList<FinalProduct>) request.getAttribute("listSneakers");
+	
+	if (listSneakers == null){
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/GetSneakersList");
+		dispatcher.forward(request, response);	
+		return;
+	}
+	
+	
 	int totSneakers = listSneakers.size();
 	int s = 0;
 	
@@ -45,19 +53,20 @@
 		<div class="row">
 			<%
 			for (int i = 0; i < 4; i++) {
+				ProductBean prodotto = listSneakers.get(s).getProdotto();
 			%>
 			<div class="col-md-3">
 				<div class="card">
 					<img
-						src="<%=request.getContextPath()%>/GetPhotoServlet?code=<%=listSneakers.get(s).getCode()%>"
-						class="card-img-top" alt="<%=listSneakers.get(s).getModello()%>">
+						src="<%=request.getContextPath()%>/GetPhotoServlet?code=<%=prodotto.getCode()%>"
+						class="card-img-top" alt="<%=prodotto.getModello()%>">
 					<div class="card-body">
 						<h5 class="card-title">
-							<%=listSneakers.get(s).getBrand()%>
-							<%=listSneakers.get(s).getModello()%></h5>
-						<p class="card-text"><%=listSneakers.get(s).getDescrizione()%></p>
+							<%=prodotto.getBrand()%>
+							<%=prodotto.getModello()%></h5>
+						<p class="card-text"><%=prodotto.getDescrizione()%></p>
 					</div>
-					<a href="#" class="btn btn-primary">Visualizza prodotto</a>
+					<a href="<%=request.getContextPath()%>/common/product.jsp?code=<%=prodotto.getCode()%>" class="btn btn-primary">Visualizza prodotto</a>
 				</div>
 			</div>
 			<%
@@ -68,18 +77,20 @@
 		<%
 		}
 		while(s < totSneakers){
+			ProductBean prodotto = listSneakers.get(s).getProdotto();
+
 		%>
 		<div class="row">
 			<div class="col-md-3">
 				<div class="card">
 					<img
-						src="<%=request.getContextPath()%>/GetPhotoServlet?code=<%=listSneakers.get(s).getCode()%>"
-						class="card-img-top" alt="<%=listSneakers.get(s).getModello()%>">
+						src="<%=request.getContextPath()%>/GetPhotoServlet?code=<%=prodotto.getCode()%>"
+						class="card-img-top" alt="<%=prodotto.getModello()%>">
 					<div class="card-body">
 						<h5 class="card-title">
-							<%=listSneakers.get(s).getBrand()%>
-							<%=listSneakers.get(s).getModello()%></h5>
-						<p class="card-text"><%=listSneakers.get(s).getDescrizione()%></p>
+							<%=prodotto.getBrand()%>
+							<%=prodotto.getModello()%></h5>
+						<p class="card-text"><%=prodotto.getDescrizione()%></p>
 					</div>
 					<a href="#" class="btn btn-primary">Visualizza prodotto</a>
 				</div>

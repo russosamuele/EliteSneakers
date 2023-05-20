@@ -41,8 +41,8 @@ public class DisponibilitaDAO {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, disponibilita.getCodice_prod());
-			preparedStatement.setInt(2, disponibilita.getQuantita());
-			preparedStatement.setInt(3, disponibilita.getTaglia());
+			preparedStatement.setInt(2, disponibilita.getTaglia());
+			preparedStatement.setInt(3, disponibilita.getQuantita());
 			preparedStatement.executeUpdate();
 
 		} finally {
@@ -70,6 +70,33 @@ public class DisponibilitaDAO {
 			preparedStatement.setInt(1, code);
 			preparedStatement.setInt(2, taglia);
 
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return (result != 0);
+	}
+	
+	public synchronized boolean doDelete(int code) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "DELETE FROM " + DisponibilitaDAO.TABLE_NAME + " WHERE codice_prod = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setInt(1, code);
+			
 			result = preparedStatement.executeUpdate();
 
 		} finally {

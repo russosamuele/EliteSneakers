@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import="model.ProductDAO, model.ProductBean, java.util.*"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="model.ProductBean,model.FinalProduct, java.util.*"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -18,14 +18,20 @@
 		<h2>Rimuovi Prodotto</h2>
 		
 		<%
-			ProductDAO dao = new ProductDAO();
-			Collection<ProductBean> sneakers = dao.doRetrieveAll("brand");
+		int id = 2;
+		request.setAttribute("id", id);
+		ArrayList<FinalProduct> listSneakers = (ArrayList<FinalProduct>) request.getAttribute("listSneakers");
 		
-			String message = (String)request.getAttribute("message");
-			if(message == null)
-				message="";
-		
+		if (listSneakers == null){
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/GetSneakersList");
+			dispatcher.forward(request, response);	
+			return;
+		}
+		String message = (String) request.getAttribute("message");
+		if (message == null)
+			message = "";
 		%>
+		
 		
 		<p  style="color:green "> <%=message %> </p>
 		
@@ -34,8 +40,9 @@
 			<label for="code">Codice prodotto:</label>
 			<select id="code" name="code" required>
 				
-				<%for(ProductBean p : sneakers){ %>
-					<option value="<%=p.getCode()%>"> code:<%=p.getCode()%> - brand: <%=p.getBrand()%> - modello: <%=p.getModello()%> - taglia: <%=p.getTaglia()%></option>
+				<%for(FinalProduct prod : listSneakers){ %>
+					
+					<option value="<%=prod.getProdotto().getCode()%>"> code:<%=prod.getProdotto().getCode()%> - brand: <%=prod.getProdotto().getBrand()%> - modello: <%=prod.getProdotto().getModello()%></option>
 				<%} %>
 			</select>
 			<br>

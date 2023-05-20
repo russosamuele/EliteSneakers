@@ -1,19 +1,17 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class FinalProduct {
 	private ProductBean prodotto;
-	private HashMap<Integer, Integer> disponibilitaTaglie;
+	private List <DisponibilitaBean> disponibilitaTaglie;
 	
 	public FinalProduct(ProductBean prodotto, Collection<DisponibilitaBean> dispo) {
 		this.prodotto = prodotto;
-		
-		for (DisponibilitaBean disp : dispo) {
-			disponibilitaTaglie.put(disp.getTaglia(), disp.getQuantita());
-		}
-		
+		this.disponibilitaTaglie = (List<DisponibilitaBean>) dispo;
 		
 	}
 
@@ -21,7 +19,7 @@ public class FinalProduct {
 		return prodotto;
 	}
 
-	public HashMap<Integer, Integer> getDisponibilitaTaglie() {
+	public List <DisponibilitaBean> getDisponibilitaTaglie() {
 		return disponibilitaTaglie;
 	}
 	

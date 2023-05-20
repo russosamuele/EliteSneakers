@@ -146,7 +146,6 @@ public class ProductDAO{
 
 			while (rs.next()) {
 				ProductBean bean = new ProductBean();
-
 				bean.setCode(rs.getInt("codice_prod"));
 				bean.setBrand(rs.getString("brand"));
 				bean.setModello(rs.getString("modello"));

@@ -33,6 +33,7 @@
 		<h3>Gestione prodotti</h3>
 		<ul>
 			<li><a href="AggiungiProdotto.jsp">Aggiungi un nuovo prodotto</a></li>
+			<li><a href="AggiungiDisponibilita.jsp">Aggiungi disponibilita prodotto</a></li>
 			<li><a href="ModificaProdotto.jsp">Modifica un prodotto esistente</a></li>
 			<li><a href="RimuoviProdotto.jsp">Rimuovi un prodotto esistente</a></li>
 		</ul>

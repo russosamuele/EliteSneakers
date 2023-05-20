@@ -16,8 +16,15 @@
 	
 	
 	<%
-		UserDAO dao = new UserDAO();
-		Collection<UserBean> utenti = dao.doRetrieveAll("nome");
+	int id = 1;
+	request.setAttribute("id", id);
+	List<UserBean> listUsers = (List<UserBean>) request.getAttribute("listUsers");
+	
+	if (listUsers == null){
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/GetUsersList");
+		dispatcher.forward(request, response);	
+		return;
+	}
 			
 	%>
 	
@@ -34,7 +41,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%for(UserBean utente : utenti){ %>
+				<%for(UserBean utente : listUsers){ %>
 					<tr>
 							<td><%=utente.getNome() %></td>
 							<td><%=utente.getCognome() %></td>

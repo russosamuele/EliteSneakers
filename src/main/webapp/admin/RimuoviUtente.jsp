@@ -15,8 +15,15 @@
 	
 	
 	<%
-		UserDAO dao = new UserDAO();
-		Collection<UserBean> utenti = dao.doRetrieveAll("nome");
+		int id = 2;
+		request.setAttribute("id", id);
+		List<UserBean> listUsers = (List<UserBean>) request.getAttribute("listUsers");
+		
+		if (listUsers == null){
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/GetUsersList");
+			dispatcher.forward(request, response);	
+			return;
+		}
 		
 		String message = (String)request.getAttribute("result");
 		if(message == null)
@@ -33,7 +40,7 @@
 		<form method="post" action="<%=request.getContextPath()%>/RimuoviUtenteServlet">
 			<label for="utente">Seleziona l'utente da rimuovere:</label>
 			<select id="utente" name="utente">
-				<%for(UserBean utente : utenti){ %>
+				<%for(UserBean utente : listUsers){ %>
 					<option value="<%=utente.getEmail()%>"><%=utente.getNome()%> <%=utente.getCognome()%> (<%=utente.getEmail()%>)</option>
 				<%} %>
 			</select>

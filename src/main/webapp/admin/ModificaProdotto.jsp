@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import="model.ProductDAO, model.ProductBean, java.util.*"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="model.ProductDAO, model.ProductBean,model.FinalProduct, java.util.*"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -15,14 +15,20 @@
 	<%@ include file="../common/header.jsp"%>
 	
 	<%
-			ProductDAO dao = new ProductDAO();
-			Collection<ProductBean> sneakers = dao.doRetrieveAll("brand");
-	
-			String message = (String)request.getAttribute("message");
-			if(message == null)
-				message="";
-	
+		int id = 4;
+		request.setAttribute("id", id);
+		ArrayList<FinalProduct> listSneakers = (ArrayList<FinalProduct>) request.getAttribute("listSneakers");
+		
+		if (listSneakers == null){
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/GetSneakersList");
+			dispatcher.forward(request, response);	
+			return;
+		}
+		String message = (String) request.getAttribute("ms");
+		if (message == null)
+			message = "";
 	%>
+
 		<p  style="color:green "> <%=message %> </p>
 	
 	
@@ -35,8 +41,8 @@
 			<label for="code">Codice prodotto:</label>
 			<select id="code" name="code" required>
 				
-				<%for(ProductBean p : sneakers){ %>
-					<option value="<%=p.getCode()%>"> code:<%=p.getCode()%> - brand: <%=p.getBrand()%> - modello: <%=p.getModello()%> - taglia: <%=p.getTaglia()%></option>
+				<%for(FinalProduct prod : listSneakers){ %>
+				<option value="<%=prod.getProdotto().getCode()%>"> code:<%=prod.getProdotto().getCode()%> - brand: <%=prod.getProdotto().getBrand()%> - modello: <%=prod.getProdotto().getModello()%></option>
 				<%} %>
 			</select>
 			<br>
@@ -49,14 +55,8 @@
 			<label for="descrizione">Descrizione:</label>
 			<textarea id="descrizione" name="descrizione" required></textarea>
 			<br>
-			<label for="quantita">Quantita:</label>
-			<input type="text" id="quantita" name="quantita" required>
-			<br>
 			<label for="prezzo">Prezzo:</label>
 			<input type="number" id="prezzo" name="prezzo" min="0" step="0.01" required>
-			<br>
-			<label for="taglia">Taglia:</label>
-			<input type="number" id="taglia" name="taglia" min="25" required>
 			<br>
 			<label for="immagine">Immagine:</label>
 			<input type="file" id="photo" name="photo" value="" required>

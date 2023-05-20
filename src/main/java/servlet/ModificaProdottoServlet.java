@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DisponibilitaBean;
+import model.DisponibilitaDAO;
 import model.HelperClass;
 import model.ProductBean;
 import model.ProductDAO;
@@ -33,6 +36,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 		String modello = HelperClass.filter(request.getParameter("modello"));
 		String descrizione = HelperClass.filter(request.getParameter("descrizione"));
 		double prezzo = Double.parseDouble(request.getParameter("prezzo"));
+		String message = "";
 		
 		ProductBean bean = new ProductBean();
 		bean.setCode(code);
@@ -43,14 +47,30 @@ public class ModificaProdottoServlet extends HttpServlet {
 		
 		
 		ProductDAO dao = new ProductDAO();
+		DisponibilitaDAO dao2 = new DisponibilitaDAO();
+		List <DisponibilitaBean> dispo = null;
+		try {
+			dispo = (List<DisponibilitaBean>) dao2.doRetrieveByKey(code);
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
-			dao.doDelete(code); //cancello il vecchio prodotto
+			dao2.doDelete(code);
+			dao.doDelete(code); 
 			dao.doSave(bean);
+			for (DisponibilitaBean dBean: dispo)
+				dao2.doSave(dBean);
+			message = "prodotto eliminato con successo!";
+
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		request.setAttribute("ms", message);
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/UploadPhoto");
 		dispatcher.forward(request, response);
 		

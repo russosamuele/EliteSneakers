@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DisponibilitaBean;
+import model.DisponibilitaDAO;
 import model.ProductDAO;
 
 /**
@@ -28,7 +30,10 @@ public class DeleteProdotto extends HttpServlet {
 		if(c!=null) {
 			int code = Integer.parseInt(c);
 			ProductDAO dao = new ProductDAO();
+			DisponibilitaDAO dao2 = new DisponibilitaDAO();
+			
 			try {
+				dao2.doDelete(code);
 				dao.doDelete(code);
 				message = "prodotto eliminato con successo!";
 			} catch (SQLException e) {
