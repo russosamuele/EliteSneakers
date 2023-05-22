@@ -49,7 +49,8 @@
 	      <div class="col-md-6">
 	        <h1><%=sneaker.getProdotto().getBrand()%> <%=sneaker.getProdotto().getModello()%></h1>
 	        <p> <%=sneaker.getProdotto().getDescrizione()%></p>
-	        <form>
+	        
+	      <form action="/EliteSneakersEcommerce/AddItemCart?code=<%=sneaker.getProdotto().getCode()%>" method="post">
           <div class="form-group">
             <label for="sizeSelect">Taglia:</label>
             <select class="form-control" id="sizeSelect">
@@ -66,18 +67,18 @@
             	    }
             	    if (tagliaDisponibile) { // Controlla se la taglia è disponibile
             	        %>
-            	        <option value="<%=sneaker.getProdotto().getCode()%>"> <%=sneaker.getDisponibilitaTaglie().get(j).getTaglia()%></option>
+            	        <option value="<%=sneaker.getDisponibilitaTaglie().get(j).getTaglia()%>"> <%=sneaker.getDisponibilitaTaglie().get(j).getTaglia()%></option>
             	        <%
             	    } else { // Se la taglia non è disponibile, disabilita l'opzione
             	        %>
-            	        <option value="<%=sneaker.getProdotto().getCode()%>" disabled> <%=i %>(SOLD OUT)</option>
+            	        <option	 disabled> <%=i %>(SOLD OUT)</option>
             	        <%
             	    }
             	}
  			%>
             </select>
           </div>
-          <button type="button" class="btn btn-primary">Aggiungi al carrello</button>
+          <button type="submit" class="btn btn-primary">Aggiungi al carrello</button>
         </form>
 	      </div>
 	    </div>
