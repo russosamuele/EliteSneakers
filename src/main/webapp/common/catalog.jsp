@@ -92,7 +92,8 @@
 							<%=prodotto.getModello()%></h5>
 						<p class="card-text"><%=prodotto.getDescrizione()%></p>
 					</div>
-					<a href="#" class="btn btn-primary">Visualizza prodotto</a>
+					<a href="<%=request.getContextPath()%>/common/product.jsp?code=<%=prodotto.getCode()%>" class="btn btn-primary">Visualizza prodotto</a>
+				</div>
 				</div>
 			</div>
 			<%
