@@ -135,7 +135,7 @@
 
 /* Stile per il pulsante "Aggiungi al carrello" nella griglia */
 .product button {
-    background-color: #f60;
+    background-color:#f60;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -146,7 +146,7 @@
 }
 
 .product button:hover {
-    background-color: #e25800;
+    background-color:#e25800;
 }
   
   
