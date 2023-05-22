@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<title>Elite Sneakers - Modifica Prodotto</title>
+<title>Elite Sneakers - Prodotto</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -53,21 +53,28 @@
           <div class="form-group">
             <label for="sizeSelect">Taglia:</label>
             <select class="form-control" id="sizeSelect">
-            	<% int j;
-            	for(int i=36; i<46; i++){ 
-            		for (j = 0; j<sneaker.getDisponibilitaTaglie().size(); j++){
-            			if (sneaker.getDisponibilitaTaglie().get(j).getTaglia() == i && 
-            			sneaker.getDisponibilitaTaglie().get(j).getQuantita() > 0){
-            	%>		
-				<option value="<%=sneaker.getProdotto().getCode()%>"> <%=sneaker.getDisponibilitaTaglie().get(j).getTaglia()%></option>				
-				<%
-				}
-            			else{%>
-            			<option value="<%=sneaker.getProdotto().getCode()%>"disabled> <%=i %>(SOLD OUT)</option>					
-            			<%
-            			break;}
-				} 
-				} %>
+            	<% 
+            	int j;
+            	for (int i = 36; i < 46; i++) {
+            	    boolean tagliaDisponibile = false; // Aggiungi una variabile booleana per verificare se la taglia è disponibile
+            	    for (j = 0; j < sneaker.getDisponibilitaTaglie().size(); j++) {
+            	        if (sneaker.getDisponibilitaTaglie().get(j).getTaglia() == i &&
+            	                sneaker.getDisponibilitaTaglie().get(j).getQuantita() > 0) {
+            	            tagliaDisponibile = true; // Imposta la variabile a true se la taglia è disponibile
+            	            break;
+            	        }
+            	    }
+            	    if (tagliaDisponibile) { // Controlla se la taglia è disponibile
+            	        %>
+            	        <option value="<%=sneaker.getProdotto().getCode()%>"> <%=sneaker.getDisponibilitaTaglie().get(j).getTaglia()%></option>
+            	        <%
+            	    } else { // Se la taglia non è disponibile, disabilita l'opzione
+            	        %>
+            	        <option value="<%=sneaker.getProdotto().getCode()%>" disabled> <%=i %>(SOLD OUT)</option>
+            	        <%
+            	    }
+            	}
+ 			%>
             </select>
           </div>
           <button type="button" class="btn btn-primary">Aggiungi al carrello</button>
