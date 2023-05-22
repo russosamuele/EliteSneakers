@@ -47,7 +47,6 @@
 		<h3>Gestione utenti</h3>
 		<ul>
 			<li><a href="VisualizzaUtenti.jsp">Visualizza tutti gli utenti</a></li>
-			<li><a href="modifica_utente.jsp">Modifica un utente esistente</a></li>
 			<li><a href="RimuoviUtente.jsp">Rimuovi un utente esistente</a></li>
 		</ul>
 	</main>

@@ -54,6 +54,20 @@
     background-color: #3e8e41;
   }
   
+    a.btn btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  a.btn btn-primary:hover {
+    background-color: #3e8e41;
+  }
+  
+  
   a {
     color: #4CAF50;
     text-decoration: none;
