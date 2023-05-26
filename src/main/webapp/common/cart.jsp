@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="model.Cart"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
@@ -10,7 +10,8 @@
 <body>
 
 	<%@ include file="header.jsp" %>
-
+	
+	
 	<div class="container">
 		<h1>Il tuo carrello</h1>
 		<table>

@@ -50,7 +50,7 @@
 	        <h1><%=sneaker.getProdotto().getBrand()%> <%=sneaker.getProdotto().getModello()%></h1>
 	        <p> <%=sneaker.getProdotto().getDescrizione()%></p>
 	        
-	      <form action="/EliteSneakersEcommerce/AddItemCart?code=<%=sneaker.getProdotto().getCode()%>" method="post">
+	      <form action="/EliteSneakersEcommerce/CartControl?action=Add&code=<%=sneaker.getProdotto().getCode()%>" method="post">
           <div class="form-group">
             <label for="sizeSelect">Taglia:</label>
             <select class="form-control" id="sizeSelect">
@@ -86,13 +86,6 @@
 	  <script
 			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</body>
-	
-	
-
-	
-	
-	
-	
 	
 	
 	<%@ include file="../common/footer.jsp"%>
