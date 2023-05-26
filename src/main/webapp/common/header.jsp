@@ -9,10 +9,10 @@
 <body>
 
 	<header>
-		<h1>Elite Sneakers</h1>
+		<h1>EliteSneakers </h1>
+		
 		<nav>
 			<ul>
-			
 				<%
 					boolean isLogged=false;
 					boolean isAdmin=false;
