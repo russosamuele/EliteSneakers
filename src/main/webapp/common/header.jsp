@@ -10,7 +10,7 @@
 
 	<header>
 		<h1>EliteSneakers </h1>
-		
+			
 		<nav>
 			<ul>
 				<%
