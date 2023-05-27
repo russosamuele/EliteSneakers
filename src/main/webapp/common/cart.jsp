@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import="model.Cart"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="model.Cart, model.CartItem, model.ProductBean"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -12,44 +13,54 @@
 	<%@ include file="header.jsp" %>
 	
 	
+	<% 
+	
+	Cart carrello = (Cart) session.getAttribute("carrello");
+	if(carrello == null){
+		response.sendRedirect("/EliteSneakersEcommerce/CartControl?redirect=carrello");
+		return;
+	}
+	
+	%>
+	
+	
 	<div class="container">
 		<h1>Il tuo carrello</h1>
 		<table>
 			<thead>
 				<tr>
 					<th>Prodotto</th>
+					<th> Taglia </th>
 					<th>Prezzo</th>
 					<th>Quantità</th>
 					<th>Totale</th>
 				</tr>
 			</thead>
 			<tbody>
+				<% for(CartItem pb : carrello.getProducts()) { %>
 				<tr>
-					<td>Nike Air Max 90</td>
-					<td>120€</td>
-					<td>1</td>
-					<td>120€</td>
+					<td><%=pb.getProductBean().getBrand() + " ," + pb.getProductBean().getModello()%></td>
+					<td> <%=pb.getTaglia()%> </td>
+					<td><%=pb.getProductBean().getPrice()%> &euro;</td>
+					<td><%=pb.getQuantita() %></td>
+					<td><%=pb.getProductBean().getPrice() * pb.getQuantita()%>&euro;</td>
+					<a href="/EliteSneakersEcommerce/CartControl?action=delete&code=<%=pb.getProductBean().getCode()%>&sizeSelect=<%=pb.getTaglia()%>&redirect=carrello">
+								<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M3 18C2.45 18 1.979 17.804 1.587 17.412C1.195 17.02 0.999333 16.5493 1 16V3H0V1H5V0H11V1H16V3H15V16C15 16.55 14.804 17.021 14.412 17.413C14.02 17.805 13.5493 18.0007 13 18H3ZM13 3H3V16H13V3ZM5 14H7V5H5V14ZM9 14H11V5H9V14Z" fill="black"/>
+								</svg>
+							</a>
 				</tr>
-				<tr>
-					<td>Adidas Stan Smith</td>
-					<td>80€</td>
-					<td>2</td>
-					<td>160€</td>
-				</tr>
-				<tr>
-					<td>New Balance 574</td>
-					<td>100€</td>
-					<td>1</td>
-					<td>100€</td>
-				</tr>
+				
+				<%} %>
+				
 			</tbody>
 		</table>
 
 		<div class="cart-total">
 			<h3>Totale</h3>
-			<p>Sotto-totale: 380€</p>
-			<p>Spedizione: 10€</p>
-			<p>Totale: 390€</p>
+			<p>Sotto-totale: <%=carrello.getTotale()%>&euro;</p>
+			<p>Spedizione: 0.0 &euro;</p>
+			<p>Totale: <%=carrello.getTotale()%></p>
 		</div>
 
 		<div class="checkout-button">

@@ -1,30 +1,52 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart {
+public class Cart implements Serializable{
 
-	private List<ProductBean> products;
-	
+	private static final long serialVersionUID = 1L;
+	private List<CartItem> items;
+
 	public Cart() {
-		products = new ArrayList<>();
+		items = new ArrayList<>();
 	}
-	
-	public void addProduct(ProductBean product) {
-		products.add(product);
-	}
-	
-	public void deleteProduct(ProductBean product) {
-		for(ProductBean prod : products) {
-			if(prod.getCode() == product.getCode()) {
-				products.remove(prod);
-				break;
+
+	public void addProduct(ProductBean product, int taglia) {
+		for (CartItem item : items) {
+			if (item.getProductBean().getCode() == product.getCode() && item.getTaglia()==taglia) {
+				item.setQuantita(item.getQuantita() + 1);
+				return;
 			}
 		}
- 	}
-	
-	public List<ProductBean> getProducts() {
-		return  products;
+		items.add(new CartItem(product, 1, taglia));
 	}
+
+	public void deleteProduct(ProductBean product, int taglia) {
+		for (CartItem item : items) {
+			if (item.getProductBean().getCode() == product.getCode() && item.getTaglia()==taglia) {
+				if (item.getQuantita() > 1) {
+					item.setQuantita(item.getQuantita() - 1);
+				} else {
+					items.removeIf((a) -> a.getProductBean().getCode() == product.getCode());
+				}
+				return;
+			}
+		}
+	}
+	
+
+	public List<CartItem> getProducts() {
+		return items;
+	}
+	
+	public int getItemsCount() {
+		return items.stream().mapToInt(i->i.getQuantita()).sum();
+	}
+	
+	public double getTotale() {
+		return items.stream().mapToDouble(i->i.getProductBean().getPrice()*i.getQuantita()).sum();
+	}
+	
 }

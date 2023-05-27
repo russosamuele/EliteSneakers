@@ -50,10 +50,10 @@
 	        <h1><%=sneaker.getProdotto().getBrand()%> <%=sneaker.getProdotto().getModello()%></h1>
 	        <p> <%=sneaker.getProdotto().getDescrizione()%></p>
 	        
-	      <form action="/EliteSneakersEcommerce/CartControl?action=Add&code=<%=sneaker.getProdotto().getCode()%>" method="post">
+	      <form action="/EliteSneakersEcommerce/CartControl?action=add&code=<%=sneaker.getProdotto().getCode()%>&redirect=catalogo" method="post">
           <div class="form-group">
             <label for="sizeSelect">Taglia:</label>
-            <select class="form-control" id="sizeSelect">
+            <select class="form-control" id="sizeSelect" name="sizeSelect">
             	<% 
             	int j;
             	for (int i = 36; i < 46; i++) {
