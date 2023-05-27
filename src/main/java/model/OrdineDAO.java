@@ -49,6 +49,8 @@ public class OrdineDAO {
 			preparedStatement.setInt(1, ordine.getNumeroOrd());
 			preparedStatement.setString(2, ordine.getEmail());
 			preparedStatement.setDate(3, new java.sql.Date(ordine.getDataOrdine().getTime()));
+			
+			
 			preparedStatement.executeUpdate();
 			
 		} finally {
@@ -203,5 +205,40 @@ public class OrdineDAO {
 		}
 		return ordini;
 	}
+	
+	
+	public synchronized int doRetrieveMaxNumOrdine() throws SQLException{ //trova il numero ordine da utulizzare
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "SELECT MAX(numero_ord) AS MAX FROM " + OrdineDAO.TABLE_NAME;
+		
+		int max = 0 ;
+		
+		try {
+			connection = ds.getConnection();	
+			preparedStatement = connection.prepareStatement(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			
+			while (rs.next()) {
+				max = rs.getInt("MAX");
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return max;
+	}
+	
+	
+	
+	
 
 }

@@ -20,6 +20,9 @@
 	<% 
 	
 	Cart carrello = (Cart) session.getAttribute("carrello");
+	String error = (String)request.getAttribute("error");
+	if(error == null)
+		error = "";
 	if(carrello == null){
 		response.sendRedirect("/EliteSneakersEcommerce/CartControl?redirect=carrello");
 		return;
@@ -27,6 +30,7 @@
 	
 	%>
 	
+	<p style=color:red> <%=error%></p>
 	
 	<div class="container">
 		<h1>Il tuo carrello</h1>

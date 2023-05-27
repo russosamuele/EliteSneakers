@@ -36,7 +36,6 @@ public class Cart implements Serializable{
 		}
 	}
 	
-
 	public List<CartItem> getProducts() {
 		return items;
 	}
@@ -48,5 +47,6 @@ public class Cart implements Serializable{
 	public double getTotale() {
 		return items.stream().mapToDouble(i->i.getProductBean().getPrice()*i.getQuantita()).sum();
 	}
+	
 	
 }

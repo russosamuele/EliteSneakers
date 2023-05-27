@@ -38,8 +38,8 @@ public class DettaglioOrdineBean implements Serializable{
 		return quantita;
 	}
 
-	public void setQuantita(int quantita) {
-		this.quantita = quantita;
+	public void setQuantita(int d) {
+		this.quantita = d;
 	}
 
 	public double getPrezzo() {

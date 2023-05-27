@@ -11,7 +11,7 @@
 <body>
     <h1>Checkout Carrello</h1>
 
-    <form action="" method="post">
+    <form action="<%=request.getContextPath()%>/CheckoutServlet" method="post">
         <h3>Informazioni di spedizione</h3>
         
        

@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class OrdineBean implements Serializable{
 
@@ -13,7 +13,7 @@ public class OrdineBean implements Serializable{
 	
 	
 	
-	OrdineBean(){
+	public OrdineBean(){
 		email = "";
 		numeroOrd = 0;
 	}
