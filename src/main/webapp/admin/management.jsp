@@ -40,8 +40,7 @@
 		
 		<h3>Gestione ordini</h3>
 		<ul>
-			<li><a href="visualizza_ordini.jsp">Visualizza tutti gli ordini</a></li>
-			<li><a href="gestisci_ordine.jsp">Gestisci un ordine esistente</a></li>
+			<li><a href="visualizzaOrdiniAdmin.jsp">Visualizza tutti gli ordini</a></li>
 		</ul>
 		
 		<h3>Gestione utenti</h3>

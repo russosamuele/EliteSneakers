@@ -9,6 +9,9 @@
     <title>Checkout Carrello</title>
 </head>
 <body>
+
+	<jsp:include page="header.jsp"/>
+	
     <h1>Checkout Carrello</h1>
 
     <form action="<%=request.getContextPath()%>/CheckoutServlet" method="post">
@@ -24,7 +27,7 @@
         <input type="text" id="cardNumber" name="cardNumber" required><br>
 
         <label for="expirationDate">Data di scadenza:</label>
-        <input type="text" id="expirationDate" name="expirationDate" required><br>
+        <input type="date" id="expirationDate" name="expirationDate" required><br>
 
         <label for="cvv">CVV:</label>
         <input type="text" id="cvv" name="cvv" required><br>
@@ -32,5 +35,8 @@
         <input type="submit" value="Conferma Ordine">
         
     </form>
+    
+    <jsp:include page="footer.jsp"/>
+    
 </body>
 </html>

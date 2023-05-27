@@ -60,6 +60,10 @@ public class GetUsersList extends HttpServlet {
 			dispatcher = this.getServletContext().getRequestDispatcher("/admin/RimuoviUtente.jsp");
 			dispatcher.forward(request, response);
 			break;
+		case 3:
+			dispatcher = this.getServletContext().getRequestDispatcher("/admin/visualizzaOrdiniAdmin.jsp");
+			dispatcher.forward(request, response);
+			break;
 		}
 		
 		
