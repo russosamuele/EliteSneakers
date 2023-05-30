@@ -174,3 +174,7 @@
 		width: 300px;
 		height: 300px;
 }
+
+.error {
+	border: thin solid red;
+}
