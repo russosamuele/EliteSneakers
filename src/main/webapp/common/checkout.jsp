@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Checkout Carrello</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+    <script src="<%=request.getContextPath()%>/scripts/validate.js"></script>
 </head>
 <body>
 
@@ -15,7 +16,7 @@
 	
     <h1>Checkout Carrello</h1>
 
-    <form action="<%=request.getContextPath()%>/CheckoutServlet" method="post">
+    <form action="<%=request.getContextPath()%>/CheckoutServlet" method="post" id="checkoutForm" onsubmit="event.preventDefault();checkCheckout(this)">
         <h3>Informazioni di spedizione</h3>
         
        
@@ -25,13 +26,13 @@
         <h3>Informazioni della carta</h3>
         
         <label for="cardNumber">Numero di carta:</label>
-        <input type="text" id="cardNumber" name="cardNumber" required><br>
+        <input type="text" id="cardNumber" name="cardNumber" placeholder="####-####-####-####"required onBlur="return validateNumCarta()"> <span id="cardNumberError"></span><br>
 
         <label for="expirationDate">Data di scadenza:</label>
-        <input type="date" id="expirationDate" name="expirationDate" required><br>
+        <input type="date" id="expirationDate" name="expirationDate" required onBlur="return validateScadenzaCarta()"> <span id="expiryError"></span><br>
 
         <label for="cvv">CVV:</label>
-        <input type="text" id="cvv" name="cvv" required><br>
+        <input type="text" id="cvv" name="cvv" placeholder="###" required onBlur="return validateCVV()"> <span id="CVVError"></span><br>
 
         <input type="submit" value="Conferma Ordine">
         

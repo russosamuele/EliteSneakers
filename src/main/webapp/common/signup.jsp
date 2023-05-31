@@ -30,7 +30,7 @@
 		<p  style="color:red "> <%=error %> </p>
 		
 		
-		<form action="/EliteSneakersEcommerce/SignupServlet" method="post" id="regForm">
+		<form action="/EliteSneakersEcommerce/SignupServlet" method="post" id="regForm" onsubmit="event.preventDefault();checkSignup(this)">
 			<label for="nome">Nome:</label>
 			<input type="text" id="nome" name="nome" required onBlur="return validateNome()"><span id="errorName"></span><br>
 			
@@ -47,7 +47,7 @@
 			<input type="password" id="conferma_password" name="conferma_password" required onBlur="return pswMatching()"> <span id="matchError"></span><br>
 			
 			<label for="dataNascita">Data di nascità:</label>
-			<input type="date" id="dataNascita" name="dataNascita" required><br>
+			<input type="date" id="dataNascita" name="dataNascita" required onBlur="return ageValidate()"> <span id="ageError"></span><br>
 		
 			<label for="indirizzo">Indirizzo</label>
 			<textarea id="indirizzo" name="indirizzo" required></textarea><br>	
