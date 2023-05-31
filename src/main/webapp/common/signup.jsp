@@ -44,7 +44,7 @@
 			<input type="password" id="password" name="password" required><br>
 			
 			<label for="conferma_password">Conferma Password:</label>
-			<input type="password" id="conferma_password" name="conferma_password" required><br>
+			<input type="password" id="conferma_password" name="conferma_password" required onBlur="return pswMatching()"> <span id="matchError"></span><br>
 			
 			<label for="dataNascita">Data di nascità:</label>
 			<input type="date" id="dataNascita" name="dataNascita" required><br>
