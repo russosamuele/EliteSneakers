@@ -3,6 +3,7 @@ const nameOrLastnamePattern = /^[A-Za-z]+$/;
 const emailPattern = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const cardNumberPattern = /^\d{4}-\d{4}-\d{4}-\d{4}$/ //pattern semplicificato (non è così in realtà)
 const cvvPattern = /^\d{3}$/;
+const pswdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[0-9a-zA-Z!@#$%^&*()]{8,}$/;
 
 const nameErrorMessage = "Un nome valido deve contenere solo lettere";
 const lastnameErrorMessage = "Un cognome valido deve contenere solo lettere";
@@ -12,6 +13,7 @@ const ageNotValidMessage = "Devi essere maggiorenne per registrarti su EliteSnea
 const cardErrorMessage = "Numero di carta non valido!";
 const cardExpiryMessage = "Non puoi utilizzare una carta scaduta"
 const cardCvvMessage = "Il cvv non è corretto"
+const pswdMessage = "La password deve avere almeno 8 caratteri, almeno una lettera minuscola, una maiuscola, un numero e un carattere speciale"
 
 
 function validateFormElem(formElem, pattern, span, message) {
@@ -115,47 +117,77 @@ function ageValidate() {
 		return false; // L'utente non è maggiorenne
 	}
 }
-	
+
+function validatePassword() {
+	// La password deve avere almeno 8 caratteri
+	// Deve contenere almeno una lettera minuscola, una maiuscola, un numero e un carattere speciale
+	// Esempio di caratteri speciali: !@#$%^&*()
+
+	let form = document.getElementById("regForm");
+
+	let spanPswd = document.getElementById("errorpswd");
+
+	let psw1 = form.password.value;
+
+
+	if (psw1.match(pswdPattern)) {
+		spanPswd.classList.remove("error");
+		spanPswd.style.color = "black";
+		spanPswd.innerHTML = "";
+		return true;
+	}
+
+	spanPswd.classList.add("error");
+	spanPswd.innerHTML = pswdMessage;
+	spanPswd.style.color = "red";
+	return false; 
+
+}
+
+
+
+
 function checkSignup(obj) {
 	var check = true;
 	if (validateNome() == false) check = false;
 	if (validateCognome() == false) check = false;
 	if (validateEmail() == false) check = false;
 	if (pswMatching() == false) check = false;
-	if (ageValidate()== false) check = false;
-	
+	if (validatePassword() == false) check = false;
+	if (ageValidate() == false) check = false;
+
 	if (check) obj.submit();
 }
 
 
 
-function validateNumCarta(){
-	
+function validateNumCarta() {
+
 	let form = document.getElementById("checkoutForm");
 
 	let span = document.getElementById("cardNumberError");
-	
+
 	let cardNumber = form.cardNumber.value;
-	
-	if(cardNumber.match(cardNumberPattern)){
-		
+
+	if (cardNumber.match(cardNumberPattern)) {
+
 		span.classList.remove("error");
 		span.style.color = "black";
 		span.innerHTML = "";
 		return true;
 	}
-	
-	else{
+
+	else {
 		span.classList.add("error");
 		span.innerHTML = cardErrorMessage;
 		span.style.color = "red";
 		return false;
-	}	
+	}
 }
 
 
-function validateScadenzaCarta(){
-	
+function validateScadenzaCarta() {
+
 	let form = document.getElementById("checkoutForm");
 
 	let span = document.getElementById("expiryError");
@@ -164,15 +196,15 @@ function validateScadenzaCarta(){
 
 	const oggi = new Date(); // Data corrente
 	const dataObj = new Date(data);
-	
-	if(dataObj  < oggi){
+
+	if (dataObj < oggi) {
 		span.classList.add("error");
 		span.innerHTML = cardExpiryMessage;
 		span.style.color = "red";
 		return false;
 	}
-	else{
-		
+	else {
+
 		span.classList.remove("error");
 		span.style.color = "black";
 		span.innerHTML = "";
@@ -181,25 +213,25 @@ function validateScadenzaCarta(){
 }
 
 
-function validateCVV(){
-	
+function validateCVV() {
+
 	let form = document.getElementById("checkoutForm");
 
 	let span = document.getElementById("CVVError");
-	
+
 	let cvv = form.cvv.value;
-	
-	if(cvv.match(cvvPattern)){
+
+	if (cvv.match(cvvPattern)) {
 		span.classList.remove("error");
 		span.style.color = "black";
 		span.innerHTML = "";
 		return true;
 	}
-	else{
+	else {
 		span.classList.add("error");
 		span.innerHTML = cardCvvMessage;
 		span.style.color = "red";
-		return false;	
+		return false;
 	}
 
 }
@@ -208,9 +240,9 @@ function validateCVV(){
 function checkCheckout(obj) {
 	var check = true;
 	if (validateNumCarta() == false) check = false;
-	if (validateScadenzaCarta()== false) check = false;
+	if (validateScadenzaCarta() == false) check = false;
 	if (validateCVV() == false) check = false;
-	
+
 	if (check) obj.submit();
 }
 

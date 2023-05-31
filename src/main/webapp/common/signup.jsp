@@ -41,7 +41,7 @@
 			<input type="email" id="email" name="email" required onBlur="return validateEmail()"> <span id="errorEmail"></span><br>
 			
 			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required><br>
+			<input type="password" id="password" name="password" required onBlur ="return validatePassword()"><span id="errorpswd"></span><br>
 			
 			<label for="conferma_password">Conferma Password:</label>
 			<input type="password" id="conferma_password" name="conferma_password" required onBlur="return pswMatching()"> <span id="matchError"></span><br>
