@@ -24,6 +24,10 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 		String startD = (String) request.getAttribute("startDate");
 		String endD = (String) request.getAttribute("endDate");
 		
+		
+		System.out.println("1" + startD);
+		System.out.println("2" + endD);
+
 		Date startDate = null;
 		Date endDate = null;
 		
@@ -32,33 +36,30 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 		if(email != null)
 			ricercaUtente = true;
 		
-		try {
-		if(startD == null)
-			startDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse("2023-05-15").getTime());
-		if(endD == null)
+		if (startD != null)
+			try {
+				startDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse(startD).getTime());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		else
+			try {
+				startDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse("2023-15-05").getTime());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		if(endD != null)
+			try {
+				endDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse(endD).getTime());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		else
 			endDate = new java.sql.Date(System.currentTimeMillis());
-		}catch (ParseException e) {
-			e.printStackTrace();
-		}
-			
 		
-		try {
-			startDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse(startD).getTime());
-			endDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse(endD).getTime());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+		System.out.println("1" + startDate);
+		System.out.println("2" + endDate);
 		
 		
 	}
