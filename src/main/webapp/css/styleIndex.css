@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 8%;
+}
+#menu-icon{
+    font-size: 35px;
+    color: whitesmoke;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+.logo img{
+    width: 100%;
+    height: auto;
+}
+.navbar{
+    display: flex;
+}
+.navbar li{
+    position: relative;
+}
+.navbar a{
+    color:whitesmoke;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.navbar a::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    background-color: whitesmoke;
+    left: 0;
+    transition: all .42s;
+}
+.navbar a:hover::after{
+    width: 100%;
+}
+.nav-icon{
+    display: flex;
+    align-items: center;
+}
+.nav-icon i{
+    font-size: 30px;
+    color: whitesmoke;
+    margin-right: 14px;
+    transition: all .42s;
+}
+.nav-icon i:hover{
+    color: green;
+}
+
+section{
+    padding: 0 13%;
+}
+.home{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/welcome.jpeg);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+.text h4{
+    font-size: 16px;
+    color: whitesmoke;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+.text h1{
+    font-size: 55px;
+    color: whitesmoke;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    line-height: 70px;
+}
+.text p{
+    color:whitesmoke;
+    font-size: 16px;
+    text-transform: capitalize;
+    max-width: 420px;
+    line-height: 25px;
+    margin: 10px 0 20px 0;
+}
+.btn{
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: green;
+    padding: 12px 40px;
+    transition: all .42s;
+    margin-top: 10px;
+}
+.btn:hover{
+    background-color: #212121;
+}
+
+/* Responsive-desing */
+@media(max-width:920px){
+    header{
+        padding: 30px 3%;
+        transition: .4s;
+    }
+}
+@media(max-width:620px){
+    .text h1{
+        font-size: 50px;
+        transition: .3s;
+    }
+    .text h4{
+        font-size: 14px;
+        transition: .3s;
+    }
+    .btn{
+        padding: 12px 35px;
+        transition: .3s;
+    }
+}
+@media(max-width:517px){
+    .text h1{
+        font-size: 35px;
+        line-height: 45px;
+        transition: .3s;
+    }
+    .btn{
+        padding: 10px 30px;
+        margin-top: 3px;
+        transition: .3s;
+    }
+}
+@media(max-width:920px){
+    #menu-icon{
+        display: block;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        right: 0;
+        width: 300px;
+        height: 100vh;
+        background: green;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 100px 30px;
+        transition: all .42s;
+    }
+    .navbar a{
+        display: block;
+        margin: 15px 0;
+        transition: all .42s;
+    }
+    .navbar a:hover{
+        transform: translateY(-5px);
+    }
+    .navbar.open{
+        left: 0;
+    }
+}
+

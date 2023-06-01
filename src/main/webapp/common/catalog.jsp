@@ -13,14 +13,15 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+
 
 </head>
 <body>
 
 	<jsp:include page="header.jsp" />
-
-
+	
 	<%
 	int id = 1;
 	request.setAttribute("id", id);
@@ -37,7 +38,9 @@
 	int s = 0;
 	
 	%>
-
+	
+	<section class="catalog">
+	
 	<div class="container">
 		<%
 		for (int row = 0; row < totSneakers / 4; row++) {
@@ -93,7 +96,9 @@
 			%>
 		</div>
 		<%}%>
-		
+	
+	</section>
+	
 	<jsp:include page="footer.jsp" />
 </body>
 </html>

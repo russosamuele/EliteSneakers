@@ -23,10 +23,6 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 		String email = (String) request.getAttribute("utente");
 		String startD = (String) request.getAttribute("startDate");
 		String endD = (String) request.getAttribute("endDate");
-		
-		
-		System.out.println("1" + startD);
-		System.out.println("2" + endD);
 
 		Date startDate = null;
 		Date endDate = null;
@@ -56,11 +52,7 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 			}
 		else
 			endDate = new java.sql.Date(System.currentTimeMillis());
-		
-
-		System.out.println("1" + startDate);
-		System.out.println("2" + endDate);
-		
+				
 		
 	}
 	

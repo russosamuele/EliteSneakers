@@ -5,7 +5,20 @@
     padding: 0;
   }
   
+  
   /* Typography */
+  
+  
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    list-style: none;
+    text-decoration: none;
+	}
+  
   body {
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -78,11 +91,14 @@
   }
   
   /* Layout */
+  
+  
   header {
     background-color: #333;
     color: white;
     padding: 20px;
-  }
+  } 
+  
   
   nav ul {
     list-style: none;
@@ -96,11 +112,14 @@
     margin: 0 10px;
   }
   
+  
   main {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-  }
+  } 
+  
+  
   
   footer {
     background-color: #ccc;
@@ -109,7 +128,10 @@
     text-align: center;
   }
   
+  
   /* Stile per la sezione dei prodotti in primo piano */
+  
+ 
 .featured-products {
     margin: 50px auto;
     text-align: center;
@@ -178,3 +200,9 @@
 .error {
 	border: thin solid red;
 }
+
+
+
+
+
+
