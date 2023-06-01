@@ -16,6 +16,8 @@
 	
 	<main>
 	
+	<section class="managementSection"> 
+	
 		<% 
 		UserBean user =  (UserBean)session.getAttribute("user");
 		
@@ -48,7 +50,10 @@
 			<li><a href="VisualizzaUtenti.jsp">Visualizza tutti gli utenti</a></li>
 			<li><a href="RimuoviUtente.jsp">Rimuovi un utente esistente</a></li>
 		</ul>
+		
+	</section>
 	</main>
+	
 	
 	<% }%>
 	

@@ -14,6 +14,8 @@
 
 	<jsp:include page="header.jsp"/>
 	
+	<section class="SectionCheckout">
+	
     <h1>Checkout Carrello</h1>
 
     <form action="<%=request.getContextPath()%>/CheckoutServlet" method="post" id="checkoutForm" onsubmit="event.preventDefault();checkCheckout(this)">
@@ -37,6 +39,8 @@
         <input type="submit" value="Conferma Ordine">
         
     </form>
+    
+    </section>
     
     <jsp:include page="footer.jsp"/>
     

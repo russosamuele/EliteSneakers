@@ -15,6 +15,8 @@
 	
 	
 	<main>
+	
+		<section class="managementSection">
 		<h2>Agggiungi Disponibilita</h2>
 		
 		<%
@@ -48,6 +50,8 @@
 			<br>
 			<input type="submit" value="Aggiungi">
 		</form>
+	
+	</section>
 		
 	</main>
 	

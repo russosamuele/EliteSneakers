@@ -15,6 +15,10 @@
 	
 	
 	<main>
+		
+		
+		<section class="managementSection"> 
+		
 		<h2>Aggiungi Prodotto</h2>
 		
 		<form action="/EliteSneakersEcommerce/AddProduct" method="post" enctype="multipart/form-data">
@@ -40,6 +44,8 @@
 			<br>
 			<input type="submit" value="Aggiungi">
 		</form>
+	
+	</section>
 		
 	</main>
 	

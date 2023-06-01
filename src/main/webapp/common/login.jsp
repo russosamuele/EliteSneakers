@@ -18,6 +18,9 @@
 			error="";
 	
 	%>
+	
+		<section class="loginSection">	
+	
 		<p  style="color:red "> <%=error %> </p>
 		
 		
@@ -30,7 +33,11 @@
 			<button type="submit">Login</button>
 		</form>
 		<p>Don't have an account? <a href="<%=request.getContextPath()%>/common/signup.jsp">Sign up here</a>.</p>
+		
+		</section>
 	</main>
+	
+	
 	<%@ include file="footer.jsp" %>
 </body>
 </html>

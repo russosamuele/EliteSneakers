@@ -13,9 +13,13 @@
 
 <body>
 
-	<jsp:include page="header.jsp"/>	
+	<jsp:include page="header.jsp"/>
+	
+	
 
 	<main>
+	
+	<section class="accountSection"> 
 		<h1>Il mio account</h1>
 		<h2>Modifica informazioni personali</h2>
 		<%=session.getAttribute("isAdmin")%>	
@@ -92,6 +96,8 @@
 				return ;
 		}
 			%>
+			
+	</section>
 		
 		
 	</main>

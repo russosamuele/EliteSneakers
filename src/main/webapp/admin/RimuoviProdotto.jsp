@@ -15,6 +15,8 @@
 	<%@ include file="../common/header.jsp"%>
 	
 	<main>
+	
+	<section class="managementSection"> 
 		<h2>Rimuovi Prodotto</h2>
 		
 		<%
@@ -48,6 +50,8 @@
 			<br>
 			<input type="submit" value="Rimuovi">
 		</form>
+		
+		</section>
 	</main>
 	
 	<%@ include file="../common/footer.jsp"%>

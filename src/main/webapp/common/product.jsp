@@ -34,6 +34,8 @@
 	%>
 
 	<body>
+	
+		<section class="prodotto">
 		<div class="container">
 	    <div class="row">
 	      <div class="col-md-6">
@@ -77,8 +79,10 @@
 	      </div>
 	    </div>
 	  </div>
+	  
+	  </section>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	</body>
+	  
 	
 	
 	<%@ include file="../common/footer.jsp"%>

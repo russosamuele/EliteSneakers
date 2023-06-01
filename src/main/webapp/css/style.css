@@ -1,48 +1,3 @@
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  
-  /* Typography */
-  
-  
-  
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Jost', sans-serif;
-    list-style: none;
-    text-decoration: none;
-	}
-  
-  body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-  }
-  
-  h1, h2 {
-    font-weight: normal;
-  }
-  
-  h1 {
-    font-size: 36px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
   
   input[type="email"], input[type="password"] {
     display: block;
@@ -90,38 +45,8 @@
     text-decoration: underline;
   }
   
-  /* Layout */
   
-  
-  header {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-  } 
-  
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  nav li {
-    margin: 0 10px;
-  }
-  
-  
-  main {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  } 
-  
-  
-  
-  footer {
+footer {
     background-color: #ccc;
     color: #333;
     padding: 20px;
@@ -129,62 +54,6 @@
   }
   
   
-  /* Stile per la sezione dei prodotti in primo piano */
-  
- 
-.featured-products {
-    margin: 50px auto;
-    text-align: center;
-}
-
-/* Stile per la griglia di prodotti */
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Stile per ogni prodotto nella griglia */
-.product {
-    margin: 20px;
-    width: 45%; /* Larghezza di ogni prodotto nella griglia */
-}
-
-/* Stile per l'immagine del prodotto nella griglia */
-.product img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-/* Stile per il titolo del prodotto nella griglia */
-.product h3 {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-}
-
-/* Stile per il prezzo del prodotto nella griglia */
-.product p {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-}
-
-/* Stile per il pulsante "Aggiungi al carrello" nella griglia */
-.product button {
-    background-color:#f60;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.product button:hover {
-    background-color:#e25800;
-}
-
 .card {
 	margin-bottom: 15px;
 	width: 270px;
@@ -199,6 +68,116 @@
 
 .error {
 	border: thin solid red;
+}
+
+.catalog{
+	width: 100%;
+	padding-top:150px;
+    height: auto;
+	background-image: url(../images/background.png);
+	background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+.prodotto{
+	width: 100%;
+	color:white;
+	padding-top:150px;
+	background-image: url(../images/background.png);
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+	
+}
+
+.cartSection{
+	
+	width: 100%;
+	color:white;
+	padding-top:100px;
+	background-image: url(../images/background.png);
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+	
+}
+
+.loginSection{
+	width: 100%;
+	color:white;
+	padding-top:100px;
+	background-image: url(../images/background.png);
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+	
+}
+
+.signupSection{
+	width: 100%;
+	color:white;
+	padding-top:150px;
+	background-image: url(../images/background.png);
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+.SectionCheckout{
+	width: 100%;
+	color:white;
+	padding-top:150px;
+	background-image: url(../images/background.png);
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+	
+}
+
+.accountSection{
+	width: 100%;
+	color:white;
+	padding-top:150px;
+	background-image: url(../images/background.png);
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+	
+}
+
+.managementSection{
+	width: 100%;
+	color:white;
+	padding-top:150px;
+	background-image: url(../images/background.png);
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+	
 }
 
 

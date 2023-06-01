@@ -30,6 +30,8 @@
 	
 	<main>
 	
+	<section class="managementSection"> 
+	
 		<h2>Tutti gli Utenti</h2>
 		<table>
 			<thead>
@@ -51,6 +53,8 @@
 				<%} %>
 			</tbody>
 		</table>
+		
+		</section>
 	</main>
 	
 	<%@ include file="../common/footer.jsp"%>

@@ -30,6 +30,8 @@
 	
 	%>
 	
+	<section class="cartSection">
+	
 	<p style=color:red> <%=error%></p>
 	
 	<div class="container">
@@ -77,6 +79,8 @@
 			<a href="checkout.jsp" class="btn btn-primary">Procedi al pagamento</a>
 		</div>
 	</div>
+	
+	</section>
 
 	<%@ include file="footer.jsp" %>
 </body>

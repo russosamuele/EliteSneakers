@@ -25,6 +25,8 @@
 
 	<jsp:include page="../common/header.jsp"/>
 	
+	<section class="managementSection"> 
+	
     <h1>Ordini - Area Admin</h1>
 
     <form action="<%=request.getContextPath()%>/VisualizzaOrdiniServlet" method="post">
@@ -64,6 +66,8 @@
             </tr>
        
     </table>
+    
+    </section>
     
    <jsp:include page="../common/footer.jsp"/>
    

@@ -34,6 +34,8 @@
 	
 	
 	<main>
+	
+		<section class="managementSection"> 
 		<h2>Modifica Prodotto</h2>
 		
 		<form action="<%=request.getContextPath()%>/ModificaProdottoServlet" method="post" enctype="multipart/form-data">
@@ -63,6 +65,8 @@
 			<br>
 			<input type="submit" value="Aggiorna">
 		</form>
+		
+		</section>
 		
 	</main>
 	

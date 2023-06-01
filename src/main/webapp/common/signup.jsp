@@ -17,6 +17,8 @@
 	
 	
 	<main>
+	
+		<section class="signupSection">
 		<h2>Registrati per fare acquisti su Elite Sneakers</h2>
 		
 		
@@ -59,6 +61,8 @@
 		</form>
 		
 		<p>Hai già un account? <a href="<%=request.getContextPath()%>/common/login.jsp">Accedi qui</a></p>
+		
+		</section>
 	</main>
 	
 	<footer>

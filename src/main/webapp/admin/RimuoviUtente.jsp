@@ -33,6 +33,8 @@
 	
 	
 	<main>
+	
+	<section class="managementSection"> 
 		<h2>Rimuovi Utente</h2>
 		
 		<p  style="color:green "> <%=message %> </p>
@@ -47,6 +49,8 @@
 			<br>
 			<input type="submit" value="Rimuovi Utente">
 		</form>
+		
+		</section>
 	</main>
 	
 	<%@ include file="../common/footer.jsp"%>
