@@ -47,6 +47,7 @@
   
   
 footer {
+	position:sticky;
     background-color: #333;
     color: whitesmoke;
     padding: 20px;
@@ -90,7 +91,7 @@ footer {
     height: 100vh;
 	background-position: center;
     background-size: cover;
-    display: grid;
+    /*display: grid;*/
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
 	
@@ -105,7 +106,7 @@ footer {
     height: 100vh;
 	background-position: center;
     background-size: cover;
-    display: grid;
+    /*display: grid;*/
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
 	
@@ -119,7 +120,7 @@ footer {
     height: 100vh;
 	background-position: center;
     background-size: cover;
-    display: grid;
+    /*display: grid;*/
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
 	
@@ -133,7 +134,7 @@ footer {
     height: 100vh;
 	background-position: center;
     background-size: cover;
-    display: grid;
+    /*display: grid;*/
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
 }
@@ -157,24 +158,24 @@ footer {
 	color:white;
 	padding-top:150px;
 	background-image: url(../images/background.png);
+	background-repeat: repeat-y;
     height: 100vh;
 	background-position: center;
     background-size: cover;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    align-items: center;
-	
+    align-items: center;	
 }
 
 .managementSection{
 	width: 100%;
 	color:white;
-	padding-top:150px;
+	padding-top:200px;
 	background-image: url(../images/background.png);
+	background-repeat: repeat-y;
     height: 100vh;
 	background-position: center;
     background-size: cover;
-    display: grid;
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
 	

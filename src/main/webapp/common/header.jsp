@@ -48,7 +48,7 @@
 	 <header>
 	 
         <div class="bx bx-menu" id="menu-icon"></div>
-        <a href="<%=path%>/common/index.jsp" class="logo"><img src="../images/logo.png" alt=""></a>
+        <a href="<%=path%>/common/index.jsp" class="logo"><img src="<%=request.getContextPath()%>/images/logo.png" alt=""></a>
 
         <ul class="navbar">
             <li><a href="<%=path%>/common/index.jsp">Home</a></li>
