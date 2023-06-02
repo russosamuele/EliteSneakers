@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -237,6 +238,88 @@ public class OrdineDAO {
 		return max;
 	}
 	
+	public synchronized Collection<OrdineBean> doRetrieveByUserData(String email, Date startDate, Date endDate) throws SQLException { //trova tutti gli ordini di un determinato cliente
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<OrdineBean> ordini = new LinkedList<>();
+
+		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + "WHERE email=? "
+				+ "AND data BETWEEN ? AND ?";
+
+		
+		try {
+			connection = ds.getConnection();
+			connection.setAutoCommit(true);
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+			preparedStatement.setDate(2, startDate);
+			preparedStatement.setDate(3, endDate);
+
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrdineBean bean = new OrdineBean();
+				bean.setNumeroOrd(rs.getInt("numero_ord"));
+				bean.setEmail(rs.getString("email"));
+				bean.setDataOrdine(rs.getDate("data"));
+				
+				ordini.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return ordini;
+	}
+	
+	public synchronized Collection<OrdineBean> doRetrieveByData(Date startDate, Date endDate) throws SQLException { //trova tutti gli ordini di un determinato cliente
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<OrdineBean> ordini = new LinkedList<>();
+
+		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + "WHERE "
+				+ "data BETWEEN ? AND ?";
+
+		
+		try {
+			connection = ds.getConnection();
+			connection.setAutoCommit(true);
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setDate(1, startDate);
+			preparedStatement.setDate(2, endDate);
+
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrdineBean bean = new OrdineBean();
+				bean.setNumeroOrd(rs.getInt("numero_ord"));
+				bean.setEmail(rs.getString("email"));
+				bean.setDataOrdine(rs.getDate("data"));
+				
+				ordini.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return ordini;
+	}
 	
 	
 	

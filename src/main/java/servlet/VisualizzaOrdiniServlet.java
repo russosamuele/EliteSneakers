@@ -2,14 +2,20 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.OrdineBean;
+import model.OrdineDAO;
 
 /**
  * Servlet implementation class VisualizzaOrdiniServlet
@@ -23,7 +29,7 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 		String email = (String) request.getAttribute("utente");
 		String startD = (String) request.getAttribute("startDate");
 		String endD = (String) request.getAttribute("endDate");
-
+		
 		Date startDate = null;
 		Date endDate = null;
 		
@@ -52,6 +58,38 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 			}
 		else
 			endDate = new java.sql.Date(System.currentTimeMillis());
+	
+		OrdineDAO oDAO = new OrdineDAO();
+		List <OrdineBean> ordineList = null;
+		
+		if (email.equals("tutti"))
+			try {
+				ordineList = (List<OrdineBean>) oDAO.doRetrieveByData(startDate, endDate);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		else {
+			try {
+				ordineList = (List<OrdineBean>) oDAO.doRetrieveByUserData(email, startDate, endDate);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("listOrdine", ordineList);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/admin/visualizzaOrdiniAdmin.jsp");
+			dispatcher.forward(request, response);	
+			
+
+		}
+		
+			
+		
+		
+		
+		
+		
 				
 		
 	}

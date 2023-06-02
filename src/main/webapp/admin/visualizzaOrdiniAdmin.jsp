@@ -40,6 +40,7 @@
         <label for="username">Nome utente:</label>
         
         <select id="utente" name="utente">
+        		<option value="tutti"> Tutti gli utenti </option>
 				<%for(UserBean utente : listUsers){ %>
 					<option value="<%=utente.getEmail()%>"><%=utente.getNome()%> <%=utente.getCognome()%> (<%=utente.getEmail()%>)</option>
 				<%} %>
