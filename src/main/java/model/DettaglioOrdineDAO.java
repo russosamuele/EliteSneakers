@@ -99,7 +99,6 @@ private static DataSource ds;
 	public synchronized Collection<DettaglioOrdineBean> doRetrieveByKey(int numeroOrd) throws SQLException{ //trova un ordine
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		DettaglioOrdineBean bean = new DettaglioOrdineBean();
 		
 		Collection<DettaglioOrdineBean> dettagliOrdine = new LinkedList<>();
 		
@@ -111,6 +110,7 @@ private static DataSource ds;
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while (rs.next()) {
+				DettaglioOrdineBean bean = new DettaglioOrdineBean();
 				bean.setNumeroOrd(rs.getInt("numero_ord"));
 				bean.setCodiceProdotto(rs.getInt("codice_prod"));
 				bean.setQuantita(rs.getInt("quantita"));

@@ -73,6 +73,7 @@
             	}
  			%>
             </select>
+			<h3> <%=sneaker.getProdotto().getPrice()%> &euro;</h3>
           </div>
           <button type="submit" class="btn btn-primary">Aggiungi al carrello</button>
         </form>

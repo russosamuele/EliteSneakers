@@ -16,6 +16,7 @@ import model.Cart;
 import model.CartItem;
 import model.DettaglioOrdineBean;
 import model.DettaglioOrdineDAO;
+import model.DisponibilitaDAO;
 import model.OrdineBean;
 import model.ProductBean;
 import model.UserBean;
@@ -57,7 +58,7 @@ public class CheckoutServlet extends HttpServlet {
 		}
 
 		OrdineDAO ordinedao = new OrdineDAO();
-
+		
 		int numeroOrd = 0;
 
 		try {
@@ -92,6 +93,16 @@ public class CheckoutServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		DisponibilitaDAO dDDAO = new DisponibilitaDAO();
+		for (CartItem elem : elementi) {
+			try {
+				dDDAO.doUpdate(elem.getProductBean().getCode(), elem.getTaglia(), elem.getQuantita());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		
 		request.getSession().setAttribute("carrello", null);
 		

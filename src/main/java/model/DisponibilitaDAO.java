@@ -110,6 +110,36 @@ public class DisponibilitaDAO {
 		}
 		return (result != 0);
 	}
+	
+	public synchronized boolean doUpdate(int code, int taglia, int quantita) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "UPDATE " + DisponibilitaDAO.TABLE_NAME + " SET quantita = quantita - ?"
+				+ " WHERE codice_prod = ? AND taglia = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setInt(1, quantita);
+			preparedStatement.setInt(2, code);
+			preparedStatement.setInt(3, taglia);
+
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return (result != 0);
+	}
 
 	public synchronized DisponibilitaBean doRetrieveByKey(int code, int taglia) throws SQLException {
 		Connection connection = null;

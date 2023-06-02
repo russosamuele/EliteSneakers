@@ -8,6 +8,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 </head>
 
 <body>
@@ -33,19 +37,19 @@
 	<section class="managementSection"> 
 	
 		<h2>Tutti gli Utenti</h2>
-		<table>
+		<table class="table table-sm table-dark table-hover table-bordered">  
 			<thead>
 				<tr>
-					<th>Nome</th>
-					<th>Cognome</th>
-					<th>Email</th>
-					<th>Admin</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Cognome</th>
+					<th scope="col">Email</th>
+					<th scope="col">Admin</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%for(UserBean utente : listUsers){ %>
 					<tr>
-							<td><%=utente.getNome() %></td>
+							<th scope="row"><%=utente.getNome() %></th>
 							<td><%=utente.getCognome() %></td>
 							<td><%=utente.getEmail() %></td>
 							<td><%=utente.isAdmin() %></td>
