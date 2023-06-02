@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="<%=request.getContextPath()%>/scripts/java.js"></script>
 </head>
 <body>
 
@@ -49,16 +50,19 @@
 	      <form action="/EliteSneakersEcommerce/CartControl?action=add&code=<%=sneaker.getProdotto().getCode()%>&redirect=catalogo" method="post">
           <div class="form-group">
             <label for="sizeSelect">Taglia:</label>
-            <select class="form-control" id="sizeSelect" name="sizeSelect">
+            <select class="form-control" id="sizeSelect" name="sizeSelect" onClick="checkDisponibilita()">
             	<% 
+            	int disp=0;
             	int j;
             	for (int i = 36; i < 46; i++) {
             	    boolean tagliaDisponibile = false; // Aggiungi una variabile booleana per verificare se la taglia è disponibile
             	    for (j = 0; j < sneaker.getDisponibilitaTaglie().size(); j++) {
             	        if (sneaker.getDisponibilitaTaglie().get(j).getTaglia() == i &&
             	                sneaker.getDisponibilitaTaglie().get(j).getQuantita() > 0) {
-            	            tagliaDisponibile = true; // Imposta la variabile a true se la taglia è disponibile
-            	            break;
+            	            	tagliaDisponibile = true; // Imposta la variabile a true se la taglia è disponibile
+            	            	disp = sneaker.getDisponibilitaTaglie().get(j).getQuantita();
+            	            	break;
+            	            	
             	        }
             	    }
             	    if (tagliaDisponibile) { // Controlla se la taglia è disponibile
@@ -74,8 +78,9 @@
  			%>
             </select>
 			<h3> <%=sneaker.getProdotto().getPrice()%> &euro;</h3>
+			<p style="display:none" id="dispTaglia"> <%=disp%></p>
           </div>
-          <button type="submit" class="btn btn-primary">Aggiungi al carrello</button>
+          <button type="submit" class="btn btn-primary" >Aggiungi al carrello</button> <span id="DispError"></span>
         </form>
 	      </div>
 	    </div>
