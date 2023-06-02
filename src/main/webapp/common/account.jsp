@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="model.UserDAO, model.UserBean"
+    import="model.UserDAO, model.UserBean, model.OrdineBean, java.util.*"
  %>
 
  <!DOCTYPE html>
@@ -56,37 +56,9 @@
 			<button type="submit">Aggiorna</button>
 		</form>
 		
-		<br>
-		
-		<h2>Cronologia ordini</h2>
-		
-		<table>   <!--  per generare la tabella va fatta una query sul DB, e va fatto un ciclo sul result SEt -->
-			<thead>
-				<tr>
-					<th>ID ordine</th>
-					<th>Data ordine</th>
-					<th>Totale</th>
-					<th>Stato</th>
-					<th>Dettagli</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>#12345</td>
-					<td>01/05/2023</td>
-					<td>€99,99</td>
-					<td>Consegnato</td>
-				</tr>
-				<tr>
-					<td>#12344</td>
-					<td>29/04/2023</td>
-					<td>€49,99</td>
-					<td>Spedito</td>
-				</tr>
-			</tbody>
-		</table>
 		
 		
+		<a href="<%=request.getContextPath()%>/common/VisualizzaOrdiniUtente.jsp"> Visualizza Ordini </a>
 		
 		<a href="<%=request.getContextPath()%>/LogoutServlet"> Logout </a>
 		

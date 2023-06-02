@@ -181,6 +181,19 @@ footer {
 	
 }
 
+.visualizzaOrdiniUser{
+	width: 100%;
+	color:white;
+	padding-top:200px;
+	background-image: url(../images/background.png);
+	background-repeat: repeat-y;
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
 
 
 

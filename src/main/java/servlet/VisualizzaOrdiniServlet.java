@@ -26,73 +26,54 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String email = (String) request.getAttribute("utente");
-		String startD = (String) request.getAttribute("startDate");
-		String endD = (String) request.getAttribute("endDate");
+		String email = (String)request.getParameter("utente");
+		String startD =  (String)request.getParameter("startDate");
+		String endD = (String)request.getParameter("endDate");
 		
 		Date startDate = null;
 		Date endDate = null;
 		
-		boolean ricercaUtente = false;
+
 		
-		if(email != null)
-			ricercaUtente = true;
 		
-		if (startD != null)
-			try {
-				startDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse(startD).getTime());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+		if (!startD.equals(""))
+			startDate = java.sql.Date.valueOf(startD);
 		else
-			try {
-				startDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse("2023-15-05").getTime());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		if(endD != null)
-			try {
-				endDate = new java.sql.Date(new SimpleDateFormat("yyyy-mm-dd").parse(endD).getTime());
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			startDate = java.sql.Date.valueOf("2023-05-15");
+	
+		if(!endD.equals(""))
+			endDate = java.sql.Date.valueOf(endD);
 		else
 			endDate = new java.sql.Date(System.currentTimeMillis());
-	
+						
 		OrdineDAO oDAO = new OrdineDAO();
 		List <OrdineBean> ordineList = null;
 		
-		if (email.equals("tutti"))
-			try {
-				ordineList = (List<OrdineBean>) oDAO.doRetrieveByData(startDate, endDate);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+		
+		
+		
+		if (email != null && email.equals("tutti"))
+				try {
+					ordineList = (List<OrdineBean>) oDAO.doRetrieveByData(startDate, endDate);
+				} catch (SQLException e) {
 				e.printStackTrace();
-			}
-		else {
+				}
+		else{
 			try {
 				ordineList = (List<OrdineBean>) oDAO.doRetrieveByUserData(email, startDate, endDate);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
 			
 			request.setAttribute("listOrdine", ordineList);
-			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/admin/visualizzaOrdiniAdmin.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/visualizzaOrdiniAdmin.jsp");
 			dispatcher.forward(request, response);	
 			
 
-		}
+}
 		
 			
-		
-		
-		
-		
-		
-				
-		
-	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);

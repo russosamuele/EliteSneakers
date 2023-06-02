@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.*, model.UserBean"
+<%@ page language="java" 
+	contentType="text/html; charset=UTF-8" 
+	import="java.util.*, model.UserBean, model.OrdineBean"
     pageEncoding="UTF-8"%>
+    
+    
 <!DOCTYPE html>
 
 <html>
@@ -20,7 +24,7 @@
 			dispatcher.forward(request, response);	
 			return;
 		}
-		
+	
 	%>
 
 	<jsp:include page="../common/header.jsp"/>
@@ -39,7 +43,7 @@
 
         <label for="username">Nome utente:</label>
         
-        <select id="utente" name="utente">
+        <select id="utente" name="utente" required>
         		<option value="tutti"> Tutti gli utenti </option>
 				<%for(UserBean utente : listUsers){ %>
 					<option value="<%=utente.getEmail()%>"><%=utente.getNome()%> <%=utente.getCognome()%> (<%=utente.getEmail()%>)</option>
@@ -49,24 +53,30 @@
         <input type="submit" value="Filtra">
     </form>
     
+    <%
     
-
+    	List<OrdineBean> ordini = (List<OrdineBean>)request.getAttribute("listOrdine");
+    
+    	if(ordini != null){
+	%>
+    
+    
     <table>
         <tr>
             <th>Numero Ordine</th>
             <th>Data</th>
             <th>Utente</th>
-            <th>Totale</th>
         </tr>
         
+        <%for(OrdineBean ordine: ordini){ %>
             <tr>
-                <td>${order.orderNumber}</td>
-                <td>${order.orderDate}</td>
-                <td>${order.username}</td>
-                <td>${order.total}</td>
+                <td><%=ordine.getNumeroOrd()%></td>
+                <td><%=ordine.getEmail()%></td>
+                <td><%=ordine.getDataOrdine()%></td>
             </tr>
+        <%} }%> 
        
-    </table>
+    </table>  
     
     </section>
     

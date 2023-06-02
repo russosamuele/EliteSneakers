@@ -40,10 +40,8 @@ public class GetUsersList extends HttpServlet {
 		try {
 			utenti = (List<UserBean>) UDao.doRetrieveAll("nome");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -172,7 +172,7 @@ public class OrdineDAO {
 
 		Collection<OrdineBean> ordini = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + "WHERE email=?";
+		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE email=?";
 
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;
@@ -244,8 +244,8 @@ public class OrdineDAO {
 
 		Collection<OrdineBean> ordini = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + "WHERE email=? "
-				+ "AND data BETWEEN ? AND ?";
+		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE email=? "
+				+ " AND data BETWEEN ? AND ?";
 
 		
 		try {
@@ -286,7 +286,7 @@ public class OrdineDAO {
 
 		Collection<OrdineBean> ordini = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + "WHERE "
+		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE "
 				+ "data BETWEEN ? AND ?";
 
 		
