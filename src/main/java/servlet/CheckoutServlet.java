@@ -16,6 +16,7 @@ import model.Cart;
 import model.CartItem;
 import model.DettaglioOrdineBean;
 import model.DettaglioOrdineDAO;
+import model.DisponibilitaBean;
 import model.DisponibilitaDAO;
 import model.OrdineBean;
 import model.ProductBean;
@@ -56,6 +57,26 @@ public class CheckoutServlet extends HttpServlet {
 			request.getRequestDispatcher("common/login.jsp").forward(request, response);
 			return;
 		}
+		
+		//verifico se c'è disponibilità per i prodotti
+		DisponibilitaDAO dao = new DisponibilitaDAO();
+		
+		for (CartItem elem : elementi) {
+			try {
+				DisponibilitaBean disp = dao.doRetrieveByKey(elem.getProductBean().getCode(), elem.getTaglia());
+				if(disp.getQuantita() < elem.getQuantita()) {
+					String QtaError = "Del prodotto " + elem.getProductBean().getBrand() + " " + elem.getProductBean().getModello() + " sono disponibili solo: " + disp.getQuantita() + " pezzi";
+					request.setAttribute("QtaError", QtaError);
+					request.getRequestDispatcher("common/cart.jsp").forward(request, response);
+					return;
+				}
+					
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//effettuo l'ordine
 
 		OrdineDAO ordinedao = new OrdineDAO();
 		
@@ -93,12 +114,13 @@ public class CheckoutServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		//riduco le quantità nel DB
 		DisponibilitaDAO dDDAO = new DisponibilitaDAO();
 		for (CartItem elem : elementi) {
 			try {
 				dDDAO.doUpdate(elem.getProductBean().getCode(), elem.getTaglia(), elem.getQuantita());
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

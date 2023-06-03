@@ -28,11 +28,16 @@
 		return;
 	}
 	
+	String QtaError = (String) request.getAttribute("QtaError");
+	if(QtaError == null)
+		QtaError = "";
+	
 	%>
 	
 	<section class="cartSection">
 	
 	<p style=color:red> <%=error%></p>
+	<p style=color:red> <%=QtaError%> </p>
 	
 	<div class="container">
 		<h1>Il tuo carrello</h1>
