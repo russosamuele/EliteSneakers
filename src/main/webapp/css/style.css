@@ -156,7 +156,7 @@ footer {
 .accountSection{
 	width: 100%;
 	color:white;
-	padding-top:150px;
+	padding-top:50px;
 	background-image: url(../images/background.png);
 	background-repeat: repeat-y;
     height: 100vh;
@@ -193,6 +193,21 @@ footer {
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
 }
+
+
+#visualizzaOrdiniButton{
+	width:22%;
+}
+
+#LogoutButton{
+	width:13%;
+}
+
+#accountList{
+	display:inline;
+}
+
+
 
 
 

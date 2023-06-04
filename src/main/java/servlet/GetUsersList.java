@@ -3,8 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,11 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.DisponibilitaBean;
-import model.DisponibilitaDAO;
-import model.FinalProduct;
-import model.ProductBean;
-import model.ProductDAO;
 import model.UserBean;
 import model.UserDAO;
 

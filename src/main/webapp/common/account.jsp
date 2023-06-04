@@ -21,8 +21,15 @@
 	
 	<section class="accountSection"> 
 		<h1>Il mio account</h1>
-		<h2>Modifica informazioni personali</h2>
-		<%=session.getAttribute("isAdmin")%>	
+		
+		<div id="accountList">
+			<a href="<%=request.getContextPath()%>/common/VisualizzaOrdiniUtente.jsp" id="visualizzaOrdiniButton"class ="btn btn-primary"> Visualizza Ordini </a>
+		
+			<a href="<%=request.getContextPath()%>/LogoutServlet" class="btn btn-primary">Logout </a>
+		
+		</div>
+		
+		<h2>Modifica informazioni personali</h2>	
 		<%
 			
 			UserBean user = (UserBean)session.getAttribute("user");
@@ -57,10 +64,6 @@
 		</form>
 		
 		
-		
-		<a href="<%=request.getContextPath()%>/common/VisualizzaOrdiniUtente.jsp"> Visualizza Ordini </a>
-		
-		<a href="<%=request.getContextPath()%>/LogoutServlet"> Logout </a>
 		
 		<% }else{ 
 			String path = request.getContextPath();
