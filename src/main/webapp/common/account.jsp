@@ -29,6 +29,9 @@
 		
 		</div>
 		
+		<br> 
+		<br>
+		
 		<h2>Modifica informazioni personali</h2>	
 		<%
 			

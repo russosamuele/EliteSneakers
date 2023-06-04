@@ -24,6 +24,7 @@
 		<p  style="color:red "> <%=error %> </p>
 		
 		
+		<div id="loginDiv">
 		<h2>Login</h2>
 		<form method="post" action="/EliteSneakersEcommerce/LoginServlet">
 			<label for="email">Email:</label>
@@ -33,7 +34,7 @@
 			<button type="submit">Login</button>
 		</form>
 		<p>Don't have an account? <a href="<%=request.getContextPath()%>/common/signup.jsp">Sign up here</a>.</p>
-		
+		</div>
 		</section>
 	</main>
 	
