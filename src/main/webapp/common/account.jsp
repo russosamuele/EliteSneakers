@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="model.UserDAO, model.UserBean, model.OrdineBean, java.util.*"
- %>
+    errorPage="errorPage.jsp"
+%>
+
 
  <!DOCTYPE html>
 <html lang="it">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Account - Elite Sneakers</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 </head>
@@ -32,14 +35,15 @@
 		<br> 
 		<br>
 		
-		<h2>Modifica informazioni personali</h2>	
+		<h2>Modifica informazioni personali</h2>
+			
 		<%
 			
 			UserBean user = (UserBean)session.getAttribute("user");
 			if(user != null){
 				
-		%>
 		
+		%>
 		
 		<!--  va creata uan servlet per la modifica account -->
 		
