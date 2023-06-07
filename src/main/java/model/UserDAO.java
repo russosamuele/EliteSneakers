@@ -178,5 +178,38 @@ public class UserDAO{
 		return products;
 	}
 	
+	
+	public synchronized boolean doUpdate(String email, String indirizzo, String indirizzoSpedizione) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String updateSQL = "UPDATE " + UserDAO.TABLE_NAME + " SET indirizzo= ? , indirizzo_spedizione = ? WHERE email = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSQL);
+			preparedStatement.setString(1, indirizzo);
+			preparedStatement.setString(2, indirizzoSpedizione);
+			preparedStatement.setString(3, email);
+
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return (result != 0);
+	}
+	
+	
+	
+	
 
 }
