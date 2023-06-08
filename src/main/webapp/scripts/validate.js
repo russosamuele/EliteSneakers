@@ -149,12 +149,12 @@ function validatePassword() {
 
 function checkSignup(obj) {
 	var check = true;
-	if (validateNome() == false) check = false;
-	if (validateCognome() == false) check = false;
-	if (validateEmail() == false) check = false;
-	if (pswMatching() == false) check = false;
-	if (validatePassword() == false) check = false;
-	if (ageValidate() == false) check = false;
+	if (!validateNome()) check = false;
+	if (!validateCognome()) check = false;
+	if (!validateEmail()) check = false;
+	if (!pswMatching()) check = false;
+	if (!validatePassword()) check = false;
+	if (!ageValidate()) check = false;
 
 	if (check) obj.submit();
 }
@@ -239,9 +239,9 @@ function validateCVV() {
 
 function checkCheckout(obj) {
 	var check = true;
-	if (validateNumCarta() == false) check = false;
-	if (validateScadenzaCarta() == false) check = false;
-	if (validateCVV() == false) check = false;
+	if (!validateNumCarta()) check = false;
+	if (!validateScadenzaCarta()) check = false;
+	if (!validateCVV()) check = false;
 
 	if (check) obj.submit();
 }

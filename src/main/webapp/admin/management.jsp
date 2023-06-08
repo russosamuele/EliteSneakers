@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" import="model.UserDAO, model.UserBean"
     pageEncoding="UTF-8"%>
 
-    <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang=it>
 <head>
 	<title>Elite Sneakers - Area Riservata</title>
 	<meta charset="UTF-8">
@@ -17,6 +17,8 @@
 	<main>
 	
 	<section class="managementSection"> 
+	
+	<div id="managementDiv">
 	
 		<% 
 		UserBean user =  (UserBean)session.getAttribute("user");
@@ -50,6 +52,8 @@
 			<li><a href="VisualizzaUtenti.jsp">Visualizza tutti gli utenti</a></li>
 			<li><a href="RimuoviUtente.jsp">Rimuovi un utente esistente</a></li>
 		</ul>
+	
+	</div>
 		
 	</section>
 	</main>

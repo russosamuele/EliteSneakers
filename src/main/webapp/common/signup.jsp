@@ -24,8 +24,10 @@
 	<main>
 	
 		<section class="signupSection">
-		<h2>Registrati per fare acquisti su Elite Sneakers</h2>
 		
+		<h2 id="signupText">Registrati per fare acquisti su Elite Sneakers</h2>
+		
+		<br>
 		
 		<% 
 		String error = (String)request.getAttribute("error");

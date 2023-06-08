@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<html>
+<html lang="it">
 <head>
 	<title>Elite Sneakers - Rimuovi Utente</title>
 	<meta charset="UTF-8">

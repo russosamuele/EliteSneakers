@@ -23,12 +23,17 @@
 	<main>
 	
 	<section class="accountSection"> 
-		<h1>Il mio account</h1>
 		
+		
+		
+	<div id="accountDiv">
+	
+		<h1 id="accountLabel">Il mio account</h1>
+	
 		<div id="accountList">
 			<a href="<%=request.getContextPath()%>/common/VisualizzaOrdiniUtente.jsp" id="visualizzaOrdiniButton"class ="btn btn-primary"> Visualizza Ordini </a>
 		
-			<a href="<%=request.getContextPath()%>/LogoutServlet" class="btn btn-primary">Logout </a>
+			<a href="<%=request.getContextPath()%>/LogoutServlet" class="btn btn-primary" id="logoutButton">Logout </a>
 		
 		</div>
 		
@@ -68,8 +73,11 @@
 				return ;
 		}
 			%>
-			
+		
+	</div>	
 	</section>
+	
+	
 		
 		
 	</main>

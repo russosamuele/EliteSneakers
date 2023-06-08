@@ -104,7 +104,7 @@ footer {
 	
 	width: 100%;
 	color:white;
-	padding-top:100px;
+	padding-top:50px;
 	background-image: url(../images/background.png);
     height: 100vh;
 	background-position: center;
@@ -141,6 +141,7 @@ footer {
     align-items: center;
 }
 
+
 .SectionCheckout{
 	width: 100%;
 	color:white;
@@ -171,7 +172,7 @@ footer {
 .managementSection{
 	width: 100%;
 	color:white;
-	padding-top:200px;
+	padding-top:50px;
 	background-image: url(../images/background.png);
 	background-repeat: repeat-y;
     height: 100vh;
@@ -185,7 +186,7 @@ footer {
 .visualizzaOrdiniUser{
 	width: 100%;
 	color:white;
-	padding-top:200px;
+	padding-top:50px;
 	background-image: url(../images/background.png);
 	background-repeat: repeat-y;
     height: 100vh;
@@ -196,16 +197,9 @@ footer {
 }
 
 
-#visualizzaOrdiniButton{
-	width:22%;
-}
-
-#LogoutButton{
-	width:13%;
-}
-
 #accountList{
 	display:inline;
+	width:20%;
 }
 
 #loginDiv{
@@ -222,6 +216,25 @@ footer {
 	position: absolute;
   	top: 40%;
   	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+#accountDiv{
+	padding-top:460px;
+	width:50%;
+	position: absolute;
+  	top: 30%;
+  	left: 60%;
+  	transform: translate(-50%, -50%);
+	
+}
+
+#managementDiv{
+	padding-top:250px;
+	width:50%;
+	position: absolute;
+  	top: 40%;
+  	left: 70%;
   	transform: translate(-50%, -50%);
 }
 
@@ -244,6 +257,43 @@ footer {
 	padding:150px;
 }
 
+
+
+/* responsività*/
+
+@media(max-width:620px){
+    .loginSection{
+    padding-top:250px;
+	}
+	.signupSection{
+	padding-top:250px;
+	}
+	.cartSection{
+	padding-top:5px
+	}
+	    
+}
+
+@media(max-width:920px){
+	
+	#signupText{
+	display:none;
+	}
+	#signupDiv{
+	padding-top:600px;
+	}
+	
+}
+
+
+@media(max-width:517px){
+	
+	.cartSection{
+	padding-top:15px;
+	padding-left:15px;
+	}
+    
+}
 
 
 

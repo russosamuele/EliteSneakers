@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 	<title>Elite Sneakers - Aggiungi Disponibilita</title>
 	<meta charset="UTF-8">
