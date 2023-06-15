@@ -3,7 +3,6 @@
 	contentType="text/html; charset=UTF-8"
 	import="model.ProductBean, model.ProductDAO, java.util.*"
 	pageEncoding="UTF-8"
-	errorPage="errorPage.jsp"
 %>
 
 <!DOCTYPE html>
@@ -45,62 +44,58 @@
 	
 	<section class="catalog">
 	
-	<div class="container">
-		<%
-		for (int row = 0; row < totSneakers / 4; row++) {
-		%>
-		<div class="row">
-			<%
-			for (int i = 0; i < 4; i++) {
-				ProductBean prodotto = listSneakers.get(s).getProdotto();
-			%>
-			<div class="col-md-3">
-				<div class="card">
-					<img
-						src="<%=request.getContextPath()%>/GetPhotoServlet?code=<%=prodotto.getCode()%>"
-						class="card-img-top" alt="<%=prodotto.getModello()%>">
-					<div class="card-body">
-						<h5 class="card-title">
-							<%=prodotto.getBrand()%>
-							<%=prodotto.getModello()%></h5>
-						<p class="card-text"><%=prodotto.getDescrizione()%></p>
-					</div>
-					<a href="<%=request.getContextPath()%>/common/product.jsp?code=<%=prodotto.getCode()%>" id="bottone" class="btn btn-primary">Visualizza prodotto </a>
-				</div>
-			</div>
-			<%
-			s++;
-			}
-			%>
-		</div>
-		<%
-		}
-		while(s < totSneakers){
-			ProductBean prodotto = listSneakers.get(s).getProdotto();
-
-		%>
-		<div class="row">
-			<div class="col-md-3">
-				<div class="card">
-					<img
-						src="<%=request.getContextPath()%>/GetPhotoServlet?code=<%=prodotto.getCode()%>"
-						class="card-img-top" alt="<%=prodotto.getModello()%>">
-					<div class="card-body">
-						<h5 class="card-title">
-							<%=prodotto.getBrand()%>
-							<%=prodotto.getModello()%></h5>
-						<p class="card-text"><%=prodotto.getDescrizione()%></p>
-					</div>
-					<a href="<%=request.getContextPath()%>/common/product.jsp?code=<%=prodotto.getCode()%>" id="bottone"  class="btn btn-primary">Visualizza prodotto </a>
-				</div>
-				</div>
-			</div>
-			<%
-			s++;
-			%>
-		</div>
-		<%}%>
+	<div id=filtri>
 	
+		<form action="/EliteSneakersEcommerce/CatalogoFilter" name="FormFiltri" method="post">
+	
+			<label> Brand: </label><select name= "brand" id="brand">
+				<option value="-"></option>
+				<option value="Nike">Nike</option>
+				<option value="Jordan">Jordan</option>
+				<option value="Adidas">Adidas</option>
+				<option value="New Balance">New Balance</option>
+				<option value="Yeezy">Yeezy</option>
+				<option value="Versace">Versace</option>
+				<option value="Gucci">Gucci</option>
+			</select>
+			
+			<label> Prezzo minimo: </label><input type="number" name="prezzoMin" id="prezzoMin" value="100" step="10">
+			<label> Prezzo massimo: </label><input type="number" name="prezzoMax" id="prezzoMax" value="1200" step="10">
+			
+			<input type="submit" value="filtra" class="btn btn-primary">
+			
+		</form>
+	
+	
+	</div>
+	
+	<div class="album py-5">
+	
+        <div class="container">
+
+          <div class="row">
+          
+          <% for(int i = 0; i<listSneakers.size(); i++){ 
+        	  ProductBean prodotto = listSneakers.get(i).getProdotto();
+          %>
+             <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="<%=request.getContextPath()%>/GetPhotoServlet?code=<%=prodotto.getCode()%>" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text"><%=prodotto.getBrand()%> <%=prodotto.getModello()%></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                  	<a href="<%=request.getContextPath()%>/common/product.jsp?code=<%=prodotto.getCode()%>" class="btn btn-info" role="button"><%=prodotto.getPrice()%>&euro;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <%}%>
+            
+           </div>
+        </div>
+     </div>
+         
 	</section>
 	
 	<jsp:include page="footer.jsp" />

@@ -17,7 +17,7 @@
 	<main>
 	
 		<section class="managementSection">
-		<h2>Agggiungi Disponibilita</h2>
+		
 		
 		<%
 		int id = 3;
@@ -35,21 +35,30 @@
 		%>
 		
 		
+	<div id="managementDiv">
+	
+		<h2 id="InfoPg">Aggiungi Disponibilita</h2>
+		
+		<div>
 		
 		<form action="/EliteSneakersEcommerce/AddDisponibilita" method="post">
-			<select id="code" name="code" required>
+			<select class="inputField" id="code" name="code" required>
 			<%for(FinalProduct prod : listSneakers){ %>	
 				<option value="<%=prod.getProdotto().getCode()%>"> code:<%=prod.getProdotto().getCode()%> - brand: <%=prod.getProdotto().getBrand()%> - modello: <%=prod.getProdotto().getModello()%></option>
 			<%} %>			
 			</select>
+			<br>
 			<label for="taglia">Taglia:</label>
-			<input type="number" id="taglia" name="taglia" min="25" max="52" step="1" required>
+			<input class="inputField" type="number" id="taglia" name="taglia" min="25" max="52" step="1" required>
 			<br>
 			<label for="quantita">Quantita:</label>
-			<input type="number" id="quantita" name="quantita" min="1" max="999" step="1" required>
+			<input class="inputField" type="number" id="quantita" name="quantita" min="1" max="999" step="1" required>
 			<br>
-			<input type="submit" value="Aggiungi">
+			<input type="submit" class="btn btn-primary" value="Aggiungi">
 		</form>
+		</div>
+	
+	</div>	
 	
 	</section>
 		

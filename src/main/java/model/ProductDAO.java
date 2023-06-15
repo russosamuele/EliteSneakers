@@ -167,5 +167,91 @@ public class ProductDAO{
 		return products;
 	}
 	
+	
+	
+	public synchronized Collection<ProductBean> doRetrieveByFiltri(String prezzoMin, String prezzoMax) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<ProductBean> products = new LinkedList<ProductBean>();
+
+		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME + " WHERE prezzo >= ? AND prezzo <= ?";
+
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			preparedStatement.setDouble(1, Double.parseDouble(prezzoMin));
+			preparedStatement.setDouble(2, Double.parseDouble(prezzoMax));
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				ProductBean bean = new ProductBean();
+				bean.setCode(rs.getInt("codice_prod"));
+				bean.setBrand(rs.getString("brand"));
+				bean.setModello(rs.getString("modello"));
+				bean.setPhoto(rs.getBytes("photo"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setPrice(rs.getInt("prezzo"));
+				products.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return products;
+	}
+	
+	
+	public synchronized Collection<ProductBean> doRetrieveByFiltri(String prezzoMin, String prezzoMax, String brand) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<ProductBean> products = new LinkedList<ProductBean>();
+
+		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME + " WHERE prezzo >= ? AND prezzo <= ? AND brand = ? ";
+
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			preparedStatement.setDouble(1, Double.parseDouble(prezzoMin));
+			preparedStatement.setDouble(2, Double.parseDouble(prezzoMax));
+			preparedStatement.setString(3, brand);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				ProductBean bean = new ProductBean();
+				bean.setCode(rs.getInt("codice_prod"));
+				bean.setBrand(rs.getString("brand"));
+				bean.setModello(rs.getString("modello"));
+				bean.setPhoto(rs.getBytes("photo"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setPrice(rs.getInt("prezzo"));
+				products.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return products;
+	}
+	
 
 }

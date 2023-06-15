@@ -179,20 +179,21 @@ public class UserDAO{
 	}
 	
 	
-	public synchronized boolean doUpdate(String email, String indirizzo, String indirizzoSpedizione) throws SQLException {
+	public synchronized boolean doUpdate(String email, String indirizzo, String indirizzoSpedizione, String pswd) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String updateSQL = "UPDATE " + UserDAO.TABLE_NAME + " SET indirizzo= ? , indirizzo_spedizione = ? WHERE email = ?";
+		String updateSQL = "UPDATE " + UserDAO.TABLE_NAME + " SET indirizzo= ? , indirizzo_spedizione = ?, passwd= ? WHERE email = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
 			preparedStatement.setString(1, indirizzo);
 			preparedStatement.setString(2, indirizzoSpedizione);
-			preparedStatement.setString(3, email);
+			preparedStatement.setString(3, pswd);
+			preparedStatement.setString(4, email);
 
 			result = preparedStatement.executeUpdate();
 

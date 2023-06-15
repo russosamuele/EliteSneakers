@@ -1,4 +1,5 @@
   
+  
   input[type="email"], input[type="password"] {
     display: inline;
     width: 100%;
@@ -57,18 +58,6 @@ footer {
     text-align: center;
   }
   
-  
-.card {
-	margin-bottom: 15px;
-	width: 270px;
-	height: 460px;
-	margin-top: 10px;
-}
-
-.product-image {
-		width: 300px;
-		height: 300px;
-}
 
 .error {
 	border: thin solid red;
@@ -224,7 +213,7 @@ footer {
 	width:50%;
 	position: absolute;
   	top: 30%;
-  	left: 60%;
+  	left: 50%;
   	transform: translate(-50%, -50%);
 	
 }
@@ -234,7 +223,29 @@ footer {
 	width:50%;
 	position: absolute;
   	top: 40%;
-  	left: 70%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+ 
+}
+
+#managementPanel{
+	padding-top:250px;
+	width:50%;
+	position: absolute;
+  	top: 40%;
+  	left: 60%;
+  	transform: translate(-50%, -50%);
+  	font-size: 18px;
+ 
+	
+}
+
+#checkoutDiv{
+	padding-top:250px;
+	width:50%;
+	position: absolute;
+  	top: 40%;
+  	left: 50%;
   	transform: translate(-50%, -50%);
 }
 
@@ -258,6 +269,15 @@ footer {
 }
 
 
+#filtri{
+	display:inline;
+	padding-bottom:20px;	
+}
+
+#filtri label{
+	color:white;
+}
+
 
 /* responsività*/
 
@@ -271,6 +291,7 @@ footer {
 	.cartSection{
 	padding-top:5px
 	}
+	
 	    
 }
 
@@ -280,6 +301,9 @@ footer {
 	display:none;
 	}
 	#signupDiv{
+	padding-top:600px;
+	}
+	#accountDiv{
 	padding-top:600px;
 	}
 	

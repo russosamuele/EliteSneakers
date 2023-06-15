@@ -247,6 +247,41 @@ function checkCheckout(obj) {
 }
 
 
+function checkFormUpdate(obj){
+	var check = true;
+	if(!checkPswd())
+		check=false;
+		
+	if(check)
+		obj.submit();
+}
+
+
+
+
+function checkPswd(){
+	let form = document.getElementById("updateAccount");
+
+	let span = document.getElementById("matchError");
+
+	let pswd = form.nuovaPassword.value;
+	
+	if(pswd.match(pswdPattern)){
+		span.classList.remove("error");
+		span.style.color = "black";
+		span.innerHTML = "";
+		return true;
+	}
+	else{
+		span.classList.add("error");
+		span.innerHTML = pswdMessage;
+		span.style.color = "red";
+		return false;
+		
+	}
+}
+
+
 
 
 

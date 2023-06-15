@@ -18,7 +18,7 @@
 	
 	<section class="managementSection"> 
 	
-	<div id="managementDiv">
+	<div id="managementPanel">
 	
 		<% 
 		UserBean user =  (UserBean)session.getAttribute("user");

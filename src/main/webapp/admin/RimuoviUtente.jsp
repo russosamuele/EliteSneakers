@@ -35,20 +35,25 @@
 	<main>
 	
 	<section class="managementSection"> 
+	
+		<div id="managementDiv">
+	
 		<h2>Rimuovi Utente</h2>
 		
 		<p  style="color:green "> <%=message %> </p>
 		
 		<form method="post" action="<%=request.getContextPath()%>/RimuoviUtenteServlet">
 			<label for="utente">Seleziona l'utente da rimuovere:</label>
-			<select id="utente" name="utente">
+			<select class="inputField" id="utente" name="utente">
 				<%for(UserBean utente : listUsers){ %>
 					<option value="<%=utente.getEmail()%>"><%=utente.getNome()%> <%=utente.getCognome()%> (<%=utente.getEmail()%>)</option>
 				<%} %>
 			</select>
 			<br>
-			<input type="submit" value="Rimuovi Utente">
+			<input type="submit" class="btn btn-primary" value="Rimuovi Utente">
 		</form>
+		
+		</div>
 		
 		</section>
 	</main>

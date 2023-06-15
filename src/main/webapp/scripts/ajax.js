@@ -77,5 +77,6 @@ function handleEmail(request){
 	var result = response.getElementsByTagName("result")[0].firstChild.nodeValue;
     document.getElementById("emailCheckDisponibility").innerHTML = result;
     document.getElementById("emailCheckDisponibility").style.color="red";
+    
 }
 

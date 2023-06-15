@@ -17,6 +17,8 @@
 	<main>
 	
 	<section class="managementSection"> 
+	
+	<div id="managementDiv">
 		<h2>Rimuovi Prodotto</h2>
 		
 		<%
@@ -40,7 +42,7 @@
 		<form action="/EliteSneakersEcommerce/DeleteProdotto" method="post">
 		
 			<label for="code">Codice prodotto:</label>
-			<select id="code" name="code" required>
+			<select class="inputField" id="code" name="code" required>
 				
 				<%for(FinalProduct prod : listSneakers){ %>
 					
@@ -48,8 +50,10 @@
 				<%} %>
 			</select>
 			<br>
-			<input type="submit" value="Rimuovi">
+			<input type="submit" class="btn btn-primary" value="Rimuovi">
 		</form>
+		
+		</div>
 		
 		</section>
 	</main>

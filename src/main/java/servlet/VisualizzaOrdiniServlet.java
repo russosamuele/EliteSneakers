@@ -36,12 +36,12 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 
 		
 		
-		if (!startD.equals(""))
+		if (startD != null && !startD.equals(""))
 			startDate = java.sql.Date.valueOf(startD);
 		else
 			startDate = java.sql.Date.valueOf("2023-05-15");
 	
-		if(!endD.equals(""))
+		if(endD != null && !endD.equals(""))
 			endDate = java.sql.Date.valueOf(endD);
 		else
 			endDate = new java.sql.Date(System.currentTimeMillis());

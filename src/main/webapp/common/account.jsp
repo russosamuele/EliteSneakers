@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="model.UserDAO, model.UserBean, model.OrdineBean, java.util.*"
-    errorPage="EliteSneakersEcommerce/common/error500.jsp"
 %>
 
 
@@ -12,6 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Account - Elite Sneakers</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+	<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/validate.js"></script>
 </head>
 
 <body>
@@ -43,6 +43,12 @@
 		<h2>Modifica informazioni personali</h2>
 			
 		<%
+		
+			String error = (String)request.getAttribute("errorPSW");
+		
+			if(error==null)
+				error="";
+		
 			
 			UserBean user = (UserBean)session.getAttribute("user");
 			if(user != null){
@@ -52,17 +58,26 @@
 		
 		<!--  va creata uan servlet per la modifica account -->
 		
-		<form action="/EliteSneakersEcommerce/UpdateAccountServlet" method="post">  
+		<!-- onsubmit="event.preventDefault();checkFormUpdate(this)" //da aggiungere -->
+		
+		<form action="/EliteSneakersEcommerce/UpdateAccountServlet" method="post" id="updateAccount">  
 					
 			
 			<label for="address">Indirizzo:</label>
-			<input type="text" id="address" name="address" value="<%=user.getIndirizzo()%>"><br>
+			<input class="inputField" type="text" id="address" name="address" value="<%=user.getIndirizzo()%>"><br>
 			
 			<label for="address_sp">Indirizzo di spedizione</label>
-			<textarea id="address_sp" name="address_sp"><%=user.getIndirizzo_spedizione()%></textarea><br>
+			<textarea class="inputField" id="address_sp" name="address_sp"><%=user.getIndirizzo_spedizione()%></textarea><br>
+			
+			<label for="password">Vecchia Password:</label>
+			<input class="inputField" type="password" id="passwordVecchia" name="passwordVecchia" ><span id="errorpswd"> <%=error%></span><br>
+			
+			<label for="nuovaPassword">Nuova Password:</label>
+			<input class="inputField" type="password" id="nuovaPassword" name="nuovaPassword" onBlur="return checkPswd()"> <span id="matchError"></span><br>
 			
 			
 			<button type="submit">Aggiorna</button>
+			
 		</form>
 		
 		

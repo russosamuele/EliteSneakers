@@ -81,6 +81,7 @@
 			
           </div>
           <button type="submit" class="btn btn-primary" >Aggiungi al carrello</button>
+          
         </form>
 	      </div>
 	    </div>

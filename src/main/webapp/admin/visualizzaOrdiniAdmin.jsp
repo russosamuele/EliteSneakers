@@ -38,27 +38,31 @@
 	
 	<section class="managementSection"> 
 	
+	<div>
+	
     <h1>Ordini - Area Admin</h1>
 
     <form action="<%=request.getContextPath()%>/VisualizzaOrdiniServlet" method="post">
     
         <label for="startDate">Data di inizio:</label>
-        <input type="date" id="startDate" name="startDate"><br>
+        <input class="inputField" type="date" id="startDate" name="startDate"><br>
 
         <label for="endDate">Data di fine:</label>
-        <input type="date" id="endDate" name="endDate"><br>
+        <input class="inputField" type="date" id="endDate" name="endDate"><br>
 
         <label for="username">Nome utente:</label>
         
-        <select id="utente" name="utente" required>
+        <select class="inputField" id="utente" name="utente" required>
         		<option value="tutti"> Tutti gli utenti </option>
 				<%for(UserBean utente : listUsers){ %>
 					<option value="<%=utente.getEmail()%>"><%=utente.getNome()%> <%=utente.getCognome()%> (<%=utente.getEmail()%>)</option>
 				<%} %>
 		</select>
 
-        <input type="submit" value="Filtra">
+        <input type="submit" class="btn btn-primary" value="Filtra">
     </form>
+    
+    </div>
     <br>
     <br>
     <%
@@ -69,7 +73,8 @@
 	%>
     
     
-	<table class="table table-sm table-dark table-hover table-bordered">  
+    <div id="tableOrdini">
+	<table class="table table-sm table-dark table-hover table-bordered" >  
         <tr>
             <th scope="col">Numero Ordine</th>
             <th scope="col">Utente</th>
@@ -91,6 +96,7 @@
         <%} }%> 
        
     </table>  
+    </div>
     
     </section>
     
