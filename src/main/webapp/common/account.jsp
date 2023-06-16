@@ -60,7 +60,7 @@
 		
 		<!-- onsubmit="event.preventDefault();checkFormUpdate(this)" //da aggiungere -->
 		
-		<form action="<%=request.getContextPath()%>/UpdateAccountServlet" method="post" name="updateAccount" id="updateAccount">  
+		<form action="<%=request.getContextPath()%>/ModificaAccount" method="post" name="updateAccount" id="updateAccount">  
 					
 			
 			<label for="address">Indirizzo:</label>
@@ -70,7 +70,7 @@
 			<textarea class="inputField" id="address_sp" name="address_sp"><%=user.getIndirizzo_spedizione()%></textarea><br>
 			
 			<label for="password">Vecchia Password:</label>
-			<input class="inputField" type="password" id="passwordVecchia" name="passwordVecchia" ><span id="errorpswd"> <%=error%></span><br>
+			<input class="inputField" type="password" id="passwordVecchia" name="passwordVecchia" required><span id="errorpswd" style="color:red"> <%=error%></span><br>
 			
 			<label for="nuovaPassword">Nuova Password:</label>
 			<input class="inputField" type="password" id="nuovaPassword" name="nuovaPassword" onBlur="return checkPswd()"> <span id="matchError"></span><br>
