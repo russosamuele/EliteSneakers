@@ -35,7 +35,7 @@
         <div class="text">
             <h4>New Fashion</h4>
             <h1>Spring Summer <br> Collection</h1>
-            <p>It Is A Long Established Fact That A Reader Will Be Distracted By The Readable Content</p>
+            <p>Scopri l'eccellenza dei tuoi passi con le nostre sneakers esclusive, dove lo stile incontra la comodit&agrave;</p>
 
             <a id href="<%=request.getContextPath()%>/common/catalog.jsp" class="btn">Shop Now</a>
         </div>

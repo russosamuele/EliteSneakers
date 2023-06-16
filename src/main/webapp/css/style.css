@@ -93,7 +93,7 @@ footer {
 	color:white;
 	padding-top:50px;
 	background-image: url(../images/background.png);
-    height: 100vh;
+    /*height: 100vh;*/
 	background-position: center;
     background-size: cover;
     /*display: grid;*/

@@ -90,8 +90,10 @@
 			<a href="checkout.jsp" class="btn btn-primary">Procedi al pagamento</a>
 		</div>
 	</div>
-	
+	<br>
+	<br>
 	</section>
+	
 
 	<%@ include file="footer.jsp" %>
 </body>
