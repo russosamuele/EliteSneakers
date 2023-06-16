@@ -63,7 +63,7 @@ footer {
 
 .catalog{
 	width: 100%;
-	padding-top:100px;
+	padding-top:20px;
     height: auto;
 	background-image: url(../images/background.png);
 	background-position: center;
@@ -182,6 +182,18 @@ footer {
     align-items: center;
 }
 
+.ordiniAdminSection{
+	width: 100%;
+	color:white;
+	padding-top:50px;
+	background-image: url(../images/background.png);
+	background-repeat: repeat-y;
+	background-position: center;
+    background-size: cover;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;	
+}
+
 
 #accountList{
 	display:inline;
@@ -262,13 +274,23 @@ footer {
 
 /* div nelle error page*/
 .errorDiv{ 
-	padding:150px;
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	padding: 150px;
+	border: 2px solid green;
+	align-items:center;
+}
+
+.errorDiv a{
+	width: 300px;
 }
 
 
 #filtri{
 	display:inline;
-	padding-bottom:20px;	
+	padding-bottom:20px;
+	padding-left:20px;	
 }
 
 #filtri label{
@@ -288,7 +310,6 @@ footer {
 	.cartSection{
 	padding-top:5px
 	}
-	
 	    
 }
 
@@ -303,7 +324,20 @@ footer {
 	#accountDiv{
 	padding-top:600px;
 	}
-	
+}
+
+
+@media(max-width:1020px){
+	.card{
+	height:290px;
+	}
+
+}
+
+@media(max-width:768px){
+.card{
+	height:initial !important;
+}
 }
 
 

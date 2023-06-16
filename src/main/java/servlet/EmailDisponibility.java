@@ -40,10 +40,10 @@ public class EmailDisponibility extends HttpServlet {
             user = dao.doRetrieveByKey(email);
         }
         String risultato = null;
-        if (user != null) {
+        if (user != null && !user.getEmail().trim().equals("")) {
             risultato = "email già utilizzata";
         } else {
-            risultato = "disponibile";
+            risultato = " ";
         }
         out.println("<?xml version=\"1.0\" encoding=\"iso-8859-1\" ?>");
         out.println("<response>");

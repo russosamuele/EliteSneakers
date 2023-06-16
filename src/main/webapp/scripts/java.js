@@ -1,9 +1,19 @@
 
-let menu = document.querySelector('#menu-icon');
+
+
+
+window.onload = ()=>{
+	
+	let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
-menu.onclick = () => {
+console.log(menu);
+
+menu.addEventListener("click", ()=>{
     menu.classList.toggle('bx-x');
     navbar.classList.toggle('open');
+})
+	
+	
 }
 

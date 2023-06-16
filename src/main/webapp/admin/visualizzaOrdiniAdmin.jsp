@@ -36,7 +36,7 @@
 
 	<jsp:include page="../common/header.jsp"/>
 	
-	<section class="managementSection"> 
+	<section class="ordiniAdminSection"> 
 	
 	<div>
 	
@@ -55,7 +55,7 @@
         <select class="inputField" id="utente" name="utente" required>
         		<option value="tutti"> Tutti gli utenti </option>
 				<%for(UserBean utente : listUsers){ %>
-					<option value="<%=utente.getEmail()%>"><%=utente.getNome()%> <%=utente.getCognome()%> (<%=utente.getEmail()%>)</option>
+					<option value="<%=utente.getEmail()%>"><%=utente.getNome()%> <%=utente.getCognome()%> (<%=utente.getEmail()%> )</option>
 				<%} %>
 		</select>
 
@@ -71,7 +71,6 @@
     
     	if(ordini != null){
 	%>
-    
     
     <div id="DivOrdini">
 	<table class="table table-sm table-dark table-hover table-bordered">  
@@ -95,10 +94,11 @@
             </tr>
         <%} }%> 
        
-    </table>  
+    </table> 
+   <br>
     </div>
+    </section>  
     
-    </section>
     
    <jsp:include page="../common/footer.jsp"/>
    
