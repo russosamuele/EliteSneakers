@@ -33,7 +33,6 @@ public class UpdateAccountServlet extends HttpServlet {
 			check=true;
 			
 		
-			
 		UserDAO dao = new UserDAO();
 		
 		UserBean user = (UserBean) request.getSession().getAttribute("user");

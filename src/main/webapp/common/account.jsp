@@ -60,7 +60,7 @@
 		
 		<!-- onsubmit="event.preventDefault();checkFormUpdate(this)" //da aggiungere -->
 		
-		<form action="/EliteSneakersEcommerce/UpdateAccountServlet" method="post" id="updateAccount">  
+		<form action="<%=request.getContextPath()%>/UpdateAccountServlet" method="post" name="updateAccount" id="updateAccount">  
 					
 			
 			<label for="address">Indirizzo:</label>

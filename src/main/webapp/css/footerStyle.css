@@ -6,6 +6,7 @@ footer {
 	gap: 20px;
 	padding: 50px 100px;
 	background-color: #000;
+	position:relative;
 }
 
 .footer-row {

@@ -49,18 +49,16 @@
     text-decoration: underline;
   }
   
-  
+.error {
+	border: thin solid red;
+}
+
 footer {
 	position:sticky;
     background-color: #333;
     color: whitesmoke;
     padding: 20px;
     text-align: center;
-  }
-  
-
-.error {
-	border: thin solid red;
 }
 
 .catalog{
@@ -168,8 +166,7 @@ footer {
 	background-position: center;
     background-size: cover;
     grid-template-columns: repeat(1, 1fr);
-    align-items: center;
-	
+    align-items: center;	
 }
 
 .visualizzaOrdiniUser{
