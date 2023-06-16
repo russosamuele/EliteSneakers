@@ -46,3 +46,12 @@
 	<%@ include file="footer.jsp" %>
 </body>
 </html>
+
+
+<!-- 
+	russo@gmail.com pass:Samuele02$ 
+	admin@admin.it pass: Admin$2023
+	greco@hotmail.it pass: Matteo02$
+
+
+-->
