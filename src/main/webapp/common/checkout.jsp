@@ -2,7 +2,7 @@
 	page language="java" 
 	contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-   errorPage="errorPage.jsp" 
+    import="model.UserBean"
 %>
 
 
@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
     <script src="<%=request.getContextPath()%>/scripts/validate.js"></script>
 </head>
+
+<%
+
+	UserBean user = (UserBean)session.getAttribute("user");
+	if(user != null){
+
+
+%>
+
+
+
 <body>
 
 	<jsp:include page="header.jsp"/>
@@ -31,8 +42,10 @@
         <h3>Informazioni di spedizione</h3>
         
        
-        <label for="address">Indirizzo di spedizione:</label>
-        <input class="inputField" type="text" id="address" name="address"><br>
+        <select class="inputField">
+        	<option> <%=user.getIndirizzo()%></option> 
+        	<option> <%=user.getIndirizzo_spedizione()%></option> 
+        </select>
 
         <h3>Informazioni della carta</h3>
         
@@ -48,6 +61,13 @@
         <input type="submit" class="btn btn-primary"value="Conferma Ordine">
         
     </form>
+    
+    <%}else{ 
+			String path = request.getContextPath();
+			response.sendRedirect(path + "/common/login.jsp");
+				return ;
+		}
+			%>
     
     
     </div>
