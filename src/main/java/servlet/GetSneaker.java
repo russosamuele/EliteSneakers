@@ -2,9 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.DisponibilitaBean;
 import model.DisponibilitaDAO;
 import model.FinalProduct;
 import model.ProductBean;
@@ -25,6 +23,8 @@ import model.ProductDAO;
 @WebServlet("/GetSneaker")
 public class GetSneaker extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -39,13 +39,13 @@ public class GetSneaker extends HttpServlet {
 		try {
 			pBean = PDao.doRetrieveByKey(code);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		FinalProduct finalToPut = null;
 		try {
 			finalToPut = new FinalProduct(pBean, DDao.doRetrieveByKey(pBean.getCode()));
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 
 		request.setAttribute("sneaker", finalToPut);

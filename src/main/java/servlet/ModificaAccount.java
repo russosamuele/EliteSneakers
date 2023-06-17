@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +21,8 @@ import model.UserDAO;
 @WebServlet("/ModificaAccount")
 public class ModificaAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -87,7 +91,8 @@ public class ModificaAccount extends HttpServlet {
 				request.getRequestDispatcher("/LogoutServlet").forward(request, response);
 				return;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema aggiorbamento dati DB!");
+
 			}
 
 			
@@ -99,7 +104,8 @@ public class ModificaAccount extends HttpServlet {
 			dao.doUpdate(email, indirizzo, indirizzoSpedizione, pswdToInsert);
 			request.getRequestDispatcher("/LogoutServlet").forward(request, response);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema aggiorbamento dati DB!");
+
 		}
 
 		

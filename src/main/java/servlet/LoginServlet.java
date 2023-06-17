@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +25,8 @@ import model.UserDAO;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
+	private static Logger logger = Logger.getAnonymousLogger();
     
     public LoginServlet() {
         super();
@@ -47,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			user = tool.doRetrieveByKey(email);
 		} catch (SQLException | ParseException e) {
-				e.printStackTrace();
+			logger.log(Level.WARNING, "Problema Parse/Sql!");
 			}
 		
 		

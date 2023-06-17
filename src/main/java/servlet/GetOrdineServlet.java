@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,9 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.DettaglioOrdineBean;
 import model.DettaglioOrdineDAO;
-import model.DisponibilitaDAO;
 import model.FinalOrder;
-import model.FinalProduct;
 import model.OrdineDAO;
 import model.ProductBean;
 import model.ProductDAO;
@@ -27,6 +27,8 @@ import model.ProductDAO;
 @WebServlet("/GetOrdineServlet")
 public class GetOrdineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -49,7 +51,7 @@ public class GetOrdineServlet extends HttpServlet {
 		try {
 			listaDettagliOrdine = (List<DettaglioOrdineBean>) DODao.doRetrieveByKey(code);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}	
 		List <String> nomeSneaker = new LinkedList<>();
 		
@@ -61,14 +63,14 @@ public class GetOrdineServlet extends HttpServlet {
 			nomeSneaker.add(i, nomeBrandModello);
 		}
 		}catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		
 		FinalOrder finalToPut = null;
 		try {
 			finalToPut = new FinalOrder(ODao.doRetrieveByKey(code), listaDettagliOrdine, nomeSneaker);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		
 		request.setAttribute("ordine", finalToPut);

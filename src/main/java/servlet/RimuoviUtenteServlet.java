@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +20,8 @@ import model.UserDAO;
 @WebServlet("/RimuoviUtenteServlet")
 public class RimuoviUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -32,7 +36,7 @@ public class RimuoviUtenteServlet extends HttpServlet {
 				dao.doDelete(email);
 				mess = "Utente eliminato con successo!";
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema eliminazione utente dal DB!");
 			}
 			
 			request.setAttribute("result", mess);

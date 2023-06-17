@@ -1,8 +1,9 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +23,8 @@ import model.PhotoControl;
 
 public class UploadPhoto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
 
 	public UploadPhoto() {
 		super();
@@ -38,7 +41,7 @@ public class UploadPhoto extends HttpServlet {
         try {
 			PhotoControl.updatePhoto(code, filePart.getInputStream());
 		} catch (SQLException sqlException) {
-			System.out.println(sqlException);
+			logger.log(Level.WARNING, "Problema SQL!");
 		}
         
         

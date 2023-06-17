@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -15,6 +17,7 @@ import javax.sql.DataSource;
 public class DettaglioOrdineDAO {
 	
 private static DataSource ds;
+private static Logger logger = Logger.getAnonymousLogger();
 	
 	static {
 		try {
@@ -24,7 +27,7 @@ private static DataSource ds;
 			ds = (DataSource) envCtx.lookup("jdbc/elitesneakers");
 
 		} catch (NamingException e) {
-			System.out.println("Error:" + e.getMessage());
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 	} 
 

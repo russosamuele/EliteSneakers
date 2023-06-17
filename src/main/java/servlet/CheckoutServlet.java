@@ -2,9 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +19,6 @@ import model.DettaglioOrdineDAO;
 import model.DisponibilitaBean;
 import model.DisponibilitaDAO;
 import model.OrdineBean;
-import model.ProductBean;
 import model.UserBean;
 import model.OrdineDAO;
 
@@ -29,6 +28,8 @@ import model.OrdineDAO;
 @WebServlet("/CheckoutServlet")
 public class CheckoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -72,7 +73,7 @@ public class CheckoutServlet extends HttpServlet {
 				}
 					
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema accesso DB!");
 			}
 		}
 		
@@ -85,7 +86,7 @@ public class CheckoutServlet extends HttpServlet {
 		try {
 			numeroOrd = ordinedao.doRetrieveMaxNumOrdine() + 1;
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 
 		ordine.setNumeroOrd(numeroOrd);
@@ -95,7 +96,7 @@ public class CheckoutServlet extends HttpServlet {
 		try {
 			ordinedao.doSave(ordine);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 
 		DettaglioOrdineDAO dettaglioOrdineDAO = new DettaglioOrdineDAO();
@@ -121,7 +122,7 @@ public class CheckoutServlet extends HttpServlet {
 			try {
 				dDDAO.doUpdate(elem.getProductBean().getCode(), elem.getTaglia(), elem.getQuantita());
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema accesso DB!");
 			}
 		}
 		

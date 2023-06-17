@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,6 +28,8 @@ maxRequestSize = 1024 * 1024 * 50) // 50MB
 
 public class AddProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
        
  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,7 +53,7 @@ public class AddProduct extends HttpServlet {
 		try {
 			dao.doSave(bean);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/UploadPhoto");

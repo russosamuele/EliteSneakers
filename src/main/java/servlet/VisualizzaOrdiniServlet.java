@@ -3,9 +3,9 @@ package servlet;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +23,8 @@ import model.OrdineDAO;
 @WebServlet("/VisualizzaOrdiniServlet")
 public class VisualizzaOrdiniServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -56,13 +58,13 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 				try {
 					ordineList = (List<OrdineBean>) oDAO.doRetrieveByData(startDate, endDate);
 				} catch (SQLException e) {
-				e.printStackTrace();
+					logger.log(Level.WARNING, "Problema accesso DB!");
 				}
 		else{
 			try {
 				ordineList = (List<OrdineBean>) oDAO.doRetrieveByUserData(email, startDate, endDate);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema accesso DB!");
 			}
 		}
 			

@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,6 +29,8 @@ maxFileSize = 1024 * 1024 * 10, // 10MB
 maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class ModificaProdottoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
        
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,7 +57,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			dispo = (List<DisponibilitaBean>) dao2.doRetrieveByKey(code);
 			
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		
 		try {

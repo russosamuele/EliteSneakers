@@ -48,6 +48,7 @@
 	<div class="container">
 		<h1>Il tuo carrello</h1>
 		<table class="table table-sm table-dark table-hover table-bordered">  
+			<caption> </caption>
 			<thead>
 				<tr>
 					<th scope="col">Prodotto</th>

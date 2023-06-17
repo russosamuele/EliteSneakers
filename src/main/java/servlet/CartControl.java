@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +21,9 @@ import model.ProductDAO;
 @WebServlet("/CartControl")
 public class CartControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	private static Logger logger = Logger.getAnonymousLogger();
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
@@ -55,7 +59,7 @@ public class CartControl extends HttpServlet {
 				try {
 					carrello.addProduct(productDao.doRetrieveByKey(code), taglia);
 				} catch (SQLException e) {
-					e.printStackTrace();
+					logger.log(Level.WARNING, "Problema accesso DB!");
 				}
 				break;
 			}
@@ -63,7 +67,7 @@ public class CartControl extends HttpServlet {
 				try {
 					carrello.deleteProduct(productDao.doRetrieveByKey(code), taglia);
 				} catch (SQLException e) {
-					e.printStackTrace();
+					logger.log(Level.WARNING, "Problema accesso DB!");
 				}
 				break;
 			}

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +24,8 @@ import model.ProductDAO;
 @WebServlet("/CatalogoFilter")
 public class CatalogoFilter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,14 +61,14 @@ public class CatalogoFilter extends HttpServlet {
 			try {
 				listProductBean = new ArrayList<>(dao.doRetrieveByFiltri(prezzoMin, prezzoMax));
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema accesso DB!");
 			}
 		
 		}else {
 			try {
 				listProductBean = new ArrayList<>(dao.doRetrieveByFiltri(prezzoMin, prezzoMax, brand));
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema accesso DB!");
 			}
 			
 		}
@@ -77,7 +81,7 @@ public class CatalogoFilter extends HttpServlet {
 				FinalProduct finalToPut = new FinalProduct(pBean, DDao.doRetrieveByKey(pBean.getCode()));
 				listSneakers.add(finalToPut);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema accesso DB!");
 			}
 		}
 		

@@ -4,14 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONObject;
 
 import model.UserBean;
 import model.UserDAO;
@@ -23,6 +23,8 @@ import model.UserDAO;
 @WebServlet("/EmailDisponibility")
 public class EmailDisponibility extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
 	
 	 
 	
@@ -58,7 +60,7 @@ public class EmailDisponibility extends HttpServlet {
 			try {
 				processRequest(request, response);
 			} catch (SQLException | IOException | ParseException e) {
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema accesso DB!");
 			}
 		
 		
@@ -69,7 +71,7 @@ public class EmailDisponibility extends HttpServlet {
         try {
 			processRequest(request, response);
 		} catch (IOException | SQLException | ParseException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
     }
     

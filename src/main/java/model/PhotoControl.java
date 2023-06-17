@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -16,6 +18,7 @@ import javax.sql.DataSource;
 public class PhotoControl {
 	
 	private static DataSource ds;
+	private static Logger logger = Logger.getAnonymousLogger();
 	
 	static {
 		
@@ -27,12 +30,12 @@ public class PhotoControl {
 			ds = (DataSource) envCtx.lookup("jdbc/elitesneakers");
 
 		} catch (NamingException e) {
-			System.out.println("Error:" + e.getMessage());
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 	}
 	
 	
-	public synchronized static byte[] load(int id) throws SQLException {
+	public static synchronized byte[] load(int id) throws SQLException {
 
 		Connection connection = null;
 		PreparedStatement stmt = null;
@@ -52,14 +55,14 @@ public class PhotoControl {
 			}
 
 		} catch (SQLException sqlException) {
-			System.out.println(sqlException);
+			logger.log(Level.WARNING, "Problema SQL!");
 		} 
 			finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException sqlException) {
-				System.out.println(sqlException);
+				logger.log(Level.WARNING, "Problema SQL!");
 			} finally {
 				if (connection != null) 
 					connection.close();
@@ -70,7 +73,7 @@ public class PhotoControl {
 	
 	
 	
-	public synchronized static void updatePhoto(int idA, InputStream photo) throws SQLException {
+	public static synchronized void updatePhoto(int idA, InputStream photo) throws SQLException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		
@@ -82,14 +85,14 @@ public class PhotoControl {
 				stmt.setInt(2, idA);	
 				stmt.executeUpdate();
 			} catch (IOException e) {
-				System.out.println(e);
+				logger.log(Level.WARNING, "Problema IO!");
 			}
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException sqlException) {
-				System.out.println(sqlException);
+				logger.log(Level.WARNING, "Problema SQL!");
 			} finally {
 				if (con != null)
 					con.close();

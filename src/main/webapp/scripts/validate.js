@@ -238,7 +238,7 @@ function validateCVV() {
 
 
 function checkCheckout(obj) {
-	var check = true;
+	let check = true;
 	if (!validateNumCarta()) check = false;
 	if (!validateScadenzaCarta()) check = false;
 	if (!validateCVV()) check = false;
@@ -248,7 +248,7 @@ function checkCheckout(obj) {
 
 
 function checkFormUpdate(obj){
-	var check = true;
+	let check = true;
 	if(!checkPswd())
 		check=false;
 		

@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.HelperClass;
 import model.UserBean;
@@ -24,6 +25,8 @@ import model.UserDAO;
 @WebServlet("/SignupServlet")
 public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
        
     
     public SignupServlet() {
@@ -46,7 +49,7 @@ public class SignupServlet extends HttpServlet {
 		try {
 			dataNascita = new SimpleDateFormat("yyyy-mm-dd").parse(dNascita);
 		} catch (ParseException e2) {
-			e2.printStackTrace();
+			logger.log(Level.WARNING, "Problema parse!");
 		}
 	
 		
@@ -63,7 +66,7 @@ public class SignupServlet extends HttpServlet {
 		try {
 			user = new UserBean();
 		} catch (ParseException e1) {
-			e1.printStackTrace();
+			logger.log(Level.WARNING, "Problema parse!");
 		}
 		
 		user.setEmail(email);
@@ -79,7 +82,7 @@ public class SignupServlet extends HttpServlet {
 			userdao.doSave(user);
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		
 		

@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +23,8 @@ import model.UserBean;
 @WebServlet("/VisualizzaOrdiniUtente")
 public class VisualizzaOrdiniUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger = Logger.getAnonymousLogger();
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,7 +45,7 @@ public class VisualizzaOrdiniUtente extends HttpServlet {
 		try {
 			ordineList = (List<OrdineBean>) oDAO.doRetrieveByEmail(email ,"data");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		
 		

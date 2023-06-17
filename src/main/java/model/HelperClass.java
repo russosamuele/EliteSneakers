@@ -1,8 +1,12 @@
 package model;
 
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HelperClass {
+	
+	private static Logger logger = Logger.getAnonymousLogger();
 	
 	public static String toHash(String password) {
         String hashString = null;
@@ -16,7 +20,7 @@ public class HelperClass {
                               ).toLowerCase().substring(1,3);
             }
         } catch (java.security.NoSuchAlgorithmException e) {
-            System.out.println(e);
+        	logger.log(Level.WARNING, "Problema hash pswd!");
         }
         return hashString;
     }

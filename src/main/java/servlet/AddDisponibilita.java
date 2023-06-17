@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.DisponibilitaBean;
 import model.DisponibilitaDAO;
-import model.HelperClass;
-import model.ProductBean;
-import model.ProductDAO;
 
 /**
  * Servlet implementation class AddDisponibilita
