@@ -27,9 +27,8 @@ public class AccessControlFilter extends HttpFilter implements Filter {
 		String str = (String) httpServletRequest.getSession().getAttribute("isAdmin");
 		
 		boolean isAdmin=false;
-		if(str != null)
-			if(str.equals("true")) 
-				isAdmin = true;
+		if(str != null && str.equals("true"))
+			isAdmin = true;
 		
 	
 		String path = httpServletRequest.getServletPath();

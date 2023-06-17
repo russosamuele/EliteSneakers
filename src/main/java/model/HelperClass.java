@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 
 public class HelperClass {
 	
+	private HelperClass() {
+	}
 	private static Logger logger = Logger.getAnonymousLogger();
 	
 	public static String toHash(String password) {

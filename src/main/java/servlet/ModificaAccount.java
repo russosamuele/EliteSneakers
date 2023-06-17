@@ -22,7 +22,7 @@ import model.UserDAO;
 public class ModificaAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static Logger logger = Logger.getAnonymousLogger();
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -83,6 +83,7 @@ public class ModificaAccount extends HttpServlet {
 		}
 		
 		
+		Logger logger = Logger.getAnonymousLogger();
 	
 		if (check) { //non voglio aggiornare la password
 

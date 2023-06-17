@@ -1,7 +1,5 @@
 package model;
 
-import org.apache.naming.java.javaURLContextFactory;
-
 public class DisponibilitaBean {
 	private int codice_prod;
 	private int quantita;
