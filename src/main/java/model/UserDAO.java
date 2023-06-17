@@ -137,7 +137,7 @@ public class UserDAO{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<UserBean> products = new LinkedList<UserBean>();
+		Collection<UserBean> products = new LinkedList<>();
 
 		String selectSQL = "SELECT * FROM " + UserDAO.TABLE_NAME;
 

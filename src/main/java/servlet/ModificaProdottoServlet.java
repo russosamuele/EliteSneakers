@@ -53,7 +53,6 @@ public class ModificaProdottoServlet extends HttpServlet {
 			dispo = (List<DisponibilitaBean>) dao2.doRetrieveByKey(code);
 			
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		

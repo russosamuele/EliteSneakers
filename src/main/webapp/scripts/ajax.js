@@ -1,11 +1,11 @@
 function tryEmail() {
-    var input = document.getElementById('email').value;
-    var params = 'email=' + input;
+    let input = document.getElementById('email').value;
+    let params = 'email=' + input;
     loadAjaxDoc('../EmailDisponibility', "GET", params, handleEmail);
 }
 
 function createXMLHttpRequest() {
-	var request;
+	let request;
 	try {
 		// Firefox 1+, Chrome 1+, Opera 8+, Safari 1.2+, Edge 12+, Internet Explorer 7+
 		request = new XMLHttpRequest();
@@ -26,7 +26,7 @@ function createXMLHttpRequest() {
 }
 
 function loadAjaxDoc(url, method, params, cFuction) {
-	var request = createXMLHttpRequest();
+	let request = createXMLHttpRequest();
 	if(request){
 		
 		request.onreadystatechange = function() {
@@ -73,8 +73,8 @@ function loadAjaxDoc(url, method, params, cFuction) {
 }
 
 function handleEmail(request){
-	var response = request.responseXML.documentElement;
-	var result = response.getElementsByTagName("result")[0].firstChild.nodeValue;
+	let response = request.responseXML.documentElement;
+	let result = response.getElementsByTagName("result")[0].firstChild.nodeValue;
     document.getElementById("emailCheckDisponibility").innerHTML = result;
     document.getElementById("emailCheckDisponibility").style.color="red";
     

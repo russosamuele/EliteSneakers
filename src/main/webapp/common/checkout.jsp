@@ -50,15 +50,16 @@
         <h3>Informazioni della carta</h3>
         
         <label for="cardNumber">Numero di carta:</label>
-        <input class="inputField" type="text" id="cardNumber" name="cardNumber" required onBlur="return validateNumCarta()"> <span id="cardNumberError"></span><br>
+        <input class="inputField" type="text" id="cardNumber" name="cardNumber" required onChange="return validateNumCarta()"> <span id="cardNumberError"></span><br>
 
         <label for="expirationDate">Data di scadenza:</label>
-        <input class="inputField" type="date" id="expirationDate" name="expirationDate" required onBlur="return validateScadenzaCarta()"> <span id="expiryError"></span><br>
+        <input class="inputField" type="date" id="expirationDate" name="expirationDate" required onChange="return validateScadenzaCarta()"> <span id="expiryError"></span><br>
 
         <label for="cvv">CVV:</label>
-        <input class="inputField" type="text" id="cvv" name="cvv" required onBlur="return validateCVV()"> <span id="CVVError"></span><br>
+        <input class="inputField" type="text" id="cvv" name="cvv" required onChange="return validateCVV()"> <span id="CVVError"></span><br>
 
         <input type="submit" class="btn btn-primary"value="Conferma Ordine">
+        
         
     </form>
     

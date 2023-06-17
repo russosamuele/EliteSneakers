@@ -40,7 +40,6 @@ public class GetSneakersList extends HttpServlet {
 		try {
 			listProductBean = new ArrayList<>(PDao.doRetrieveAll("brand"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		for (ProductBean pBean : listProductBean) {	
@@ -48,7 +47,6 @@ public class GetSneakersList extends HttpServlet {
 				FinalProduct finalToPut = new FinalProduct(pBean, DDao.doRetrieveByKey(pBean.getCode()));
 				listSneakers.add(finalToPut);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -72,6 +70,8 @@ public class GetSneakersList extends HttpServlet {
 		case 4:
 			dispatcher = this.getServletContext().getRequestDispatcher("/admin/ModificaProdotto.jsp");
 			dispatcher.forward(request, response);
+			break;
+		default:
 			break;
 		
 		}

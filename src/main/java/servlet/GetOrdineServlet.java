@@ -49,7 +49,6 @@ public class GetOrdineServlet extends HttpServlet {
 		try {
 			listaDettagliOrdine = (List<DettaglioOrdineBean>) DODao.doRetrieveByKey(code);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		List <String> nomeSneaker = new LinkedList<>();
@@ -69,7 +68,6 @@ public class GetOrdineServlet extends HttpServlet {
 		try {
 			finalToPut = new FinalOrder(ODao.doRetrieveByKey(code), listaDettagliOrdine, nomeSneaker);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

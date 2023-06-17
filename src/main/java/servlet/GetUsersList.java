@@ -55,6 +55,8 @@ public class GetUsersList extends HttpServlet {
 			dispatcher = this.getServletContext().getRequestDispatcher("/admin/visualizzaOrdiniAdmin.jsp");
 			dispatcher.forward(request, response);
 			break;
+		default:
+			break;
 		}
 		
 		

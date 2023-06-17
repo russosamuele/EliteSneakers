@@ -38,6 +38,7 @@
 		<section class="visualizzaOrdiniUser">
 		<p>Questi sono i dettagli dell'ordine <%=code%> effettuato in data <%=ordine.getOrdine().getDataOrdine()%> </p>
 		<table class="table table-sm table-dark table-hover table-bordered">  
+			<caption> </caption>
         <tr>
             <th scope="col">Nome Prodotto</th>
             <th scope="col">Quantita</th>

@@ -67,6 +67,7 @@ public class CartControl extends HttpServlet {
 				}
 				break;
 			}
+			default: break;
 			}
 		}
 		
@@ -81,7 +82,6 @@ public class CartControl extends HttpServlet {
 		if (redirect != null && redirect.equals("carrello")) {
 			dispatcher = this.getServletContext().getRequestDispatcher("/common/cart.jsp");
 			dispatcher.forward(request, response);
-			return;
 		}
 
 		

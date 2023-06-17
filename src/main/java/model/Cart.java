@@ -29,7 +29,7 @@ public class Cart implements Serializable{
 				if (item.getQuantita() > 1) {
 					item.setQuantita(item.getQuantita() - 1);
 				} else {
-					items.removeIf((a) -> a.getProductBean().getCode() == product.getCode());
+					items.removeIf(a -> a.getProductBean().getCode() == product.getCode());
 				}
 				return;
 			}

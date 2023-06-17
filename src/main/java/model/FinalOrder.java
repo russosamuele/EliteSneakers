@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Collection;
 import java.util.List;
 
 public class FinalOrder {
@@ -12,7 +11,7 @@ public class FinalOrder {
 	
 	public FinalOrder(OrdineBean ordine, List<DettaglioOrdineBean> dettagli, List<String> nomeSnekear) {
 		this.ordine = ordine;
-		this.dettagli = (List<DettaglioOrdineBean>) dettagli;
+		this.dettagli = dettagli;
 		this.nomeSnekear = nomeSnekear;
 	}
 

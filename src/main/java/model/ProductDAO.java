@@ -130,7 +130,7 @@ public class ProductDAO{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<ProductBean> products = new LinkedList<ProductBean>();
+		Collection<ProductBean> products = new LinkedList<>();
 
 		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME;
 
@@ -173,7 +173,7 @@ public class ProductDAO{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<ProductBean> products = new LinkedList<ProductBean>();
+		Collection<ProductBean> products = new LinkedList<>();
 
 		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME + " WHERE prezzo >= ? AND prezzo <= ?";
 
@@ -215,7 +215,7 @@ public class ProductDAO{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<ProductBean> products = new LinkedList<ProductBean>();
+		Collection<ProductBean> products = new LinkedList<>();
 
 		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME + " WHERE prezzo >= ? AND prezzo <= ? AND brand = ? ";
 

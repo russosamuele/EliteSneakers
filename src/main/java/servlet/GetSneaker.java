@@ -39,26 +39,28 @@ public class GetSneaker extends HttpServlet {
 		try {
 			pBean = PDao.doRetrieveByKey(code);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		FinalProduct finalToPut = null;
 		try {
 			finalToPut = new FinalProduct(pBean, DDao.doRetrieveByKey(pBean.getCode()));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		request.setAttribute("sneaker", finalToPut);
 		int idRequest = (int) request.getAttribute("id");
 		RequestDispatcher dispatcher;
+		
 		switch(idRequest) {
 		case 1: 
 			dispatcher = this.getServletContext().getRequestDispatcher("/common/product.jsp");
 			dispatcher.forward(request, response);
 			break;
+		default:
+			break;
 		}
+		
 		
 		
 	}

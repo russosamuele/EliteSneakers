@@ -73,7 +73,8 @@
 	%>
     
     <div id="DivOrdini">
-	<table class="table table-sm table-dark table-hover table-bordered">  
+	<table class="table table-sm table-dark table-hover table-bordered"> 
+		<caption> </caption> 
         <tr>
             <th scope="col">Numero Ordine</th>
             <th scope="col">Utente</th>

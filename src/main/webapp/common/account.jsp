@@ -56,11 +56,8 @@
 		
 		%>
 		
-		<!--  va creata uan servlet per la modifica account -->
 		
-		<!-- onsubmit="event.preventDefault();checkFormUpdate(this)" //da aggiungere -->
-		
-		<form action="<%=request.getContextPath()%>/ModificaAccount" method="post" name="updateAccount" id="updateAccount">  
+		<form action="<%=request.getContextPath()%>/ModificaAccount" method="post" name="updateAccount" id="updateAccount" onsubmit="event.preventDefault();checkFormUpdate(this)">  
 					
 			
 			<label for="address">Indirizzo:</label>
@@ -76,7 +73,7 @@
 			<input class="inputField" type="password" id="nuovaPassword" name="nuovaPassword" onBlur="return checkPswd()"> <span id="matchError"></span><br>
 			
 			
-			<button type="submit">Aggiorna</button>
+			<input class="btn btn-primary" type="submit" value="Aggiorna">
 			
 		</form>
 		

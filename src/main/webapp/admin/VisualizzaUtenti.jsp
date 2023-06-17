@@ -38,6 +38,7 @@
 	
 		<h2>Tutti gli Utenti</h2>
 		<table class="table table-sm table-dark table-hover table-bordered">  
+			<caption> </caption>
 			<thead>
 				<tr>
 					<th scope="col">Nome</th>

@@ -118,9 +118,9 @@ footer {
 .signupSection{
 	width: 100%;
 	color:white;
-	padding-top:30px;
+	padding-top:20px;
 	background-image: url(../images/background.png);
-    height: 100vh;
+    /*height: 100vh;*/
 	background-position: center;
     background-size: cover;
     /*display: grid;*/
@@ -208,14 +208,14 @@ footer {
   	transform: translate(-50%, -50%);
 }
 
-#signupDiv{
-	padding-top:460px;
+/*#signupDiv{
+	padding-top:410px;
 	width:50%;
 	position: absolute;
   	top: 40%;
   	left: 50%;
   	transform: translate(-50%, -50%);
-}
+}*/
 
 #accountDiv{
 	padding-top:460px;

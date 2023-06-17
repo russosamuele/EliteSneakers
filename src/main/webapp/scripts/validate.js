@@ -148,7 +148,7 @@ function validatePassword() {
 
 
 function checkSignup(obj) {
-	var check = true;
+	let check = true;
 	if (!validateNome()) check = false;
 	if (!validateCognome()) check = false;
 	if (!validateEmail()) check = false;
