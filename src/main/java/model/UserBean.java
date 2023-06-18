@@ -13,7 +13,7 @@ public class UserBean implements Serializable {
 		String cognome;
 		String passwd;
 		String indirizzo;
-		String indirizzo_spedizione;
+		String indirizzoSpedizione;
 		boolean isAdmin;
 		Date dataNascita;
 
@@ -23,7 +23,7 @@ public class UserBean implements Serializable {
 			cognome = "";
 			passwd = "";
 			indirizzo = "";
-			indirizzo_spedizione = "";
+			indirizzoSpedizione = "";
 			isAdmin = false;
 			
 			
@@ -79,11 +79,11 @@ public class UserBean implements Serializable {
 		}
 
 		public String getIndirizzo_spedizione() {
-			return indirizzo_spedizione;
+			return indirizzoSpedizione;
 		}
 
-		public void setIndirizzo_spedizione(String indirizzo_spedizione) {
-			this.indirizzo_spedizione = indirizzo_spedizione;
+		public void setIndirizzo_spedizione(String indirizzoSpedizione) {
+			this.indirizzoSpedizione = indirizzoSpedizione;
 		}
 
 		public boolean isAdmin() {
@@ -97,7 +97,7 @@ public class UserBean implements Serializable {
 		@Override
 		public String toString() {
 			return "UserBean [email=" + email + ", nome=" + nome + ", cognome=" + cognome + ", passwd=" + passwd
-					+ ", Data nascita=" + dataNascita + ", indirizzo=" + indirizzo + ", indirizzo_spedizione=" + indirizzo_spedizione
+					+ ", Data nascita=" + dataNascita + ", indirizzo=" + indirizzo + ", indirizzo_spedizione=" + indirizzoSpedizione
 					+ ", isAdmin=" + isAdmin + "]";
 		}
 		

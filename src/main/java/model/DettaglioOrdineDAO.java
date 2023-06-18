@@ -34,9 +34,7 @@ private static Logger logger = Logger.getAnonymousLogger();
 	private static final String TABLE_NAME = "DettaglioOrdine";
 	
 	
-	
-	
-	public synchronized void doSave(DettaglioOrdineBean DettOrdine) throws SQLException { //salva un ordine
+	public synchronized void doSave(DettaglioOrdineBean dettOrdine) throws SQLException { //salva un ordine
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -49,10 +47,10 @@ private static Logger logger = Logger.getAnonymousLogger();
 			connection = ds.getConnection();
 			connection.setAutoCommit(true);
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, DettOrdine.getNumeroOrd());
-			preparedStatement.setInt(2, DettOrdine.getCodiceProdotto());
-			preparedStatement.setInt(3, DettOrdine.getQuantita());
-			preparedStatement.setDouble(4, DettOrdine.getPrezzo());
+			preparedStatement.setInt(1, dettOrdine.getNumeroOrd());
+			preparedStatement.setInt(2, dettOrdine.getCodiceProdotto());
+			preparedStatement.setInt(3, dettOrdine.getQuantita());
+			preparedStatement.setDouble(4, dettOrdine.getPrezzo());
 			
 			preparedStatement.executeUpdate();
 			
@@ -137,7 +135,7 @@ private static Logger logger = Logger.getAnonymousLogger();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<DettaglioOrdineBean> DettagliOrdini = new LinkedList<>();
+		Collection<DettaglioOrdineBean> dettagliOrdini = new LinkedList<>();
 		DettaglioOrdineBean bean = new DettaglioOrdineBean();
 
 		String selectSQL = "SELECT * FROM " + DettaglioOrdineDAO.TABLE_NAME;
@@ -159,7 +157,7 @@ private static Logger logger = Logger.getAnonymousLogger();
 				bean.setQuantita(rs.getInt("quantita"));
 				bean.setPrezzo(rs.getDouble("prezzo"));
 				
-				DettagliOrdini.add(bean);
+				dettagliOrdini.add(bean);
 			}
 
 		} finally {
@@ -171,7 +169,7 @@ private static Logger logger = Logger.getAnonymousLogger();
 					connection.close();
 			}
 		}
-		return DettagliOrdini;
+		return dettagliOrdini;
 	}
 
 }

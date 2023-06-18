@@ -34,19 +34,19 @@ public class GetSneakersList extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDAO PDao = new ProductDAO();
-		DisponibilitaDAO DDao = new DisponibilitaDAO();
+		ProductDAO pDao = new ProductDAO();
+		DisponibilitaDAO dDao = new DisponibilitaDAO();
 		List <FinalProduct> listSneakers = new ArrayList<>();
 		ArrayList<ProductBean> listProductBean = null;
 
 		try {
-			listProductBean = new ArrayList<>(PDao.doRetrieveAll("brand"));
+			listProductBean = new ArrayList<>(pDao.doRetrieveAll("brand"));
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		for (ProductBean pBean : listProductBean) {	
 			try {
-				FinalProduct finalToPut = new FinalProduct(pBean, DDao.doRetrieveByKey(pBean.getCode()));
+				FinalProduct finalToPut = new FinalProduct(pBean, dDao.doRetrieveByKey(pBean.getCode()));
 				listSneakers.add(finalToPut);
 			} catch (SQLException e) {
 				logger.log(Level.WARNING, "Problema accesso DB!");

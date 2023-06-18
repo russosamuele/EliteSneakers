@@ -75,6 +75,8 @@
 		
 		<p>Hai già un account? <a href="<%=request.getContextPath()%>/common/login.jsp">Accedi qui</a></p>
 		
+		<br>
+		
 		</div>
 		
 		</section>

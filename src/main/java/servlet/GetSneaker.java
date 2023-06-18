@@ -32,18 +32,18 @@ public class GetSneaker extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDAO PDao = new ProductDAO();
-		DisponibilitaDAO DDao = new DisponibilitaDAO();
+		ProductDAO pDao = new ProductDAO();
+		DisponibilitaDAO dDao = new DisponibilitaDAO();
 		ProductBean pBean = null;
 		int code = (int) request.getAttribute("code");
 		try {
-			pBean = PDao.doRetrieveByKey(code);
+			pBean = pDao.doRetrieveByKey(code);
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, "Problema accesso DB!");
 		}
 		FinalProduct finalToPut = null;
 		try {
-			finalToPut = new FinalProduct(pBean, DDao.doRetrieveByKey(pBean.getCode()));
+			finalToPut = new FinalProduct(pBean, dDao.doRetrieveByKey(pBean.getCode()));
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, "Problema accesso DB!");
 		}

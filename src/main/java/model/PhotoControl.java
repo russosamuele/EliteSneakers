@@ -17,8 +17,14 @@ import javax.sql.DataSource;
 
 public class PhotoControl {
 	
+	private PhotoControl() {
+		
+	}
+	
 	private static DataSource ds;
 	private static Logger logger = Logger.getAnonymousLogger();
+	private static final String LOG_MSG = "Problema accesso al DB";
+	private static final String LOG_MSG1 = "Problema SQL";
 	
 	static {
 		
@@ -30,7 +36,7 @@ public class PhotoControl {
 			ds = (DataSource) envCtx.lookup("jdbc/elitesneakers");
 
 		} catch (NamingException e) {
-			logger.log(Level.WARNING, "Problema accesso DB!");
+			logger.log(Level.WARNING, LOG_MSG);
 		}
 	}
 	
@@ -55,14 +61,14 @@ public class PhotoControl {
 			}
 
 		} catch (SQLException sqlException) {
-			logger.log(Level.WARNING, "Problema SQL!");
+			logger.log(Level.WARNING, LOG_MSG);
 		} 
 			finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException sqlException) {
-				logger.log(Level.WARNING, "Problema SQL!");
+				logger.log(Level.WARNING, LOG_MSG1);
 			} finally {
 				if (connection != null) 
 					connection.close();
@@ -92,7 +98,7 @@ public class PhotoControl {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException sqlException) {
-				logger.log(Level.WARNING, "Problema SQL!");
+				logger.log(Level.WARNING, LOG_MSG1);
 			} finally {
 				if (con != null)
 					con.close();

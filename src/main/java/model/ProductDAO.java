@@ -33,6 +33,13 @@ public class ProductDAO{
 
 	private static final String TABLE_NAME = "Prodotto";
 	
+	//stringhe costanti per evitare duplicazioni
+	private static final String CODICE_PRODOTTO = "codice_prod";
+	private static final String BRAND = "brand";
+	private static final String MODELLO = "modello";
+	private static final String PHOTO = "photo";
+	private static final String DESCRIZIONE = "descrizione";
+	private static final String PREZZO = "prezzo";
 	
 	
 	
@@ -107,12 +114,12 @@ public class ProductDAO{
 			preparedStatement.setInt(1, code);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				bean.setCode(rs.getInt("codice_prod"));
-				bean.setBrand(rs.getString("brand"));
-				bean.setModello(rs.getString("modello"));
-				bean.setPhoto(rs.getBytes("photo"));
-				bean.setDescrizione(rs.getString("descrizione"));
-				bean.setPrice(rs.getInt("prezzo"));
+				bean.setCode(rs.getInt(CODICE_PRODOTTO));
+				bean.setBrand(rs.getString(BRAND));
+				bean.setModello(rs.getString(MODELLO));
+				bean.setPhoto(rs.getBytes(PHOTO));
+				bean.setDescrizione(rs.getString(DESCRIZIONE));
+				bean.setPrice(rs.getInt(PREZZO));
 			}
 			
 			
@@ -149,12 +156,12 @@ public class ProductDAO{
 
 			while (rs.next()) {
 				ProductBean bean = new ProductBean();
-				bean.setCode(rs.getInt("codice_prod"));
-				bean.setBrand(rs.getString("brand"));
-				bean.setModello(rs.getString("modello"));
-				bean.setPhoto(rs.getBytes("photo"));
-				bean.setDescrizione(rs.getString("descrizione"));
-				bean.setPrice(rs.getInt("prezzo"));
+				bean.setCode(rs.getInt(CODICE_PRODOTTO));
+				bean.setBrand(rs.getString(BRAND));
+				bean.setModello(rs.getString(MODELLO));
+				bean.setPhoto(rs.getBytes(PHOTO));
+				bean.setDescrizione(rs.getString(DESCRIZIONE));
+				bean.setPrice(rs.getInt(PREZZO));
 				products.add(bean);
 			}
 
@@ -192,12 +199,12 @@ public class ProductDAO{
 
 			while (rs.next()) {
 				ProductBean bean = new ProductBean();
-				bean.setCode(rs.getInt("codice_prod"));
-				bean.setBrand(rs.getString("brand"));
-				bean.setModello(rs.getString("modello"));
-				bean.setPhoto(rs.getBytes("photo"));
-				bean.setDescrizione(rs.getString("descrizione"));
-				bean.setPrice(rs.getInt("prezzo"));
+				bean.setCode(rs.getInt(CODICE_PRODOTTO));
+				bean.setBrand(rs.getString(BRAND));
+				bean.setModello(rs.getString(MODELLO));
+				bean.setPhoto(rs.getBytes(PHOTO));
+				bean.setDescrizione(rs.getString(DESCRIZIONE));
+				bean.setPrice(rs.getInt(PREZZO));
 				products.add(bean);
 			}
 
@@ -235,12 +242,12 @@ public class ProductDAO{
 
 			while (rs.next()) {
 				ProductBean bean = new ProductBean();
-				bean.setCode(rs.getInt("codice_prod"));
-				bean.setBrand(rs.getString("brand"));
-				bean.setModello(rs.getString("modello"));
-				bean.setPhoto(rs.getBytes("photo"));
-				bean.setDescrizione(rs.getString("descrizione"));
-				bean.setPrice(rs.getInt("prezzo"));
+				bean.setCode(rs.getInt(CODICE_PRODOTTO));
+				bean.setBrand(rs.getString(BRAND));
+				bean.setModello(rs.getString(MODELLO));
+				bean.setPhoto(rs.getBytes(PHOTO));
+				bean.setDescrizione(rs.getString(DESCRIZIONE));
+				bean.setPrice(rs.getInt(PREZZO));
 				products.add(bean);
 			}
 

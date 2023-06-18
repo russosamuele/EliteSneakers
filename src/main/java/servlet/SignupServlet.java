@@ -42,7 +42,7 @@ public class SignupServlet extends HttpServlet {
 		String passwd = HelperClass.filter(request.getParameter("password"));
 		String confPass = HelperClass.filter(request.getParameter("conferma_password"));
 		String indirizzo = HelperClass.filter(request.getParameter("indirizzo"));
-		String indirizzo_spedizione = HelperClass.filter(request.getParameter("indirizzo_spedizione"));
+		String indirizzoSpedizione = HelperClass.filter(request.getParameter("indirizzo_spedizione"));
 		String dNascita = (String) request.getParameter("dataNascita");
 		Date dataNascita = null;
 		
@@ -74,7 +74,7 @@ public class SignupServlet extends HttpServlet {
 		user.setCognome(cognome);
 		user.setPasswd(HelperClass.toHash(passwd));
 		user.setIndirizzo(indirizzo);
-		user.setIndirizzo_spedizione(indirizzo_spedizione);
+		user.setIndirizzo_spedizione(indirizzoSpedizione);
 		user.setDataNascita(dataNascita);
 		
 		UserDAO userdao = new UserDAO();

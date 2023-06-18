@@ -35,6 +35,11 @@ public class OrdineDAO {
 
 	private static final String TABLE_NAME = "Ordine";
 	
+	//stringhe costanti per evitare duplicazioni
+	private static final String NUM_ORDINE = "numero_ord";
+	private static final String EMAIL = "email";
+	private static final String DATA = "data";
+	
 	
 	
 	
@@ -111,9 +116,9 @@ public class OrdineDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while (rs.next()) {
-				bean.setNumeroOrd(rs.getInt("numero_ord"));
-				bean.setEmail(rs.getString("email"));
-				bean.setDataOrdine(rs.getDate("data"));
+				bean.setNumeroOrd(rs.getInt(NUM_ORDINE));
+				bean.setEmail(rs.getString(EMAIL));
+				bean.setDataOrdine(rs.getDate(DATA));
 			}
 		} finally {
 			try {
@@ -149,9 +154,9 @@ public class OrdineDAO {
 
 			while (rs.next()) {
 				OrdineBean bean = new OrdineBean();
-				bean.setNumeroOrd(rs.getInt("numero_ord"));
-				bean.setEmail(rs.getString("email"));
-				bean.setDataOrdine(rs.getDate("data"));
+				bean.setNumeroOrd(rs.getInt(NUM_ORDINE));
+				bean.setEmail(rs.getString(EMAIL));
+				bean.setDataOrdine(rs.getDate(DATA));
 				
 				
 				ordini.add(bean);
@@ -192,9 +197,9 @@ public class OrdineDAO {
 
 			while (rs.next()) {
 				OrdineBean bean = new OrdineBean();
-				bean.setNumeroOrd(rs.getInt("numero_ord"));
-				bean.setEmail(rs.getString("email"));
-				bean.setDataOrdine(rs.getDate("data"));
+				bean.setNumeroOrd(rs.getInt(NUM_ORDINE));
+				bean.setEmail(rs.getString(EMAIL));
+				bean.setDataOrdine(rs.getDate(DATA));
 				
 				ordini.add(bean);
 			}
@@ -265,9 +270,9 @@ public class OrdineDAO {
 
 			while (rs.next()) {
 				OrdineBean bean = new OrdineBean();
-				bean.setNumeroOrd(rs.getInt("numero_ord"));
-				bean.setEmail(rs.getString("email"));
-				bean.setDataOrdine(rs.getDate("data"));
+				bean.setNumeroOrd(rs.getInt(NUM_ORDINE));
+				bean.setEmail(rs.getString(EMAIL));
+				bean.setDataOrdine(rs.getDate(DATA));
 				
 				ordini.add(bean);
 			}
@@ -306,9 +311,9 @@ public class OrdineDAO {
 
 			while (rs.next()) {
 				OrdineBean bean = new OrdineBean();
-				bean.setNumeroOrd(rs.getInt("numero_ord"));
-				bean.setEmail(rs.getString("email"));
-				bean.setDataOrdine(rs.getDate("data"));
+				bean.setNumeroOrd(rs.getInt(NUM_ORDINE));
+				bean.setEmail(rs.getString(EMAIL));
+				bean.setDataOrdine(rs.getDate(DATA));
 				
 				ordini.add(bean);
 			}

@@ -30,6 +30,8 @@ public class CheckoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static Logger logger = Logger.getAnonymousLogger();
+	
+	private static final String LOG_MSG = "Problema accesso DB!";
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -66,14 +68,14 @@ public class CheckoutServlet extends HttpServlet {
 			try {
 				DisponibilitaBean disp = dao.doRetrieveByKey(elem.getProductBean().getCode(), elem.getTaglia());
 				if(disp.getQuantita() < elem.getQuantita()) {
-					String QtaError = "Del prodotto " + elem.getProductBean().getBrand() + " " + elem.getProductBean().getModello() + " sono disponibili solo: " + disp.getQuantita() + " pezzi";
-					request.setAttribute("QtaError", QtaError);
+					String qtaError = "Del prodotto " + elem.getProductBean().getBrand() + " " + elem.getProductBean().getModello() + " sono disponibili solo: " + disp.getQuantita() + " pezzi";
+					request.setAttribute("QtaError", qtaError);
 					request.getRequestDispatcher("common/cart.jsp").forward(request, response);
 					return;
 				}
 					
 			} catch (SQLException e) {
-				logger.log(Level.WARNING, "Problema accesso DB!");
+				logger.log(Level.WARNING, LOG_MSG);
 			}
 		}
 		
@@ -96,7 +98,7 @@ public class CheckoutServlet extends HttpServlet {
 		try {
 			ordinedao.doSave(ordine);
 		} catch (SQLException e) {
-			logger.log(Level.WARNING, "Problema accesso DB!");
+			logger.log(Level.WARNING, LOG_MSG);
 		}
 
 		DettaglioOrdineDAO dettaglioOrdineDAO = new DettaglioOrdineDAO();
@@ -122,7 +124,7 @@ public class CheckoutServlet extends HttpServlet {
 			try {
 				dDDAO.doUpdate(elem.getProductBean().getCode(), elem.getTaglia(), elem.getQuantita());
 			} catch (SQLException e) {
-				logger.log(Level.WARNING, "Problema accesso DB!");
+				logger.log(Level.WARNING, LOG_MSG);
 			}
 		}
 		

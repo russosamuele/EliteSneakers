@@ -24,7 +24,7 @@ import model.UserDAO;
 public class GetUsersList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static Logger logger = Logger.getAnonymousLogger();
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -32,10 +32,12 @@ public class GetUsersList extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserDAO UDao = new UserDAO();
+		
+		Logger logger = Logger.getAnonymousLogger();
+		UserDAO uDao = new UserDAO();
 		List<UserBean> utenti = null;
 		try {
-			utenti = (List<UserBean>) UDao.doRetrieveAll("nome");
+			utenti = (List<UserBean>) uDao.doRetrieveAll("nome");
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, "Problema accesso DB!");
 		} catch (ParseException e) {

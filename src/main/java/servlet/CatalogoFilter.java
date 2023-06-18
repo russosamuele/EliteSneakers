@@ -54,6 +54,8 @@ public class CatalogoFilter extends HttpServlet {
 		
 		ProductDAO dao = new ProductDAO();
 		ArrayList<ProductBean> listProductBean = null;
+		
+		final String logString = "Problema accesso DB!";
 	
 		
 		
@@ -61,27 +63,27 @@ public class CatalogoFilter extends HttpServlet {
 			try {
 				listProductBean = new ArrayList<>(dao.doRetrieveByFiltri(prezzoMin, prezzoMax));
 			} catch (SQLException e) {
-				logger.log(Level.WARNING, "Problema accesso DB!");
+				logger.log(Level.WARNING, logString);
 			}
 		
 		}else {
 			try {
 				listProductBean = new ArrayList<>(dao.doRetrieveByFiltri(prezzoMin, prezzoMax, brand));
 			} catch (SQLException e) {
-				logger.log(Level.WARNING, "Problema accesso DB!");
+				logger.log(Level.WARNING, logString);
 			}
 			
 		}
 		
 		List <FinalProduct> listSneakers = new ArrayList<>();
-		DisponibilitaDAO DDao = new DisponibilitaDAO();
+		DisponibilitaDAO dDao = new DisponibilitaDAO();
 		
 		for (ProductBean pBean : listProductBean) {	
 			try {
-				FinalProduct finalToPut = new FinalProduct(pBean, DDao.doRetrieveByKey(pBean.getCode()));
+				FinalProduct finalToPut = new FinalProduct(pBean, dDao.doRetrieveByKey(pBean.getCode()));
 				listSneakers.add(finalToPut);
 			} catch (SQLException e) {
-				logger.log(Level.WARNING, "Problema accesso DB!");
+				logger.log(Level.WARNING, logString);
 			}
 		}
 		

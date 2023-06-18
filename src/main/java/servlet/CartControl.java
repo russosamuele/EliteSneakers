@@ -24,6 +24,9 @@ public class CartControl extends HttpServlet {
 	
 	private static Logger logger = Logger.getAnonymousLogger();
 	
+	private static final String CARRELLO = "carrello";
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
@@ -33,10 +36,10 @@ public class CartControl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Cart carrello = (Cart) request.getSession().getAttribute("carrello");
+		Cart carrello = (Cart) request.getSession().getAttribute(CARRELLO);
 		if (carrello == null) {
 			carrello = new Cart();
-			request.getSession().setAttribute("carrello", carrello);
+			request.getSession().setAttribute(CARRELLO, carrello);
 		}
 
 		String action = request.getParameter("action");
@@ -75,7 +78,7 @@ public class CartControl extends HttpServlet {
 			}
 		}
 		
-		request.getSession().setAttribute("carrello", carrello);
+		request.getSession().setAttribute(CARRELLO, carrello);
 		RequestDispatcher dispatcher;
 
 		if (redirect != null && redirect.equals("catalogo")) {
@@ -83,7 +86,7 @@ public class CartControl extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		}
-		if (redirect != null && redirect.equals("carrello")) {
+		if (redirect != null && redirect.equals(CARRELLO)) {
 			dispatcher = this.getServletContext().getRequestDispatcher("/common/cart.jsp");
 			dispatcher.forward(request, response);
 		}

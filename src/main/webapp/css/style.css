@@ -305,7 +305,7 @@ footer {
     padding-top:250px;
 	}
 	.signupSection{
-	padding-top:250px;
+	padding-top:50px;
 	}
 	.cartSection{
 	padding-top:5px
@@ -315,14 +315,14 @@ footer {
 
 @media(max-width:920px){
 	
-	#signupText{
-	display:none;
-	}
 	#signupDiv{
-	padding-top:600px;
+	padding-top:10px;
 	}
 	#accountDiv{
 	padding-top:600px;
+	}
+	#managementDiv{
+	padding-top:290px;
 	}
 }
 
@@ -347,6 +347,12 @@ footer {
 	padding-top:15px;
 	padding-left:15px;
 	}
+	
+	.loginSection{
+	padding-top:400px;
+	}
+	
+	
     
 }
 

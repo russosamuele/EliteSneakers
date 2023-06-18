@@ -38,11 +38,13 @@ public class GetOrdineServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDAO PDao = new ProductDAO();
+		ProductDAO pDao = new ProductDAO();
 		DettaglioOrdineDAO DODao = new DettaglioOrdineDAO();
 		ProductBean pBean = null;
 		
-		OrdineDAO ODao = new OrdineDAO();
+		OrdineDAO oDao = new OrdineDAO();
+		
+		final String LOG_MSG = "Problema accesso DB!";
 		
 		
 		int code = Integer.parseInt(request.getParameter("code"));
@@ -51,26 +53,26 @@ public class GetOrdineServlet extends HttpServlet {
 		try {
 			listaDettagliOrdine = (List<DettaglioOrdineBean>) DODao.doRetrieveByKey(code);
 		} catch (SQLException e) {
-			logger.log(Level.WARNING, "Problema accesso DB!");
+			logger.log(Level.WARNING, LOG_MSG);
 		}	
 		List <String> nomeSneaker = new LinkedList<>();
 		
 		try {
 		for (int i=0; i< listaDettagliOrdine.size(); i++) {
 			
-			pBean = PDao.doRetrieveByKey(listaDettagliOrdine.get(i).getCodiceProdotto());
+			pBean = pDao.doRetrieveByKey(listaDettagliOrdine.get(i).getCodiceProdotto());
 			String nomeBrandModello = pBean.getBrand() +" "+ pBean.getModello();
 			nomeSneaker.add(i, nomeBrandModello);
 		}
 		}catch (SQLException e) {
-			logger.log(Level.WARNING, "Problema accesso DB!");
+			logger.log(Level.WARNING, LOG_MSG);
 		}
 		
 		FinalOrder finalToPut = null;
 		try {
-			finalToPut = new FinalOrder(ODao.doRetrieveByKey(code), listaDettagliOrdine, nomeSneaker);
+			finalToPut = new FinalOrder(oDao.doRetrieveByKey(code), listaDettagliOrdine, nomeSneaker);
 		} catch (SQLException e) {
-			logger.log(Level.WARNING, "Problema accesso DB!");
+			logger.log(Level.WARNING, LOG_MSG);
 		}
 		
 		request.setAttribute("ordine", finalToPut);

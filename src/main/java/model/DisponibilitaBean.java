@@ -1,14 +1,14 @@
 package model;
 
 public class DisponibilitaBean {
-	private int codice_prod;
+	private int codiceProd;
 	private int quantita;
 	private int taglia;	
 	
 	
 	public DisponibilitaBean() {
 		
-		codice_prod = 0;
+		codiceProd = 0;
 		quantita = 0;
 		taglia = 0;
 		
@@ -16,12 +16,12 @@ public class DisponibilitaBean {
 
 
 	public int getCodice_prod() {
-		return codice_prod;
+		return codiceProd;
 	}
 
 
-	public void setCodice_prod(int codice_prod) {
-		this.codice_prod = codice_prod;
+	public void setCodice_prod(int codiceProd) {
+		this.codiceProd = codiceProd;
 	}
 
 

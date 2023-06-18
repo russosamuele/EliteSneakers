@@ -33,6 +33,13 @@ public class DisponibilitaDAO {
 	}
 
 	private static final String TABLE_NAME = "DisponibilitaTaglia";
+	
+	//stringhe costanti per evitare duplicazioni (sono i nomi delle colonne nel db)
+	private static final String CODICE_P = "codice_prod";
+	private static final String TAGLIA = "taglia";
+	private static final String QUANTITA = "quantita";
+	
+	
 
 	public synchronized void doSave(DisponibilitaBean disponibilita) throws SQLException {
 
@@ -159,9 +166,9 @@ public class DisponibilitaDAO {
 
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				bean.setCodice_prod(rs.getInt("codice_prod"));
-				bean.setQuantita(rs.getInt("quantita"));
-				bean.setTaglia(rs.getInt("taglia"));
+				bean.setCodice_prod(rs.getInt(CODICE_P));
+				bean.setQuantita(rs.getInt(QUANTITA));
+				bean.setTaglia(rs.getInt(TAGLIA));
 			}
 
 		} finally {
@@ -193,9 +200,9 @@ public class DisponibilitaDAO {
 
 			while (rs.next()) {
 				DisponibilitaBean bean = new DisponibilitaBean();
-				bean.setCodice_prod(rs.getInt("codice_prod"));
-				bean.setQuantita(rs.getInt("quantita"));
-				bean.setTaglia(rs.getInt("taglia"));
+				bean.setCodice_prod(rs.getInt(CODICE_P));
+				bean.setQuantita(rs.getInt(QUANTITA));
+				bean.setTaglia(rs.getInt(TAGLIA));
 				dispo.add(bean);
 			}
 
@@ -233,9 +240,9 @@ public class DisponibilitaDAO {
 
 			while (rs.next()) {
 				DisponibilitaBean bean = new DisponibilitaBean();
-				bean.setCodice_prod(rs.getInt("codice_prod"));
-				bean.setQuantita(rs.getInt("quantita"));
-				bean.setTaglia(rs.getInt("taglia"));
+				bean.setCodice_prod(rs.getInt(CODICE_P));
+				bean.setQuantita(rs.getInt(QUANTITA));
+				bean.setTaglia(rs.getInt(TAGLIA));
 				dispo.add(bean);
 			}
 
