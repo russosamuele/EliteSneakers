@@ -56,8 +56,9 @@
 		
 		%>
 		
+		<!-- onsubmit="event.preventDefault();checkFormUpdate(this)" -->
 		
-		<form action="<%=request.getContextPath()%>/ModificaAccount" method="post" name="updateAccount" id="updateAccount" onsubmit="event.preventDefault();checkFormUpdate(this)">  
+		<form action="<%=request.getContextPath()%>/ModificaAccount" method="post" name="updateAccount" id="updateAccount" >  
 					
 			
 			<label for="address">Indirizzo:</label>
@@ -70,7 +71,7 @@
 			<input class="inputField" type="password" id="passwordVecchia" name="passwordVecchia" required><span id="errorpswd" style="color:red"> <%=error%></span><br>
 			
 			<label for="nuovaPassword">Nuova Password:</label>
-			<input class="inputField" type="password" id="nuovaPassword" name="nuovaPassword" onBlur="return checkPswd()"> <span id="matchError"></span><br>
+			<input class="inputField" type="password" id="nuovaPassword" name="nuovaPassword" onChange="return checkPswd()"> <span id="matchError"></span><br>
 			
 			
 			<input class="btn btn-primary" type="submit" value="Aggiorna">

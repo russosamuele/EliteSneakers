@@ -121,7 +121,7 @@ public class ProductDAO{
 				bean.setModello(rs.getString(MODELLO));
 				bean.setPhoto(rs.getBytes(PHOTO));
 				bean.setDescrizione(rs.getString(DESCRIZIONE));
-				bean.setPrice(rs.getInt(PREZZO));
+				bean.setPrice(rs.getDouble(PREZZO));
 			}
 			
 			
@@ -146,8 +146,7 @@ public class ProductDAO{
 
 		String selectSQL = CONST_SELECT + ProductDAO.TABLE_NAME + " ORDER BY ?";
 
-		
-
+	
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -164,7 +163,7 @@ public class ProductDAO{
 				bean.setModello(rs.getString(MODELLO));
 				bean.setPhoto(rs.getBytes(PHOTO));
 				bean.setDescrizione(rs.getString(DESCRIZIONE));
-				bean.setPrice(rs.getInt(PREZZO));
+				bean.setPrice(rs.getDouble(PREZZO));
 				products.add(bean);
 			}
 
@@ -264,6 +263,38 @@ public class ProductDAO{
 			}
 		}
 		return products;
+	}
+	
+	
+	public synchronized boolean doUpdate(int code, String brand, String modello, String descrizione, double prezzo) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String updateSQL = "UPDATE " + ProductDAO.TABLE_NAME + " SET brand= ? , modello = ?, descrizione= ?, prezzo= ? WHERE codice_prod = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSQL);
+			preparedStatement.setString(1, brand);
+			preparedStatement.setString(2, modello);
+			preparedStatement.setString(3, descrizione);
+			preparedStatement.setDouble(4, prezzo);
+			preparedStatement.setInt(5, code);
+
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return (result != 0);
 	}
 	
 

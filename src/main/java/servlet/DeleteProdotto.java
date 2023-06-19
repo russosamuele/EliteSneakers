@@ -40,7 +40,7 @@ public class DeleteProdotto extends HttpServlet {
 				dao.doDelete(code);
 				message = "prodotto eliminato con successo!";
 			} catch (SQLException e) {
-				logger.log(Level.WARNING, "Problema elimnazione prodotto!");
+				logger.log(Level.WARNING, "Problema eliminazione prodotto!");
 			}
 		}
 		
