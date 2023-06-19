@@ -25,7 +25,7 @@ function createXMLHttpRequest() {
 	return request;
 }
 
-function loadAjaxDoc(url, method, params, cFuction) {
+/*function loadAjaxDoc(url, method, params, cFuction) {
 	let request = createXMLHttpRequest();
 	if(request){
 		
@@ -71,6 +71,61 @@ function loadAjaxDoc(url, method, params, cFuction) {
 		}
 	}
 }
+
+*/
+
+
+function loadAjaxDoc(url, method, params, cFunction) {
+  const request = createXMLHttpRequest();
+  
+  if (!request) {
+    return null;
+  }
+  
+  request.onreadystatechange = function() {
+    if (request.readyState === 4) {
+      if (request.status === 200) {
+        cFunction(request);
+      } else {
+        let errorMessage = "Problemi nell'esecuzione della richiesta: ";
+        
+        if (request.status === 0) {
+          errorMessage += "nessuna risposta ricevuta nel tempo limite";
+        } else {
+          errorMessage += request.statusText;
+        }
+        
+        alert(errorMessage);
+        return null;
+      }
+    }
+  };
+  
+  setTimeout(function() {
+    if (request.readyState < 4) {
+      request.abort();
+    }
+  }, 15000);
+  
+  if (method.toLowerCase() === "get") {
+    const fullUrl = params ? url + "?" + params : url;
+    request.open("GET", fullUrl, true);
+    request.setRequestHeader("Connection", "close");
+    request.send(null);
+  } else {
+    if (!params) {
+      console.log("Usa GET se non ci sono parametri!");
+      return null;
+    }
+    
+    request.open("POST", url, true);
+    request.setRequestHeader("Connection", "close");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send(params);
+  }
+}
+
+
 
 function handleEmail(request){
 	let response = request.responseXML.documentElement;

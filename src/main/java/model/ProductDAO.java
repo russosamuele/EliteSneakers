@@ -42,6 +42,8 @@ public class ProductDAO{
 	private static final String PREZZO = "prezzo";
 	
 	
+	private static final String CONST_SELECT = "SELECT * FROM ";
+	
 	
 	public synchronized void doSave(ProductBean product) throws SQLException {
 
@@ -107,7 +109,7 @@ public class ProductDAO{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ProductBean bean = new ProductBean();
-		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME + " WHERE codice_prod = ?";
+		String selectSQL = CONST_SELECT + ProductDAO.TABLE_NAME + " WHERE codice_prod = ?";
 		try {
 			connection = ds.getConnection();	
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -142,15 +144,16 @@ public class ProductDAO{
 
 		Collection<ProductBean> products = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME;
+		String selectSQL = CONST_SELECT + ProductDAO.TABLE_NAME + " ORDER BY ?";
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
+		
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
+			if (order != null && !order.equals("")) {
+				preparedStatement.setString(1, order);
+			}
 
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -185,7 +188,7 @@ public class ProductDAO{
 
 		Collection<ProductBean> products = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME + " WHERE prezzo >= ? AND prezzo <= ?";
+		String selectSQL = CONST_SELECT + ProductDAO.TABLE_NAME + " WHERE prezzo >= ? AND prezzo <= ?";
 
 		
 		try {
@@ -227,7 +230,7 @@ public class ProductDAO{
 
 		Collection<ProductBean> products = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME + " WHERE prezzo >= ? AND prezzo <= ? AND brand = ? ";
+		String selectSQL = CONST_SELECT + ProductDAO.TABLE_NAME + " WHERE prezzo >= ? AND prezzo <= ? AND brand = ? ";
 
 		
 		try {

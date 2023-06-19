@@ -39,7 +39,7 @@ public class GetOrdineServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDAO pDao = new ProductDAO();
-		DettaglioOrdineDAO DODao = new DettaglioOrdineDAO();
+		DettaglioOrdineDAO dODao = new DettaglioOrdineDAO();
 		ProductBean pBean = null;
 		
 		OrdineDAO oDao = new OrdineDAO();
@@ -51,7 +51,7 @@ public class GetOrdineServlet extends HttpServlet {
 		List <DettaglioOrdineBean> listaDettagliOrdine = null;
 		
 		try {
-			listaDettagliOrdine = (List<DettaglioOrdineBean>) DODao.doRetrieveByKey(code);
+			listaDettagliOrdine = (List<DettaglioOrdineBean>) dODao.doRetrieveByKey(code);
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, LOG_MSG);
 		}	

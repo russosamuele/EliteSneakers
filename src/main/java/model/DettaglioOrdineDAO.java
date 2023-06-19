@@ -138,16 +138,16 @@ private static Logger logger = Logger.getAnonymousLogger();
 		Collection<DettaglioOrdineBean> dettagliOrdini = new LinkedList<>();
 		DettaglioOrdineBean bean = new DettaglioOrdineBean();
 
-		String selectSQL = "SELECT * FROM " + DettaglioOrdineDAO.TABLE_NAME;
+		String selectSQL = "SELECT * FROM " + DettaglioOrdineDAO.TABLE_NAME + " ORDER BY ?";
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
-
+		
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(true);
 			preparedStatement = connection.prepareStatement(selectSQL);
+			if (order != null && !order.equals("")) {
+				preparedStatement.setString(0, order);
+			}
 
 			ResultSet rs = preparedStatement.executeQuery();
 

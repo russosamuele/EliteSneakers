@@ -41,7 +41,7 @@ public class GetUsersList extends HttpServlet {
 		} catch (SQLException e) {
 			logger.log(Level.WARNING, "Problema accesso DB!");
 		} catch (ParseException e) {
-			logger.log(Level.WARNING, "Problema accesso DB!");
+			logger.log(Level.WARNING, "Problema parse");
 		}
 		
 		request.setAttribute("listUsers", utenti);

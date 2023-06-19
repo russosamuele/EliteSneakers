@@ -37,12 +37,14 @@ public class CheckoutServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Cart carrello = (Cart) request.getSession().getAttribute("carrello");
+		UserBean user = (UserBean) request.getSession().getAttribute("user"); // recupero info utente per salvare l'ordine
 
-		if (carrello == null) {
+		if (carrello == null || user == null) {
 			request.getRequestDispatcher("common/login.jsp").forward(request, response);
 			return;
 		}
 
+		
 		List<CartItem> elementi = carrello.getProducts(); // recupero elementi nel carrello
 
 		if (elementi == null || elementi.isEmpty()) {
@@ -52,14 +54,6 @@ public class CheckoutServlet extends HttpServlet {
 			return;
 		}
 
-		OrdineBean ordine = new OrdineBean();
-
-		UserBean user = (UserBean) request.getSession().getAttribute("user"); // recupero info utente per salvare l'ordine
-
-		if (user == null) {
-			request.getRequestDispatcher("common/login.jsp").forward(request, response);
-			return;
-		}
 		
 		//verifico se c'è disponibilità per i prodotti
 		DisponibilitaDAO dao = new DisponibilitaDAO();
@@ -82,24 +76,20 @@ public class CheckoutServlet extends HttpServlet {
 		//effettuo l'ordine
 
 		OrdineDAO ordinedao = new OrdineDAO();
+		OrdineBean ordine = new OrdineBean();
 		
 		int numeroOrd = 0;
 
 		try {
 			numeroOrd = ordinedao.doRetrieveMaxNumOrdine() + 1;
-		} catch (SQLException e1) {
-			logger.log(Level.WARNING, "Problema accesso DB!");
-		}
-
-		ordine.setNumeroOrd(numeroOrd);
-		ordine.setEmail(user.getEmail());
-		ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
-
-		try {
+			ordine.setNumeroOrd(numeroOrd);
+			ordine.setEmail(user.getEmail());
+			ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
 			ordinedao.doSave(ordine);
-		} catch (SQLException e) {
+		} catch (SQLException e1) {
 			logger.log(Level.WARNING, LOG_MSG);
 		}
+
 
 		DettaglioOrdineDAO dettaglioOrdineDAO = new DettaglioOrdineDAO();
 
@@ -112,7 +102,6 @@ public class CheckoutServlet extends HttpServlet {
 				dettaglioOrdine.setNumeroOrd(numeroOrd);
 
 				dettaglioOrdineDAO.doSave(dettaglioOrdine);
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -40,6 +40,8 @@ public class OrdineDAO {
 	private static final String EMAIL = "email";
 	private static final String DATA = "data";
 	
+	private static final String CONST_SELECT = "SELECT * FROM ";
+	
 	
 	
 	
@@ -108,7 +110,7 @@ public class OrdineDAO {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		OrdineBean bean = new OrdineBean();
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE numero_ord = ?";
+		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE numero_ord = ?";
 		try {
 			connection = ds.getConnection();	
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -139,16 +141,17 @@ public class OrdineDAO {
 
 		Collection<OrdineBean> ordini = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME;
+		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " ORDER BY ?";
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
+		
 
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(true);
 			preparedStatement = connection.prepareStatement(selectSQL);
+			if (order != null && !order.equals("")) {
+				preparedStatement.setString(1, order);
+			}
 
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -181,17 +184,18 @@ public class OrdineDAO {
 
 		Collection<OrdineBean> ordini = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE email=?";
+		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE email=? ORDER BY ?";
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
+		
 
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(true);
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, email);
+			if (order != null && !order.equals("")) {
+				preparedStatement.setString(2, order);
+			}
 			
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -253,7 +257,7 @@ public class OrdineDAO {
 
 		Collection<OrdineBean> ordini = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE email=? "
+		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE email=? "
 				+ " AND data BETWEEN ? AND ?";
 
 		
@@ -295,7 +299,7 @@ public class OrdineDAO {
 
 		Collection<OrdineBean> ordini = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE "
+		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE "
 				+ "data BETWEEN ? AND ?";
 
 		

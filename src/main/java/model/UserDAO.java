@@ -143,16 +143,16 @@ public class UserDAO{
 
 		Collection<UserBean> products = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + UserDAO.TABLE_NAME;
+		String selectSQL = "SELECT * FROM " + UserDAO.TABLE_NAME + " ORDER BY ?";
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
 
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(true);
 			preparedStatement = connection.prepareStatement(selectSQL);
+			if (order != null && !order.equals("")) {
+				preparedStatement.setString(1, order);
+			}
 
 			ResultSet rs = preparedStatement.executeQuery();
 

@@ -11,26 +11,25 @@ public class HelperClass {
 	private static Logger logger = Logger.getAnonymousLogger();
 	
 	public static String toHash(String password) {
-        String hashString = null;
+		StringBuilder sb = new StringBuilder();
         try {
             java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-512");
             byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-            hashString = "";
             for (int i = 0; i < hash.length; i++) {
-                hashString += Integer.toHexString( 
+                sb.append(Integer.toHexString( 
                                   (hash[i] & 0xFF) | 0x100 
-                              ).toLowerCase().substring(1,3);
+                              ).toLowerCase().substring(1,3));
             }
         } catch (java.security.NoSuchAlgorithmException e) {
         	logger.log(Level.WARNING, "Problema hash pswd!");
         }
-        return hashString;
+        return sb.toString();
     }
 	
 	
 	public static String filter(String input) {
 		
-		StringBuffer filtered = new StringBuffer(input.length());
+		StringBuilder filtered = new StringBuilder();
 		char c;
 		for(int i=0; i<input.length(); i++) {
 			c = input.charAt(i);

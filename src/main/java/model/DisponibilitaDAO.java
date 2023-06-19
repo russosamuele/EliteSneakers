@@ -38,13 +38,16 @@ public class DisponibilitaDAO {
 	private static final String CODICE_P = "codice_prod";
 	private static final String TAGLIA = "taglia";
 	private static final String QUANTITA = "quantita";
-	
+	private static final String CONST_WHERE = " WHERE codice_prod = ? AND taglia = ?";
+	private static final String CONST_SELECT = "SELECT * FROM ";
 	
 
 	public synchronized void doSave(DisponibilitaBean disponibilita) throws SQLException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
+		
+		
 
 		String insertSQL = "INSERT INTO " + DisponibilitaDAO.TABLE_NAME
 				+ " (codice_prod,taglia, quantita) VALUES (?, ?, ?)";
@@ -74,7 +77,7 @@ public class DisponibilitaDAO {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + DisponibilitaDAO.TABLE_NAME + " WHERE codice_prod = ? AND taglia = ?";
+		String deleteSQL = "DELETE FROM " + DisponibilitaDAO.TABLE_NAME + CONST_WHERE;
 
 		try {
 			connection = ds.getConnection();
@@ -130,7 +133,7 @@ public class DisponibilitaDAO {
 		int result = 0;
 
 		String deleteSQL = "UPDATE " + DisponibilitaDAO.TABLE_NAME + " SET quantita = quantita - ?"
-				+ " WHERE codice_prod = ? AND taglia = ?";
+				+ CONST_WHERE;
 
 		try {
 			connection = ds.getConnection();
@@ -157,7 +160,7 @@ public class DisponibilitaDAO {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		DisponibilitaBean bean = new DisponibilitaBean();
-		String selectSQL = "SELECT * FROM " + DisponibilitaDAO.TABLE_NAME + " WHERE codice_prod = ? AND taglia = ?";
+		String selectSQL = CONST_SELECT + DisponibilitaDAO.TABLE_NAME + CONST_WHERE;
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
@@ -189,7 +192,7 @@ public class DisponibilitaDAO {
 
 		Collection<DisponibilitaBean> dispo = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + DisponibilitaDAO.TABLE_NAME + " WHERE codice_prod = ?";
+		String selectSQL = CONST_SELECT + DisponibilitaDAO.TABLE_NAME + " WHERE codice_prod = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -226,15 +229,16 @@ public class DisponibilitaDAO {
 
 		Collection<DisponibilitaBean> dispo = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM " + DisponibilitaDAO.TABLE_NAME;
+		String selectSQL = CONST_SELECT + DisponibilitaDAO.TABLE_NAME + " ORDER BY ?";
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
+		
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
+			if (order != null && !order.equals("")) {
+				preparedStatement.setString(1, order);
+			}
 
 			ResultSet rs = preparedStatement.executeQuery();
 
