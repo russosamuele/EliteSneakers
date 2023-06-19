@@ -146,7 +146,7 @@ private static Logger logger = Logger.getAnonymousLogger();
 			connection.setAutoCommit(true);
 			preparedStatement = connection.prepareStatement(selectSQL);
 			if (order != null && !order.equals("")) {
-				preparedStatement.setString(0, order);
+				preparedStatement.setString(1, order);
 			}
 
 			ResultSet rs = preparedStatement.executeQuery();
