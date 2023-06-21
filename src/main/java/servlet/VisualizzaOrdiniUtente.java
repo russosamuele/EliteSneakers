@@ -24,7 +24,7 @@ import model.UserBean;
 public class VisualizzaOrdiniUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static Logger logger = Logger.getAnonymousLogger();
+	
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,6 +36,7 @@ public class VisualizzaOrdiniUtente extends HttpServlet {
 		
 		OrdineDAO oDAO = new OrdineDAO();
 		List <OrdineBean> ordineList = null;
+		Logger logger = Logger.getAnonymousLogger();
 		
 		UserBean user = (UserBean) request.getSession().getAttribute("user");
 		String email = null;
