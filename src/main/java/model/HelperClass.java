@@ -1,6 +1,7 @@
 package model;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,31 +31,40 @@ public class HelperClass {
 	public static String filter(String input) {
 		
 		StringBuilder filtered = new StringBuilder();
+		HashMap<Character, String> characterMap = new HashMap<>();
+		// characterMap.put('è', "&egrave;");
+        //characterMap.put('à', "&agrave;");
+        characterMap.put('<', "&lt;");
+        characterMap.put('>', "&gt;");
+        characterMap.put('&', "&amp;");
+        characterMap.put('"', "&quot;");
+
 		char c;
 		for(int i=0; i<input.length(); i++) {
 			c = input.charAt(i);
-			
-			if(c == '<')
-				filtered.append("&lt;");
-			else if(c == '>')
-				filtered.append("&gt;");
-			else if(c=='"')
-				filtered.append("&quot;");
-			else if(c=='&')
-				filtered.append("&amp;");
-			else if(c=='à')
-				filtered.append("&agrave;");
-			else if(c=='è') {
-				filtered.append("&egrave;");
-			}
-			else
-				filtered.append(c);
-		}
 				
-		return (filtered.toString());
+			// Filtra il carattere desiderato
+            String replacement = characterMap.get(c);
+            if (replacement != null) {
+                filtered.append(replacement);
+            } else if(c == 'Ã'){
+    				i++;
+    				c = input.charAt(i);
+    				if(c=='¨') {
+    					filtered.append("&egrave");
+    				}else
+    					filtered.append("&agrave");
+    		}else{
+    			
+                filtered.append(c);
+            }
+		} //fine for
 		
+		return filtered.toString();
+
 	}
 	
 	
-
+		
+	
 }
