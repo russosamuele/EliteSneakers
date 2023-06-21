@@ -45,9 +45,13 @@ public class UploadPhoto extends HttpServlet {
 		}
         
         
-
-		RequestDispatcher view = request.getRequestDispatcher("/admin/AggiungiProdotto.jsp");
-		view.forward(request, response);
+        String redirect = (String) request.getAttribute("redirect");
+        
+        if(redirect != null && redirect.equals("modificaProdotto"))
+        	request.getRequestDispatcher("/admin/ModificaProdotto.jsp").forward(request, response);
+        else
+        	request.getRequestDispatcher("/admin/AggiungiProdotto.jsp").forward(request, response);
+        
 	}
 
 }

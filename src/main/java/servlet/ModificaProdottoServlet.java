@@ -45,6 +45,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 		}
 		
 		
+		request.setAttribute("redirect", "modificaProdotto");
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/UploadPhoto");
 		dispatcher.forward(request, response);
 		
