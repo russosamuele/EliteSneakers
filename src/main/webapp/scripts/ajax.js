@@ -25,55 +25,6 @@ function createXMLHttpRequest() {
 	return request;
 }
 
-/*function loadAjaxDoc(url, method, params, cFuction) {
-	let request = createXMLHttpRequest();
-	if(request){
-		
-		request.onreadystatechange = function() {
-			if (this.readyState == 4) {
-				if (this.status == 200) {
-				    cFuction(this); 
-				} else {				
-					if(this.status == 0){ // When aborting the request
-						alert("Problemi nell'esecuzione della richiesta: nessuna risposta ricevuta nel tempo limite");
-					} else { // Any other situation
-						alert("Problemi nell'esecuzione della richiesta:\n" + this.statusText);
-					}
-					return null;
-				}
-		    }
-		};
-		
-		setTimeout(function () {     // to abort after 15 sec
-        	if (request.readyState < 4) {
-            	request.abort();
-        	}
-    	}, 15000); 
-		
-		if(method.toLowerCase() == "get"){
-			if(params){
-				request.open("GET", url + "?" + params, true);
-			} else {
-				request.open("GET", url, true);
-			}
-			request.setRequestHeader("Connection", "close");
-	        request.send(null);
-		} else {
-			if(params){
-				request.open("POST", url, true);
-				request.setRequestHeader("Connection", "close");
-				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	        	request.send(params);
-			} else {
-				console.log("Usa GET se non ci sono parametri!");
-				return null;
-			}
-		}
-	}
-}
-
-*/
-
 
 function loadAjaxDoc(url, method, params, cFunction) {
   const request = createXMLHttpRequest();
