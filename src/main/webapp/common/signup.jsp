@@ -25,8 +25,6 @@
 	
 		<section class="signupSection">
 		
-		
-		
 		<br>
 		
 		<% 

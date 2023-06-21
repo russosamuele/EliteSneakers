@@ -56,8 +56,6 @@
 		
 		%>
 		
-		<!-- onsubmit="event.preventDefault();checkFormUpdate(this)" -->
-		
 		<form action="<%=request.getContextPath()%>/ModificaAccount" method="post" name="updateAccount" id="updateAccount" >  
 					
 			
