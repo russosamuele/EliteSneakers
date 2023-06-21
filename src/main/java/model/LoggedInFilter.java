@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class LoggedInFilter
  */
-@WebFilter(filterName = "/LoggedInFilter", urlPatterns = {"/common/checkout.jsp"})
+@WebFilter(filterName = "/LoggedInFilter", urlPatterns = {"/common/checkout.jsp", "/common/VisualizzaOrdiniUtente.jsp", "/VisualizzaOrdiniServlet", "/common/DettaglioOrdine"})
 public class LoggedInFilter extends HttpFilter implements Filter {
 
 	private static final long serialVersionUID = 1L;

@@ -38,6 +38,12 @@ public class AccessControlFilter extends HttpFilter implements Filter {
 			return;
 		}
 		
+		if((!isAdmin) && (path.contains("/AddDisponibilita") || path.contains("/AddProduct") || path.contains("/DeleteProdotto") || path.contains("/GetUsersList") || path.contains("/ModificaProdottoServlet") || path.contains("/RimuoviUtenteServlet") || path.contains("/VisualizzaOrdiniServlet") || path.contains("/UploadPhoto"))) {
+			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/common/index.jsp");
+			return;
+		}
+		
+		
 		chain.doFilter(request, response);
 	}
 	
