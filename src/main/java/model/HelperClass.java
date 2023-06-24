@@ -15,11 +15,13 @@ public class HelperClass {
 		StringBuilder sb = new StringBuilder();
         try {
             java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-512");
-            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-            for (int i = 0; i < hash.length; i++) {
-                sb.append(Integer.toHexString( 
+            if(password != null) {
+            	byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            	for (int i = 0; i < hash.length; i++) {
+            		sb.append(Integer.toHexString( 
                                   (hash[i] & 0xFF) | 0x100 
                               ).toLowerCase().substring(1,3));
+            	}
             }
         } catch (java.security.NoSuchAlgorithmException e) {
         	logger.log(Level.WARNING, "Problema hash pswd!");
@@ -46,7 +48,7 @@ public class HelperClass {
             String replacement = characterMap.get(c);
             if (replacement != null) {
                 filtered.append(replacement);
-            } else if(c == 'Ã'){
+            } else if(c == 'Ã'){ //questo perchè non riesco a riconoscere normalmente 'è' e 'à'
     				i++;
     				c = input.charAt(i);
     				if(c=='¨') {
