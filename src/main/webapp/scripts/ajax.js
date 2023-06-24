@@ -28,53 +28,66 @@ function createXMLHttpRequest() {
 
 function loadAjaxDoc(url, method, params, cFunction) {
   const request = createXMLHttpRequest();
-  
+
   if (!request) {
     return null;
   }
-  
+
   request.onreadystatechange = function() {
     if (request.readyState === 4) {
       if (request.status === 200) {
         cFunction(request);
       } else {
-        let errorMessage = "Problemi nell'esecuzione della richiesta: ";
-        
-        if (request.status === 0) {
-          errorMessage += "nessuna risposta ricevuta nel tempo limite";
-        } else {
-          errorMessage += request.statusText;
-        }
-        
-        alert(errorMessage);
-        return null;
+        handleRequestError(request);
       }
     }
   };
-  
+
   setTimeout(function() {
     if (request.readyState < 4) {
       request.abort();
     }
   }, 15000);
-  
+
   if (method.toLowerCase() === "get") {
-    const fullUrl = params ? url + "?" + params : url;
-    request.open("GET", fullUrl, true);
-    request.setRequestHeader("Connection", "close");
-    request.send(null);
+    sendGetRequest(url, params, request);
   } else {
-    if (!params) {
-      console.log("Usa GET se non ci sono parametri!");
-      return null;
-    }
-    
-    request.open("POST", url, true);
-    request.setRequestHeader("Connection", "close");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send(params);
+    sendPostRequest(url, params, request);
   }
 }
+
+function handleRequestError(request) {
+  let errorMessage = "Problemi nell'esecuzione della richiesta: ";
+
+  if (request.status === 0) {
+    errorMessage += "nessuna risposta ricevuta nel tempo limite";
+  } else {
+    errorMessage += request.statusText;
+  }
+
+  alert(errorMessage);
+  return null;
+}
+
+function sendGetRequest(url, params, request) {
+  const fullUrl = params ? url + "?" + params : url;
+  request.open("GET", fullUrl, true);
+  request.setRequestHeader("Connection", "close");
+  request.send(null);
+}
+
+function sendPostRequest(url, params, request) {
+  if (!params) {
+    console.log("Usa GET se non ci sono parametri!");
+    return null;
+  }
+
+  request.open("POST", url, true);
+  request.setRequestHeader("Connection", "close");
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  request.send(params);
+}
+
 
 
 

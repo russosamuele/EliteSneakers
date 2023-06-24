@@ -31,16 +31,15 @@ public class DeleteProdotto extends HttpServlet {
 		String message = "";
 		
 		/*per eliminare del tutto il prodotto basta modificare i vicnoli nel DB (noi abbiamo scelto 
-			di non eliminare definitivamente il prodotto dal DB) */
+			di non eliminare definitivamente il prodotto dal DB) 
+		*/
 		
 		if(c!=null) {
 			int code = Integer.parseInt(c);
-			//ProductDAO dao = new ProductDAO(); 
 			DisponibilitaDAO dao2 = new DisponibilitaDAO();
 			
 			try {
 				dao2.doDelete(code);
-				//dao.doDelete(code);
 				message = "prodotto eliminato con successo!";
 			} catch (SQLException e) {
 				logger.log(Level.WARNING, "Problema eliminazione prodotto!");

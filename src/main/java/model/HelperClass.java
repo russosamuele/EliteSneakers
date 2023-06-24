@@ -32,8 +32,7 @@ public class HelperClass {
 		
 		StringBuilder filtered = new StringBuilder();
 		HashMap<Character, String> characterMap = new HashMap<>();
-		// characterMap.put('è', "&egrave;");
-        //characterMap.put('à', "&agrave;");
+		// qui andrebbero aggiunti anche le entry per 'è', 'à' ecc.
         characterMap.put('<', "&lt;");
         characterMap.put('>', "&gt;");
         characterMap.put('&', "&amp;");
