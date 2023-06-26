@@ -63,7 +63,7 @@
 			<input class="inputField" type="text" id="address" name="address" value="<%=user.getIndirizzo()%>"><br>
 			
 			<label for="address_sp">Indirizzo di spedizione</label>
-			<textarea class="inputField" id="address_sp" name="address_sp"><%=user.getIndirizzo_spedizione()%></textarea><br>
+			<textarea class="inputField" id="address_sp" name="address_sp"><%=user.getIndirizzoSpedizione()%></textarea><br>
 			
 			<label for="password">Vecchia Password:</label>
 			<input class="inputField" type="password" id="passwordVecchia" name="passwordVecchia" required><span id="errorpswd" style="color:red"> <%=error%></span><br>

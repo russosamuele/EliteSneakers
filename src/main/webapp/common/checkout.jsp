@@ -44,7 +44,7 @@
        
         <select class="inputField">
         	<option> <%=user.getIndirizzo()%></option> 
-        	<option> <%=user.getIndirizzo_spedizione()%></option> 
+        	<option> <%=user.getIndirizzoSpedizione()%></option> 
         </select>
 
         <h3>Informazioni della carta</h3>

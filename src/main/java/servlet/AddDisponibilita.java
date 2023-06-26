@@ -30,7 +30,7 @@ public class AddDisponibilita extends HttpServlet {
 
 		
 		DisponibilitaBean bean = new DisponibilitaBean();
-		bean.setCodice_prod(code);
+		bean.setCodiceProd(code);
 		bean.setTaglia(taglia);
 		bean.setQuantita(quantita);		
 		DisponibilitaDAO  dao = new DisponibilitaDAO();

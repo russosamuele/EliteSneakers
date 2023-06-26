@@ -78,11 +78,11 @@ public class UserBean implements Serializable {
 			this.indirizzo = indirizzo;
 		}
 
-		public String getIndirizzo_spedizione() {
+		public String getIndirizzoSpedizione() {
 			return indirizzoSpedizione;
 		}
 
-		public void setIndirizzo_spedizione(String indirizzoSpedizione) {
+		public void setIndirizzoSpedizione(String indirizzoSpedizione) {
 			this.indirizzoSpedizione = indirizzoSpedizione;
 		}
 

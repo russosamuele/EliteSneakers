@@ -58,7 +58,7 @@ public class UserDAO{
 			preparedStatement.setString(4, user.getPasswd());
 			preparedStatement.setDate(5, new java.sql.Date(user.getDataNascita().getTime()));
 			preparedStatement.setString(6, user.getIndirizzo());
-			preparedStatement.setString(7, user.getIndirizzo_spedizione());
+			preparedStatement.setString(7, user.getIndirizzoSpedizione());
 			preparedStatement.setBoolean(8, user.isAdmin());
 			preparedStatement.executeUpdate();
 			
@@ -120,7 +120,7 @@ public class UserDAO{
 				bean.setPasswd(rs.getString("passwd"));
 				bean.setDataNascita(rs.getDate("data_nascita"));
 				bean.setIndirizzo(rs.getString("indirizzo"));
-				bean.setIndirizzo_spedizione(rs.getString("indirizzo_spedizione"));
+				bean.setIndirizzoSpedizione(rs.getString("indirizzo_spedizione"));
 				bean.setAdmin(rs.getBoolean("isAdmin"));
 
 			}
@@ -164,7 +164,7 @@ public class UserDAO{
 				bean.setPasswd(rs.getString("passwd"));
 				bean.setDataNascita(rs.getDate("data_nascita"));
 				bean.setIndirizzo(rs.getString("indirizzo"));
-				bean.setIndirizzo_spedizione(rs.getString("indirizzo_spedizione"));
+				bean.setIndirizzoSpedizione(rs.getString("indirizzo_spedizione"));
 				bean.setAdmin(rs.getBoolean("isAdmin"));
 				
 				products.add(bean);

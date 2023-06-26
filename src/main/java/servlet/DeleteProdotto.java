@@ -30,8 +30,8 @@ public class DeleteProdotto extends HttpServlet {
 		String c = request.getParameter("code");
 		String message = "";
 		
-		/*per eliminare del tutto il prodotto basta modificare i vicnoli nel DB (noi abbiamo scelto 
-			di non eliminare definitivamente il prodotto dal DB) 
+		/*per eliminare del tutto il prodotto basta modificare i vincoli nel DB (noi abbiamo scelto 
+			di non eliminare definitivamente il prodotto dal DB prendendo spunto da ecommerce come Amazon) 
 		*/
 		
 		if(c!=null) {

@@ -74,7 +74,7 @@ public class SignupServlet extends HttpServlet {
 		user.setCognome(cognome);
 		user.setPasswd(HelperClass.toHash(passwd));
 		user.setIndirizzo(indirizzo);
-		user.setIndirizzo_spedizione(indirizzoSpedizione);
+		user.setIndirizzoSpedizione(indirizzoSpedizione);
 		user.setDataNascita(dataNascita);
 		
 		UserDAO userdao = new UserDAO();

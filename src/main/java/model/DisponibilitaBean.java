@@ -15,12 +15,12 @@ public class DisponibilitaBean {
 	}
 
 
-	public int getCodice_prod() {
+	public int getCodiceProd() {
 		return codiceProd;
 	}
 
 
-	public void setCodice_prod(int codiceProd) {
+	public void setCodiceProd(int codiceProd) {
 		this.codiceProd = codiceProd;
 	}
 

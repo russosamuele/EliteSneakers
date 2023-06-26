@@ -55,7 +55,7 @@ public class DisponibilitaDAO {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, disponibilita.getCodice_prod());
+			preparedStatement.setInt(1, disponibilita.getCodiceProd());
 			preparedStatement.setInt(2, disponibilita.getTaglia());
 			preparedStatement.setInt(3, disponibilita.getQuantita());
 			preparedStatement.executeUpdate();
@@ -169,7 +169,7 @@ public class DisponibilitaDAO {
 
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				bean.setCodice_prod(rs.getInt(CODICE_P));
+				bean.setCodiceProd(rs.getInt(CODICE_P));
 				bean.setQuantita(rs.getInt(QUANTITA));
 				bean.setTaglia(rs.getInt(TAGLIA));
 			}
@@ -203,7 +203,7 @@ public class DisponibilitaDAO {
 
 			while (rs.next()) {
 				DisponibilitaBean bean = new DisponibilitaBean();
-				bean.setCodice_prod(rs.getInt(CODICE_P));
+				bean.setCodiceProd(rs.getInt(CODICE_P));
 				bean.setQuantita(rs.getInt(QUANTITA));
 				bean.setTaglia(rs.getInt(TAGLIA));
 				dispo.add(bean);
@@ -244,7 +244,7 @@ public class DisponibilitaDAO {
 
 			while (rs.next()) {
 				DisponibilitaBean bean = new DisponibilitaBean();
-				bean.setCodice_prod(rs.getInt(CODICE_P));
+				bean.setCodiceProd(rs.getInt(CODICE_P));
 				bean.setQuantita(rs.getInt(QUANTITA));
 				bean.setTaglia(rs.getInt(TAGLIA));
 				dispo.add(bean);
