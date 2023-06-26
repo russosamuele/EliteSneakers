@@ -360,6 +360,26 @@ footer {
     
 }
 
+@media(max-height:845px){
+    .managementSection{
+    	padding-top:300px;
+    }
+    #managementPanel{
+    padding-top:400px;
+    }
+	    
+}
+
+@media(max-height:645px){
+    .managementSection{
+    	padding-top:300px;
+    }
+    #managementPanel{
+    padding-top:450px;
+    }
+	    
+}
+
 
 
 
