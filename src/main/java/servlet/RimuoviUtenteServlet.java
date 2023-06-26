@@ -33,7 +33,7 @@ public class RimuoviUtenteServlet extends HttpServlet {
 		if(email != null) {
 		
 			try {
-				dao.doDelete(email);
+				dao.doDelete(email); //una volta che un utente ha ordinato non verrà eliminato dal DB!!(basterebbe aggiornare i vincoli nel DB)
 				mess = "Utente eliminato con successo!";
 			} catch (SQLException e) {
 				logger.log(Level.WARNING, "Problema eliminazione utente dal DB!");
